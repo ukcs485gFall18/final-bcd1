@@ -200,6 +200,7 @@ extension ItemsViewController: CLLocationManagerDelegate {
             let cell = tableView.cellForRow(at: row) as! ItemCell
             cell.checkedIn()
         }
+        let reservation = MyReservation(hour: 0, min: 0, uuid: UUID())
     }
     
     
