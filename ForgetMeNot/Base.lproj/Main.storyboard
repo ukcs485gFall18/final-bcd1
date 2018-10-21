@@ -565,6 +565,7 @@
                                 <connections>
                                     <action selector="CompletedTapped:" destination="svd-f1-rGu" eventType="valueChanged" id="wMF-sq-NyN"/>
                                     <action selector="UpcomingTapped:" destination="svd-f1-rGu" eventType="valueChanged" id="060-GF-ZTl"/>
+                                    <action selector="segChange:" destination="svd-f1-rGu" eventType="valueChanged" id="cok-kg-x50"/>
                                     <outletCollection property="gestureRecognizers" destination="tRn-GA-5vM" appends="YES" id="Y4q-a2-XVY"/>
                                     <outletCollection property="gestureRecognizers" destination="tRn-GA-5vM" appends="YES" id="arO-g4-WD0"/>
                                 </connections>
