@@ -42,6 +42,16 @@ class ItemsViewController: UIViewController {
     loadItems()
   }
   
+    @IBAction func segChange(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0{
+            //dispaly upcoming reservations
+        }
+        else{
+            //display completed reservations
+        }
+    }
+    
+
     //David Mercado added this
     @IBAction func calendarButtonTapped(_ sender: Any) {
         UIApplication.shared.openURL(NSURL(string: "calshow://")! as URL)
