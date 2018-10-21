@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250E490F217679C300D4F516 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E490E217679C300D4F516 /* Reservation.swift */; };
 		635EA40721611F3D00F51096 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635EA40621611F3D00F51096 /* CalendarViewController.swift */; };
 		C00360541E39747F00234FCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00360531E39747F00234FCD /* LaunchScreen.storyboard */; };
 		C00360911E3EA86500234FCD /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003608A1E3EA86500234FCD /* Icons.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		250E490E217679C300D4F516 /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
 		635EA40621611F3D00F51096 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C00360531E39747F00234FCD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C003608A1E3EA86500234FCD /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			children = (
 				C003608A1E3EA86500234FCD /* Icons.swift */,
 				C003608B1E3EA86500234FCD /* Item.swift */,
+				250E490E217679C300D4F516 /* Reservation.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				635EA40721611F3D00F51096 /* CalendarViewController.swift in Sources */,
 				C00360941E3EA86500234FCD /* AddItemViewController.swift in Sources */,
+				250E490F217679C300D4F516 /* Reservation.swift in Sources */,
 				C00360971E3EA88F00234FCD /* IconCell.swift in Sources */,
 				C00360951E3EA86500234FCD /* ItemsViewController.swift in Sources */,
 				C00360931E3EA86500234FCD /* ItemCell.swift in Sources */,
