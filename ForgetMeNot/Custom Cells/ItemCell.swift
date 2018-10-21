@@ -48,7 +48,16 @@ class ItemCell: UITableViewCell {
     lblLocation.text = item?.locationString() ?? ""
   }
     
-    func checkedIn() {
+    func checkedIn() { // Used to switch the status of a check-in
         checkInLabel.text = "Check in Status: ✅"
+    }
+    
+    func checkedInTest() -> Bool{ // Test if a reservation has been checked in
+        if (checkInLabel.text == "Check in Status: ✅"){
+            return true
+        }
+        else{
+            return false
+        }
     }
 }
