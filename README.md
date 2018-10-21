@@ -1,6 +1,7 @@
 # Final Program
 Blake Sweet
 David Mercado
+Robert Cala
 
 Using the following tutorial link as a baseline program: 
 https://www.raywenderlich.com/632-ibeacon-tutorial-with-ios-and-swift
