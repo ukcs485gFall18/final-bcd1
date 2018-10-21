@@ -1,5 +1,5 @@
 # Final Program
-Blake Sweet
+Blake Sweet \n
 David Mercado
 
 Using the following tutorial link as a baseline program: 
