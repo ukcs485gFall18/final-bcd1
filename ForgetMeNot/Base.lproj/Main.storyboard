@@ -21,8 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="OGq-0J-rwC">
-                                <rect key="frame" x="-68.5" y="77.5" width="512" height="512"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="OGq-0J-rwC">
+                                <rect key="frame" x="-69" y="135" width="512" height="512"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundBlue" translatesAutoresizingMaskIntoConstraints="NO" id="OVv-Tb-G8Y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
@@ -39,6 +39,50 @@
                                     <segue destination="KpU-aC-nOC" kind="show" id="d9G-6i-erT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvh-qG-Pvo">
+                                <rect key="frame" x="25" y="88" width="153" height="42"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="rvr-Li-G4j"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Add Item" image="ForgetMeNotLogo">
+                                    <color key="titleColor" red="0.1084953173995018" green="0.46072936058044434" blue="0.73895782232284546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="0Ms-gS-rEA" kind="show" identifier="segueAdd" id="BNe-Z3-ads"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8f-vW-q7y">
+                                <rect key="frame" x="191" y="88" width="153" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="titleEdgeInsets" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Calendar" image="ForgetMeNotLogo">
+                                    <color key="titleColor" red="0.1084953173995018" green="0.46072936058044434" blue="0.73895782232284546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="calendarButtonTapped:" destination="DrD-we-v90" eventType="touchUpInside" id="cTn-dg-WCq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMA-Eb-oXC">
+                                <rect key="frame" x="299" y="20" width="61" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="✅"/>
+                                <connections>
+                                    <segue destination="FpO-Yd-8fG" kind="show" id="1jj-7k-acz"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dibs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unc-PZ-u1g">
+                                <rect key="frame" x="124" y="28" width="126" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="52"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xmN-h3-Bwd">
                                 <rect key="frame" x="0.0" y="132" width="375" height="535"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -104,50 +148,6 @@
                                     <outlet property="delegate" destination="DrD-we-v90" id="v4t-Ew-84G"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvh-qG-Pvo">
-                                <rect key="frame" x="25" y="88" width="153" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="rvr-Li-G4j"/>
-                                </constraints>
-                                <inset key="titleEdgeInsets" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Add Item" image="ForgetMeNotLogo">
-                                    <color key="titleColor" red="0.1084953173995018" green="0.46072936058044434" blue="0.73895782232284546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="0Ms-gS-rEA" kind="show" identifier="segueAdd" id="BNe-Z3-ads"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8f-vW-q7y">
-                                <rect key="frame" x="191" y="88" width="153" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="titleEdgeInsets" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Calendar" image="ForgetMeNotLogo">
-                                    <color key="titleColor" red="0.1084953173995018" green="0.46072936058044434" blue="0.73895782232284546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="calendarButtonTapped:" destination="DrD-we-v90" eventType="touchUpInside" id="cTn-dg-WCq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMA-Eb-oXC">
-                                <rect key="frame" x="299" y="20" width="61" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="✅"/>
-                                <connections>
-                                    <segue destination="FpO-Yd-8fG" kind="show" id="1jj-7k-acz"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dibs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unc-PZ-u1g">
-                                <rect key="frame" x="124" y="28" width="126" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="52"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -523,20 +523,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Customer View  Coming Soon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aW-1o-uT5">
-                                <rect key="frame" x="112" y="28" width="130" height="21"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="3Wk-B1-xCD">
+                                <rect key="frame" x="-69" y="106" width="512" height="512"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Under Construction..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8s-98-Iv8">
-                                <rect key="frame" x="26" y="303" width="322" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="BackgroundBlue" translatesAutoresizingMaskIntoConstraints="NO" id="bJj-Oj-iOp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="132" id="AZ5-Hu-kvq"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPQ-q4-gym">
                                 <rect key="frame" x="13" y="22" width="60" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -546,13 +542,60 @@
                                     <segue destination="KpU-aC-nOC" kind="show" id="LJ6-Pg-bkC"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dibs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujd-1S-9K3">
+                                <rect key="frame" x="124" y="28" width="126" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="52"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VYG-YB-Ut3">
+                                <rect key="frame" x="0.0" y="176" width="375" height="491"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bS3-Vb-qzS">
+                                <rect key="frame" x="58" y="140" width="258" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <segments>
+                                    <segment title="Upcoming"/>
+                                    <segment title="Completed"/>
+                                </segments>
+                                <connections>
+                                    <action selector="CompletedTapped:" destination="svd-f1-rGu" eventType="valueChanged" id="wMF-sq-NyN"/>
+                                    <action selector="UpcomingTapped:" destination="svd-f1-rGu" eventType="valueChanged" id="060-GF-ZTl"/>
+                                    <action selector="segChange:" destination="svd-f1-rGu" eventType="valueChanged" id="cok-kg-x50"/>
+                                    <outletCollection property="gestureRecognizers" destination="tRn-GA-5vM" appends="YES" id="Y4q-a2-XVY"/>
+                                    <outletCollection property="gestureRecognizers" destination="tRn-GA-5vM" appends="YES" id="arO-g4-WD0"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17z-HK-Lxc">
+                                <rect key="frame" x="87" y="79" width="201" height="42"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="M8b-f3-GPA"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Add Reservation" image="ForgetMeNotLogo">
+                                    <color key="titleColor" red="0.1084953174" green="0.46072936060000003" blue="0.73895782229999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqk-Lt-amJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tRn-GA-5vM">
+                    <connections>
+                        <action selector="UpcomingTapped:" destination="svd-f1-rGu" id="Syh-iR-cjx"/>
+                        <outlet property="delegate" destination="bS3-Vb-qzS" id="KYP-kw-lgs"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <exit id="svd-f1-rGu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2042" y="1135"/>
+            <point key="canvasLocation" x="2040.8" y="1134.7826086956522"/>
         </scene>
     </scenes>
     <resources>
@@ -566,7 +609,7 @@
         <image name="Splash" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d9G-6i-erT"/>
+        <segue reference="LJ6-Pg-bkC"/>
         <segue reference="nV7-iR-wCO"/>
     </inferredMetricsTieBreakers>
 </document>
