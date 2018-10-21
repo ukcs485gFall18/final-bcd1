@@ -42,6 +42,13 @@ class ItemsViewController: UIViewController {
     loadItems()
   }
   
+ 
+    @IBAction func CompletedTapped(_ sender: Any) {
+        //display completed reservations
+    }
+    @IBAction func UpcomingTapped(_ sender: Any) {
+        //dispaly upcoming reservations
+    }
     //David Mercado added this
     @IBAction func calendarButtonTapped(_ sender: Any) {
         UIApplication.shared.openURL(NSURL(string: "calshow://")! as URL)
