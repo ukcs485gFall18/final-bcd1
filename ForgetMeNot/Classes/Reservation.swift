@@ -8,26 +8,25 @@
 
 import Foundation
 
-struct ReservationConstant {
-    static let resTimeHour = 0
-    static let resTimeMin = 0
-    static let resUUID = UUID().uuidString
-}
-
-class MyReservation : NSObject {
+class MyReservation : NSObject { // Create the reservation
     
-    fileprivate var resTimeHour : Int
-    fileprivate var resTimeMin : Int
-    fileprivate var resUUID : UUID
-    
+    // Local Variables
+    fileprivate var resHour : Int       // The hour of the reservation
+    fileprivate var resMin : Int        // The minnute of the reservation
+    fileprivate var resUUID : UUID      // The UUID number of the reservation
+                                        // UUID will be broadcasted
     
     init (hour: Int, min: Int, uuid: UUID){
-        resTimeHour = hour
-        resTimeMin = min
+        resHour = hour
+        resMin = min
         resUUID = uuid
-        
         super.init()
-        
+    }
+    
+    // Modify a reservation
+    func updateReservation(hour : Int, min : Int){
+        resHour = hour
+        resMin = min
     }
     
     
