@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="OGq-0J-rwC">
-                                <rect key="frame" x="45.5" y="74" width="284" height="519"/>
+                                <rect key="frame" x="-68.5" y="77.5" width="512" height="512"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundBlue" translatesAutoresizingMaskIntoConstraints="NO" id="OVv-Tb-G8Y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
@@ -39,9 +39,6 @@
                                     <segue destination="KpU-aC-nOC" kind="show" id="d9G-6i-erT"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ForgetMeNot" translatesAutoresizingMaskIntoConstraints="NO" id="4nk-vk-k3v">
-                                <rect key="frame" x="84.5" y="28" width="206" height="43"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xmN-h3-Bwd">
                                 <rect key="frame" x="0.0" y="132" width="375" height="535"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -50,7 +47,7 @@
                                         <rect key="frame" x="0.0" y="22" width="375" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OYN-rB-xAB" id="u9K-2Z-3U1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_Cat" translatesAutoresizingMaskIntoConstraints="NO" id="5SG-OX-zVz">
@@ -144,10 +141,16 @@
                                     <segue destination="FpO-Yd-8fG" kind="show" id="1jj-7k-acz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dibs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unc-PZ-u1g">
+                                <rect key="frame" x="124" y="28" width="126" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="52"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4nk-vk-k3v" firstAttribute="centerX" secondItem="Xpc-OV-jHZ" secondAttribute="centerX" id="3qs-ne-YrD"/>
                             <constraint firstAttribute="trailing" secondItem="lvh-qG-Pvo" secondAttribute="trailing" id="55t-8B-Ht6"/>
                             <constraint firstItem="lvh-qG-Pvo" firstAttribute="top" secondItem="ecM-Jk-Gw9" secondAttribute="bottom" constant="68" id="AKx-aX-zTj"/>
                             <constraint firstAttribute="trailing" secondItem="OVv-Tb-G8Y" secondAttribute="trailing" id="AiY-aC-bhD"/>
@@ -160,7 +163,6 @@
                             <constraint firstAttribute="trailing" secondItem="lvh-qG-Pvo" secondAttribute="trailing" id="Pdr-5S-Wv4"/>
                             <constraint firstItem="lvh-qG-Pvo" firstAttribute="leading" secondItem="Xpc-OV-jHZ" secondAttribute="leading" id="Zch-7q-lXR"/>
                             <constraint firstAttribute="trailing" secondItem="xmN-h3-Bwd" secondAttribute="trailing" id="cGl-ZT-n8Q"/>
-                            <constraint firstItem="4nk-vk-k3v" firstAttribute="top" secondItem="ecM-Jk-Gw9" secondAttribute="bottom" constant="8" id="nQN-qZ-1de"/>
                             <constraint firstItem="OVv-Tb-G8Y" firstAttribute="top" secondItem="Xpc-OV-jHZ" secondAttribute="top" id="o24-fG-T8q"/>
                             <constraint firstItem="0wD-kp-5MZ" firstAttribute="top" secondItem="xmN-h3-Bwd" secondAttribute="bottom" id="uiK-au-uxA"/>
                         </constraints>
@@ -229,7 +231,7 @@
                                     <constraint firstAttribute="height" constant="132" id="ubS-Lt-PQ8"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Beacon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSh-YH-7NP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Reservation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSh-YH-7NP">
                                 <rect key="frame" x="0.0" y="88" width="375" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -400,13 +402,16 @@
                                     <outlet property="delegate" destination="0Ms-gS-rEA" id="Fvz-ay-u3d"/>
                                 </connections>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ForgetMeNot" translatesAutoresizingMaskIntoConstraints="NO" id="qqg-Z0-AsY">
-                                <rect key="frame" x="84.5" y="28" width="206" height="43"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dibs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXp-hM-ju3">
+                                <rect key="frame" x="134" y="38" width="126" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="52"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qqg-Z0-AsY" firstAttribute="centerX" secondItem="Z1C-I8-X3w" secondAttribute="centerX" id="4Nb-7D-GDG"/>
                             <constraint firstItem="20d-s1-fHt" firstAttribute="top" secondItem="Yuu-IT-bmr" secondAttribute="bottom" id="68b-ux-MCz"/>
                             <constraint firstItem="LZV-VN-Xih" firstAttribute="top" secondItem="Tt7-KM-ve9" secondAttribute="bottom" id="79o-qt-ESI"/>
                             <constraint firstItem="DaX-fr-Koa" firstAttribute="leading" secondItem="zSI-U7-bUo" secondAttribute="trailing" id="COk-fE-dcC"/>
@@ -432,7 +437,6 @@
                             <constraint firstItem="vjW-D5-fkz" firstAttribute="top" secondItem="p8h-Qv-Eu7" secondAttribute="bottom" id="arR-mY-Q10"/>
                             <constraint firstItem="dCm-WU-r8g" firstAttribute="centerY" secondItem="1VR-na-IE8" secondAttribute="centerY" id="cI5-FT-kWx"/>
                             <constraint firstAttribute="trailing" secondItem="cSh-YH-7NP" secondAttribute="trailing" id="ccH-MI-ytt"/>
-                            <constraint firstItem="qqg-Z0-AsY" firstAttribute="top" secondItem="9yH-N1-dMB" secondAttribute="bottom" constant="8" id="cew-Py-lIu"/>
                             <constraint firstAttribute="trailing" secondItem="p8h-Qv-Eu7" secondAttribute="trailing" id="eks-DV-Q8n"/>
                             <constraint firstItem="Vhb-PR-IoD" firstAttribute="top" secondItem="vjW-D5-fkz" secondAttribute="bottom" id="hBt-0Q-LvK"/>
                             <constraint firstItem="Yuu-IT-bmr" firstAttribute="leading" secondItem="Z1C-I8-X3w" secondAttribute="leading" id="hyj-Zf-IHr"/>
@@ -465,7 +469,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15b-rk-kGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7" y="1900"/>
+            <point key="canvasLocation" x="5.5999999999999996" y="1899.400299850075"/>
         </scene>
         <!--Select User Type Controller-->
         <scene sceneID="ZWa-WS-eac">
@@ -483,7 +487,7 @@
                                 <rect key="frame" x="16" y="372" width="343" height="178"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Restaurant Staff" backgroundImage="LineGrey"/>
+                                <state key="normal" title="Host" backgroundImage="LineGrey"/>
                                 <connections>
                                     <segue destination="DrD-we-v90" kind="show" id="nV7-iR-wCO"/>
                                 </connections>
@@ -555,12 +559,11 @@
         <image name="BackgroundBlue" width="320" height="568"/>
         <image name="BackgroundBlueBar" width="320" height="31"/>
         <image name="Button_BlueOutline" width="19" height="46"/>
-        <image name="ForgetMeNot" width="206" height="43"/>
         <image name="ForgetMeNotLogo" width="30" height="27"/>
         <image name="Icon_Bag" width="132" height="132"/>
         <image name="Icon_Cat" width="132" height="135"/>
         <image name="LineGrey" width="321" height="1"/>
-        <image name="Splash" width="284" height="519"/>
+        <image name="Splash" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d9G-6i-erT"/>
