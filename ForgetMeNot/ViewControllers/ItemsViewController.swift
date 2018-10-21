@@ -199,6 +199,9 @@ extension ItemsViewController: CLLocationManagerDelegate {
         for row in rowsToUpdate {
             let cell = tableView.cellForRow(at: row) as! ItemCell
             cell.checkedIn()
+            
+            // Each row becomes a reservation : Blake
+            let reservation = MyReservation(hour: 0, min: 0, uuid: UUID())
         }
     }
     
