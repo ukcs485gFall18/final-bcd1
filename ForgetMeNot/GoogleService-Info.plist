@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>816711728446-5lomm6tg8vsj3hk1dod8r22hi6qd98qp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.816711728446-5lomm6tg8vsj3hk1dod8r22hi6qd98qp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA72wxQOQXNAmvgzk03x6ECt0P72H8riN0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>816711728446</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.raywenderlich.ForgetMeNotFinal</string>
+	<key>PROJECT_ID</key>
+	<string>dibsapp-9904b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dibsapp-9904b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:816711728446:ios:f526ca8a9c88de11</string>
+	<key>DATABASE_URL</key>
+	<string>https://dibsapp-9904b.firebaseio.com</string>
+</dict>
+</plist>
