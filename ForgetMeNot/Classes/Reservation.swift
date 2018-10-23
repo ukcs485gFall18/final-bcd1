@@ -15,19 +15,31 @@ class MyReservation : NSObject { // Create the reservation
     fileprivate var resMin : Int        // The minnute of the reservation
     fileprivate var resUUID : UUID      // The UUID number of the reservation
                                         // UUID will be broadcasted
+    fileprivate var resStatus : Bool    // Will contain the current status of the check-in 
     
     init (hour: Int, min: Int, uuid: UUID){
         resHour = hour
         resMin = min
         resUUID = uuid
+        resStatus = false
         super.init()
     }
     
-    // Modify a reservation
-    func updateReservation(hour : Int, min : Int){
+    // Modify a reservation time
+    func updateResTime(hour : Int, min : Int){
         resHour = hour
         resMin = min
     }
     
+    // MOdify 
     
+    // Check if the reservation has been checked in
+    func checkStatus () -> Bool {
+        if (resStatus == true){
+            return true
+        }
+        else{
+            return false
+        }
+    }
 }
