@@ -9,4 +9,6 @@ target 'ForgetMeNot' do
 
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
+	pod 'Firebase/Auth'
+	pod 'FirebaseUI'
 end
