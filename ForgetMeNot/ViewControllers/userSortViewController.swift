@@ -1,5 +1,5 @@
 //
-//  StartViewController.swift
+//  userSort.swift
 //  ForgetMeNot
 //
 //  Created by Blake Sweet on 10/23/18.
@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Firebase
 import UIKit
 
-class StartViewController : UIViewController{
+class userSortViewController: UIViewController{
+    
 }
