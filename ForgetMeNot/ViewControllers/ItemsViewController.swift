@@ -28,7 +28,6 @@ let storedItemsKey = "storedItems"
 class ItemsViewController: UIViewController {
 	
   @IBOutlet weak var tableView: UITableView!
-  //@IBOutlet weak var calendarButton: UIButton!      //David Mercado added this
     
   var items = [Item]()
   let locationManager = CLLocationManager()

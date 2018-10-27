@@ -10,7 +10,7 @@ import UIKit
 import EventKit
 import Foundation
 
-class ReservationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ReservationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var reservationTableView: UITableView!
     
@@ -27,7 +27,7 @@ class ReservationViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
         //This is the navagation bar------
         //make this the back button and connect it
         /*let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(tapButton))
@@ -45,15 +45,15 @@ class ReservationViewController: UIViewController, UITableViewDataSource, UITabl
         //connect this to the add
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(tapAddButton))
         self.navigationItem.rightBarButtonItem = addButton
-        
-    }
+        */
+    }/*
     @objc func tapBackButton(){
         print("YOu tapped Back!!")
     }
     
     @objc func tapAddButton(){
         print("YOu tapped Add!!")
-    }
+    }*/
     //Custom accessors--------------------------------------------------------
     override func viewWillAppear(_ animated: Bool) {
         checkCalendarAuthorizationStatus()
