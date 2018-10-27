@@ -16,7 +16,9 @@
 		25D6EC2E217FBCD3008A9EA5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6EC2D217FBCD3008A9EA5 /* SignInViewController.swift */; };
 		25D6EC30217FBCE9008A9EA5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6EC2F217FBCE9008A9EA5 /* SignUpViewController.swift */; };
 		6307586F2184F5CD002E09C5 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307586E2184F5CD002E09C5 /* Alert.swift */; };
-		6353EFF1218271E1001C1852 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353EFF0218271E0001C1852 /* ReservationViewController.swift */; };
+		6307587221850602002E09C5 /* Customer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6307587121850602002E09C5 /* Customer.storyboard */; };
+		63075874218507BF002E09C5 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63075873218507BF002E09C5 /* Host.storyboard */; };
+		6353EFF1218271E1001C1852 /* ReservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353EFF0218271E0001C1852 /* ReservationsViewController.swift */; };
 		6353EFF3218271EF001C1852 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353EFF2218271EF001C1852 /* DatePickerViewController.swift */; };
 		635EA40721611F3D00F51096 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635EA40621611F3D00F51096 /* CalendarViewController.swift */; };
 		C00360541E39747F00234FCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00360531E39747F00234FCD /* LaunchScreen.storyboard */; };
@@ -43,7 +45,9 @@
 		25D6EC2D217FBCD3008A9EA5 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		25D6EC2F217FBCE9008A9EA5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6307586E2184F5CD002E09C5 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		6353EFF0218271E0001C1852 /* ReservationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
+		6307587121850602002E09C5 /* Customer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Customer.storyboard; sourceTree = "<group>"; };
+		63075873218507BF002E09C5 /* Host.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Host.storyboard; sourceTree = "<group>"; };
+		6353EFF0218271E0001C1852 /* ReservationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationsViewController.swift; sourceTree = "<group>"; };
 		6353EFF2218271EF001C1852 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		635EA40621611F3D00F51096 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		7DA296AB4079D8244CD75961 /* Pods_ForgetMeNot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForgetMeNot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,7 +67,7 @@
 		FB9CC97B1AD701CF0038DF33 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FB9CC97D1AD701DA0038DF33 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FB9CC97F1AD701E60038DF33 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		FB9CC9891AD702CC0038DF33 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FB9CC9891AD702CC0038DF33 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63075870218505D3002E09C5 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				FB9CC9891AD702CC0038DF33 /* Main.storyboard */,
+				6307587121850602002E09C5 /* Customer.storyboard */,
+				63075873218507BF002E09C5 /* Host.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
 		C00360521E3973ED00234FCD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,7 +135,7 @@
 				C00360901E3EA86500234FCD /* ItemsViewController.swift */,
 				6353EFF2218271EF001C1852 /* DatePickerViewController.swift */,
 				25D6EC2B217FBC95008A9EA5 /* StartViewController.swift */,
-				6353EFF0218271E0001C1852 /* ReservationViewController.swift */,
+				6353EFF0218271E0001C1852 /* ReservationsViewController.swift */,
 				25D6EC2D217FBCD3008A9EA5 /* SignInViewController.swift */,
 				25D6EC2F217FBCE9008A9EA5 /* SignUpViewController.swift */,
 				25623053217FCCE000BA2A56 /* userSortViewController.swift */,
@@ -163,7 +177,7 @@
 				C003608C1E3EA86500234FCD /* Custom Cells */,
 				C003608E1E3EA86500234FCD /* ViewControllers */,
 				FB9CC95B1AD701910038DF33 /* AppDelegate.swift */,
-				FB9CC9891AD702CC0038DF33 /* Main.storyboard */,
+				63075870218505D3002E09C5 /* StoryBoard */,
 				FB9CC9621AD701910038DF33 /* Images.xcassets */,
 				252E40BB217D1BFE00AB511E /* Media.xcassets */,
 				FB9CC9591AD701910038DF33 /* Supporting Files */,
@@ -247,10 +261,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6307587221850602002E09C5 /* Customer.storyboard in Resources */,
 				C00360541E39747F00234FCD /* LaunchScreen.storyboard in Resources */,
 				FB9CC98A1AD702CC0038DF33 /* Main.storyboard in Resources */,
 				252E40BC217D1BFE00AB511E /* Media.xcassets in Resources */,
 				FB9CC9631AD701910038DF33 /* Images.xcassets in Resources */,
+				63075874218507BF002E09C5 /* Host.storyboard in Resources */,
 				2525652C217F757E00DFADCD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,7 +402,7 @@
 				C00360941E3EA86500234FCD /* AddItemViewController.swift in Sources */,
 				250E490F217679C300D4F516 /* Reservation.swift in Sources */,
 				C00360971E3EA88F00234FCD /* IconCell.swift in Sources */,
-				6353EFF1218271E1001C1852 /* ReservationViewController.swift in Sources */,
+				6353EFF1218271E1001C1852 /* ReservationsViewController.swift in Sources */,
 				C00360951E3EA86500234FCD /* ItemsViewController.swift in Sources */,
 				25D6EC30217FBCE9008A9EA5 /* SignUpViewController.swift in Sources */,
 				25D6EC2C217FBC95008A9EA5 /* StartViewController.swift in Sources */,
