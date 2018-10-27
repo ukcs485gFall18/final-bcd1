@@ -58,7 +58,7 @@ class DatePickerViewController: UIViewController {
         txtTime.inputView = datePicker
     }
     
-    //What happens when done is pressed in date picker
+    //What happens when 'Done' is pressed in date picker
     @objc func donedatePicker(){
         
         let formatter = DateFormatter()
@@ -76,18 +76,43 @@ class DatePickerViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    //what happens when cancel is pressed in date picker
+    //what happens when 'Cancel' is pressed in date picker
     @objc func cancelDatePicker(){
         self.view.endEditing(true)
     }
     
+    //Function that comfirms the reservation
     @IBAction func comfirmationBtnTapped(_ sender: Any) {
-        //Check to see if all fields are filled and vaild
-        //if so store reservation and name
-        //pop an alert window saying reservation comfiremed and exit the window
-        print("You Comfired your reservation")
+        var ValidReservationFlag = true
+        
+        //check to see if text fields are filled out
+        if (txtPartyName.text?.isEmpty ?? true) {
+            ValidReservationFlag = false
+            print("name is empty")
+        }
+        else if (txtDatePicker.text?.isEmpty ?? true) {
+            ValidReservationFlag = false
+            print("date is empty")
+        }
+        else if (txtTime.text?.isEmpty ?? true) {
+            ValidReservationFlag = false
+            print("time is empty")
+        }
         
         //create a new reservation
         //add it to the calendar
+        if(ValidReservationFlag){
+            print("You Comfired your reservation")
+            //if so store reservation and name
+            //pop an alert window saying reservation comfiremed and exit the window
+            self.performSegue(withIdentifier: "HomeSegue", sender: self)
+        }
+        else{
+            let alertController = UIAlertController(title: "Error", message: "Please enter a Party's Name, Date, and Time", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
