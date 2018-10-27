@@ -62,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NH0-d4-08Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="424.80000000000001" y="241.52923538230885"/>
+            <point key="canvasLocation" x="1294" y="242"/>
         </scene>
         <!--Register-->
         <scene sceneID="WFc-UF-jzT">
@@ -274,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ffh-FL-nqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114.4000000000001" y="1134.7826086956522"/>
+            <point key="canvasLocation" x="6" y="1165"/>
         </scene>
         <!--Add Item View Controller-->
         <scene sceneID="fwi-Ra-wgU">
@@ -633,9 +633,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bS3-Vb-qzS">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bS3-Vb-qzS">
                                 <rect key="frame" x="58" y="140" width="258" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <segments>
                                     <segment title="Upcoming"/>
@@ -649,7 +648,7 @@
                                     <outletCollection property="gestureRecognizers" destination="tRn-GA-5vM" appends="YES" id="arO-g4-WD0"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17z-HK-Lxc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17z-HK-Lxc">
                                 <rect key="frame" x="87" y="79" width="201" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -663,6 +662,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bS3-Vb-qzS" firstAttribute="top" secondItem="17z-HK-Lxc" secondAttribute="bottom" constant="19" id="OLy-z8-aCV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="17z-HK-Lxc" secondAttribute="trailing" constant="71" id="Qd8-jy-S86"/>
+                            <constraint firstItem="17z-HK-Lxc" firstAttribute="top" secondItem="0p9-ex-7AK" secondAttribute="bottom" constant="59" id="jkq-HA-FNq"/>
+                            <constraint firstItem="17z-HK-Lxc" firstAttribute="leading" secondItem="5Gg-xf-243" secondAttribute="leadingMargin" constant="71" id="mwV-cL-mpm"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqk-Lt-amJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -674,7 +679,7 @@
                 </tapGestureRecognizer>
                 <exit id="svd-f1-rGu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2040.8" y="1134.7826086956522"/>
+            <point key="canvasLocation" x="218" y="242"/>
         </scene>
     </scenes>
     <resources>
