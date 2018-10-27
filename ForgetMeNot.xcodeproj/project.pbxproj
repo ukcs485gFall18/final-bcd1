@@ -88,6 +88,7 @@
 		63075870218505D3002E09C5 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
+				C00360531E39747F00234FCD /* LaunchScreen.storyboard */,
 				FB9CC9891AD702CC0038DF33 /* Main.storyboard */,
 				6307587121850602002E09C5 /* Customer.storyboard */,
 				63075873218507BF002E09C5 /* Host.storyboard */,
@@ -129,7 +130,6 @@
 		C003608E1E3EA86500234FCD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C00360531E39747F00234FCD /* LaunchScreen.storyboard */,
 				C003608F1E3EA86500234FCD /* AddItemViewController.swift */,
 				635EA40621611F3D00F51096 /* CalendarViewController.swift */,
 				C00360901E3EA86500234FCD /* ItemsViewController.swift */,
