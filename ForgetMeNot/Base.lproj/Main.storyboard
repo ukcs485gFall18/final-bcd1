@@ -778,6 +778,7 @@
         <image name="Splash" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="lh8-Ae-2XY"/>
         <segue reference="4V9-dU-WBN"/>
         <segue reference="pGd-OM-Hje"/>
     </inferredMetricsTieBreakers>

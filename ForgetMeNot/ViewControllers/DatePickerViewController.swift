@@ -52,6 +52,7 @@ class DatePickerViewController: UIViewController {
         
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         
+        //adding date picker to textfields (date, time)
         txtDatePicker.inputAccessoryView = toolbar
         txtDatePicker.inputView = datePicker
         txtTime.inputAccessoryView = toolbar
@@ -99,20 +100,26 @@ class DatePickerViewController: UIViewController {
             print("time is empty")
         }
         
-        //create a new reservation
-        //add it to the calendar
+        //if info vaild create reservation and add it to the calendar
         if(ValidReservationFlag){
             print("You Comfired your reservation")
-            //if so store reservation and name
-            //pop an alert window saying reservation comfiremed and exit the window
+            let Name = txtPartyName.text!
+            let Date = txtDatePicker.text!
+            let Time = txtTime.text!
+            print(Name)
+            print(Date)
+            print(Time)
+            
+            //MyReservation(name: Name, hour: , min: 0, uuid: UUID())
+            #warning("add reservation to calendar")
+            
+            //this is a confirmation alert...need to link so afterwards it exits
+            //Alert.showConfirmReservationAlert(on:self)
+            
             self.performSegue(withIdentifier: "HomeSegue", sender: self)
         }
         else{
-            let alertController = UIAlertController(title: "Error", message: "Please enter a Party's Name, Date, and Time", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
+            Alert.showIncompleteFormAlert(on: self)
         }
     }
 }

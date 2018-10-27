@@ -28,7 +28,7 @@ let storedItemsKey = "storedItems"
 class ItemsViewController: UIViewController {
 	
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var calendarButton: UIButton!      //David Mercado added this
+  //@IBOutlet weak var calendarButton: UIButton!      //David Mercado added this
     
   var items = [Item]()
   let locationManager = CLLocationManager()
@@ -51,11 +51,11 @@ class ItemsViewController: UIViewController {
         }
     }
     
-
+/*
     //David Mercado added this
     @IBAction func calendarButtonTapped(_ sender: Any) {
         UIApplication.shared.openURL(NSURL(string: "calshow://")! as URL)
-    }
+    }*/
     
   func loadItems() {
     guard let storedItems = UserDefaults.standard.array(forKey: storedItemsKey) as? [Data] else { return }
@@ -211,7 +211,7 @@ extension ItemsViewController: CLLocationManagerDelegate {
             cell.checkedIn()
             
             // Each row becomes a reservation : Blake
-            let reservation = MyReservation(hour: 0, min: 0, uuid: UUID())
+            let reservation = MyReservation(name: "", hour: 0, min: 0, uuid: UUID())
         }
     }
     
