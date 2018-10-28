@@ -17,7 +17,9 @@ class SignInViewController : UIViewController{
     @IBAction func loginAction(_ sender: Any) {
         Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
             if error == nil{
-                self.performSegue(withIdentifier: "LoginSuccessful", sender: self)
+                //self.performSegue(withIdentifier: "LoginSuccessful", sender: self)
+                print("SignIn Completed 😁")
+
             }
             else{
                 let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -26,7 +28,6 @@ class SignInViewController : UIViewController{
                 alertController.addAction(defaultAction)
                 self.present(alertController, animated: true, completion: nil)
             }
-        print("SignIn Completed 😁")
         }
     }
 }

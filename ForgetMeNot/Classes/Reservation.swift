@@ -16,15 +16,17 @@ class MyReservation : NSObject { // Create the reservation
     fileprivate var resUUID : UUID      // The UUID number of the reservation
                                         // UUID will be broadcasted
     fileprivate var resStatus : Bool    // Will contain the current status of the check-in 
-    
-    init (hour: Int, min: Int, uuid: UUID){
+    fileprivate var resName : String    // The name of the party
+    //Need a day, month variable
+    init (name: String, hour: Int, min: Int, uuid: UUID){
+        resName = name
         resHour = hour
         resMin = min
         resUUID = uuid
         resStatus = false
         super.init()
     }
-    
+
     // Modify a reservation time
     func updateResTime(hour : Int, min : Int){
         resHour = hour
