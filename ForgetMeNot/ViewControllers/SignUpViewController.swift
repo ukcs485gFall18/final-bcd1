@@ -15,30 +15,29 @@ class SignUpViewController : UIViewController{
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var passwordConfirm: UITextField!
+    var ref: DatabaseReference!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        FirebaseApp.configure() //initialising firebase
+        //ref = Database.database().reference()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     @IBAction func signUpAction(_ sender: Any) {
-        if password.text != passwordConfirm.text {
-            let alertController = UIAlertController(title: "Passwords dont match", message: "Please re-type password", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
-        else{
-            Auth.auth().createUser(withEmail: email.text!, password: password.text!){ (user, error) in
-                
-                if error == nil {
-                    self.performSegue(withIdentifier: "SignupSuccessful", sender: self)
-                }
-                else{
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    
-                    alertController.addAction(defaultAction)
-                    self.present(alertController, animated: true, completion: nil)
-                }
+        /*let userEmail = email.text
+        let userPass = password.text
+        
+        Auth.auth().createUserWithEmail(userEmail!, password: userPass!, completion: { (user: User?, error) in
+            if error == nil {
+                //registration successful
+            }else{
+                //registration failure
             }
-        }
-        print("SignUp Completed 😁")
+        })*/
     }
 }
