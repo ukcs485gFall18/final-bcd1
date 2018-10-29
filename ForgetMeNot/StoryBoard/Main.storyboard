@@ -49,7 +49,6 @@
                                 <state key="normal" title="Sumbit"/>
                                 <connections>
                                     <action selector="loginAction:" destination="uOB-NJ-UFq" eventType="touchUpInside" id="v2d-av-Bqb"/>
-                                    <segue destination="nzp-AX-Fjn" kind="show" id="pQ0-4f-ZBl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fn-ZL-VWg">
@@ -67,6 +66,7 @@
                     <connections>
                         <outlet property="email" destination="qii-Z8-Aic" id="WZQ-7B-9ip"/>
                         <outlet property="password" destination="i2G-np-JOf" id="DLl-VK-soB"/>
+                        <segue destination="nzp-AX-Fjn" kind="show" identifier="LoginSuccessful" id="xWD-1z-hHa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NH0-d4-08Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
