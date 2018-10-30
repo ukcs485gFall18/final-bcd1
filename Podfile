@@ -6,9 +6,8 @@ target 'ForgetMeNot' do
 
   use_frameworks!
   # Pods for ForgetMeNot
-
+	pod 'Firebase'
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
-	pod 'FirebaseUI'
 end
