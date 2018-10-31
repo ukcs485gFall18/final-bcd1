@@ -11,33 +11,23 @@ import UIKit
 import Firebase
 
 class SignUpViewController : UIViewController{
+    @IBOutlet weak var userEmail: UITextField!
+    @IBOutlet weak var userPass: UITextField!
+    @IBOutlet weak var userPassConfirm: UITextField!
     
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var passwordConfirm: UITextField!
-    var ref: DatabaseReference!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        FirebaseApp.configure() //initialising firebase
-        //ref = Database.database().reference()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func showError (alertTitle : String, alertMessage : String, actionTitle : String){
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: actionTitle, style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func signUpAction(_ sender: Any) {
-        /*let userEmail = email.text
-        let userPass = password.text
-        
-        Auth.auth().createUserWithEmail(userEmail!, password: userPass!, completion: { (user: User?, error) in
-            if error == nil {
-                //registration successful
-            }else{
-                //registration failure
-            }
-        })*/
+        if (userPass.text == userPassConfirm.text){ // Verify both passwords match
+        Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!)
+        }
+        else{
+            showError(alertTitle: "Passwords do not match", alertMessage: "Please enter identical passwords", actionTitle: "Dismiss")
+        }
     }
 }
