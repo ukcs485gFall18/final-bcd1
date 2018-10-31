@@ -11,33 +11,11 @@ import UIKit
 import Firebase
 
 class SignUpViewController : UIViewController{
-    
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var passwordConfirm: UITextField!
-    var ref: DatabaseReference!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        FirebaseApp.configure() //initialising firebase
-        //ref = Database.database().reference()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    @IBOutlet weak var userEmail: UITextField!
+    @IBOutlet weak var userPass: UITextField!
+    @IBOutlet weak var userPassConfirm: UITextField!
     
     @IBAction func signUpAction(_ sender: Any) {
-        /*let userEmail = email.text
-        let userPass = password.text
-        
-        Auth.auth().createUserWithEmail(userEmail!, password: userPass!, completion: { (user: User?, error) in
-            if error == nil {
-                //registration successful
-            }else{
-                //registration failure
-            }
-        })*/
+        Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!)
     }
 }
