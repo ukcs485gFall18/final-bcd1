@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   let locationManager = CLLocationManager()
+    var databaseRef : DatabaseReference? // Create firebase database reference variable
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     locationManager.delegate = self
@@ -37,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Request permission to send notifications
     let center = UNUserNotificationCenter.current()
     center.requestAuthorization(options:[.alert, .sound]) { (granted, error) in }
+    
+    // Link the firebase database
+    databaseRef = DatabaseReference()
     
     FirebaseApp.configure() // Use Firebase library to configure APIs
     return true
@@ -50,11 +54,11 @@ extension AppDelegate: CLLocationManagerDelegate {
     guard region is CLBeaconRegion else { return }
     
     let content = UNMutableNotificationContent()
-    content.title = "Forget Me Not"
+    content.title = "Dibs"
     content.body = "Are you forgetting something?"
     content.sound = .default
     
-    let request = UNNotificationRequest(identifier: "ForgetMeNot", content: content, trigger: nil)
+    let request = UNNotificationRequest(identifier: "Dibs", content: content, trigger: nil)
     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
   }
 }
