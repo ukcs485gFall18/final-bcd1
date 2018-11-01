@@ -23,12 +23,20 @@ class SignUpViewController : UIViewController{
     }
     
     @IBAction func signUpAction(_ sender: Any) {
-        if (userPass.text == userPassConfirm.text){ // Verify both passwords match
-        Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!)
-        showMessage(alertTitle: "Complete ✅", alertMessage: "Congratulations on your new account. Please continue to the login page.", actionTitle: "Done")
-            
+        if (userPass.text == userPassConfirm.text){
+            Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!)
+            { (user, error) in
+                if error == nil{
+                    self.showMessage(alertTitle: "Complete ✅", alertMessage: "Congratulations on your new account. Please continue to the login page.", actionTitle: "Done")
+                }
+                else{
+                    self.showMessage(alertTitle: "Error", alertMessage: (error?.localizedDescription)!, actionTitle: "Dismiss")
+                    print ("❌" + (error?.localizedDescription)!)
+                }
+                
+            }
         }
-        else{
+        else{ // Passwords do not match
             showMessage(alertTitle: "Passwords do not match", alertMessage: "Please enter identical passwords", actionTitle: "Dismiss")
         }
     }
