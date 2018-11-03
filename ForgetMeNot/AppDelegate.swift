@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   let locationManager = CLLocationManager()
-    var databaseRef : DatabaseReference? // Create firebase database reference variable
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     locationManager.delegate = self
@@ -38,9 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Request permission to send notifications
     let center = UNUserNotificationCenter.current()
     center.requestAuthorization(options:[.alert, .sound]) { (granted, error) in }
-    
-    // Link the firebase database
-    databaseRef = DatabaseReference()
     
     FirebaseApp.configure() // Use Firebase library to configure APIs
     return true
