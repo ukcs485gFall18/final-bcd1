@@ -35,6 +35,6 @@
 	<key>GOOGLE_APP_ID</key>
 	<string>1:816711728446:ios:f526ca8a9c88de11</string>
 	<key>DATABASE_URL</key>
-	<string>https://dibsapp-9904b.firebaseio.com</string>
+	<string>https://dibsapp-9904b.firebaseio.com/</string>
 </dict>
 </plist>

@@ -14,6 +14,7 @@ class SignUpViewController : UIViewController{
     @IBOutlet weak var userEmail: UITextField!
     @IBOutlet weak var userPass: UITextField!
     @IBOutlet weak var userPassConfirm: UITextField!
+    @IBOutlet weak var IDSelector: UISegmentedControl!
     
     func showMessage (alertTitle : String, alertMessage : String, actionTitle : String){
         let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
@@ -23,11 +24,28 @@ class SignUpViewController : UIViewController{
     }
     
     @IBAction func signUpAction(_ sender: Any) {
+        var databaseRef : DatabaseReference? // Create firebase database reference variable
+        databaseRef = Database.database().reference()  // Link the firebase database
+        
+        let userID = Auth.auth().currentUser!.uid // Get the User's ID
+        let userEmailTxt = self.userEmail.text!
+        
         if (userPass.text == userPassConfirm.text){
             Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!)
             { (user, error) in
                 if error == nil{
+                    // User added successful message
                     self.showMessage(alertTitle: "Complete ✅", alertMessage: "Congratulations on your new account. Please continue to the login page.", actionTitle: "Done")
+                    
+                    // Store Company or Customer data in customer
+                    if (self.IDSelector.selectedSegmentIndex == 0){//Customer
+                        databaseRef?.child("Users").child(userID).setValue(["userType" : "Customer"])// Write to database the user is a Customer
+                    }
+                    else if (self.IDSelector.selectedSegmentIndex == 1){// Company
+                        databaseRef?.child("Users").child(userID).setValue(["userType" : "Company"])// Write to database the user is a Company
+                    }
+                    
+                    databaseRef?.child("Users/\(userID)/email").setValue(userEmailTxt)
                 }
                 else{
                     self.showMessage(alertTitle: "Error", alertMessage: (error?.localizedDescription)!, actionTitle: "Dismiss")
