@@ -12,24 +12,19 @@ class MyReservation : NSObject { // Create the reservation
     
     // Local Variables
     fileprivate var resDate : String    // (MM/DD/YYYY) Date
-    fileprivate var resHour : Int       // Start Hour
-    fileprivate var resMin : Int        // Start Minnute
-    fileprivate var resEndHour : Int    // End Hour
-    fileprivate var resEndMin : Int     // End Minnute
+    //fileprivate var resHour : Int       // Start Hour
+    //fileprivate var resMin : Int        // Start Minnute
+    //fileprivate var resEndHour : Int    // End Hour
+    //fileprivate var resEndMin : Int     // End Minnute
     fileprivate var resUUID : UUID      // UUID number of the reservation
                                         // UUID will be broadcasted
     fileprivate var resStatus : Bool    // Party Checkin Status
     
     fileprivate var resName : String    // Party Name
     fileprivate var resSize : Int       // Size
-    //Need a day, month variable
     
-    init (date: String, hour: Int, min: Int, endHour: Int, endMin: Int, uuid: UUID, name : String, size : Int){
+    init (date: String, uuid: UUID, name : String, size : Int){
         resDate = date
-        resHour = hour
-        resMin = min
-        resEndHour = endHour
-        resEndMin = endMin
         resUUID = uuid
         resStatus = false
         resName = name
@@ -38,10 +33,10 @@ class MyReservation : NSObject { // Create the reservation
     }
 
     // Modify a reservation time
-    func updateResTime(hour : Int, min : Int){
+    /*func updateResTime(hour : Int, min : Int){
         resHour = hour
         resMin = min
-    }
+    }*/
     
     // MOdify 
     
