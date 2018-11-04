@@ -14,6 +14,7 @@ class DatePickerViewController: UIViewController {
     
     //Text Field Connection
     @IBOutlet weak var txtPartyName: UITextField!
+    @IBOutlet weak var txtPartySize: UITextField!
     @IBOutlet weak var txtDatePicker: UITextField!
     @IBOutlet weak var txtTime: UITextField!
     
@@ -22,10 +23,12 @@ class DatePickerViewController: UIViewController {
     
     //UI Date picker
     let datePicker = UIDatePicker()
+    var dateOfReservation = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         txtPartyName.placeholder = "Party's Name"
+        txtPartySize.placeholder = "Party's Size"
         txtDatePicker.placeholder = "MM/DD/YYYY"
         txtTime.placeholder = "HH:MM"
 
@@ -64,16 +67,16 @@ class DatePickerViewController: UIViewController {
         
         let formatter = DateFormatter()
         let form = DateFormatter()
-        //formatter.locale = Locale(identifier: "en_US_POSIX")
-        //formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let dateFormatter = DateFormatter()
         
-        //let form = DateComponentsFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         form.dateFormat = "HH:mm"
-        //form.zeroFormattingBehavior()
-        //txtPartyName.text = form.string(from: datePicker.date)
+        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+
         txtDatePicker.text = formatter.string(from: datePicker.date)
         txtTime.text = form.string(from: datePicker.date)
+        dateOfReservation = dateFormatter.string(from: datePicker.date)
+        print(dateOfReservation)
         self.view.endEditing(true)
     }
     
@@ -91,6 +94,10 @@ class DatePickerViewController: UIViewController {
             ValidReservationFlag = false
             print("name is empty")
         }
+        else if(txtPartySize.text?.isEmpty ?? true){
+            ValidReservationFlag = false
+            print("party size is empty")
+        }
         else if (txtDatePicker.text?.isEmpty ?? true) {
             ValidReservationFlag = false
             print("date is empty")
@@ -103,15 +110,20 @@ class DatePickerViewController: UIViewController {
         //if info vaild create reservation and add it to the calendar
         if(ValidReservationFlag){
             print("You Comfired your reservation")
-            let Name = txtPartyName.text!
-            let Date = txtDatePicker.text!
-            let Time = txtTime.text!
-            print(Name)
-            print(Date)
-            print(Time)
+            let pName = txtPartyName.text!
+            let pSize = Int(txtPartySize.text!)
+            let pDate = txtDatePicker.text!
+            let pTime = txtTime.text!
+            print(pName)
+            print(pSize)
+            print(pDate)
+            print(pTime)
+            print(dateOfReservation)
             
-            //MyReservation(name: Name, hour: , min: 0, uuid: UUID())
-            #warning("add reservation to calendar")
+            //var Reservation =
+            MyReservation(date: dateOfReservation, uuid: UUID(), name: pName, size: pSize!)
+            
+            #warning("add reservation to database")
             
             //this is a confirmation alert...need to link so afterwards it exits
             //Alert.showConfirmReservationAlert(on:self)

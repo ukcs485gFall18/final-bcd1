@@ -22,7 +22,7 @@ struct Alert {
     }
     
     static func showIncompleteFormAlert(on vc: UIViewController){
-        showBasicAlert(on: vc, with: "Error", message: "Please enter a Party's Name, Date, and Time")
+        showBasicAlert(on: vc, with: "Error", message: "Please enter a Party's Name, Size, Date, and Time")
     }
     /*
     let alertController = UIAlertController(title: "Reservation", message: "Reservation Comfirmed for \(Name) on \(Date) at \(Time)", preferredStyle: .alert)
