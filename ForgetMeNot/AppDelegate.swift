@@ -50,11 +50,11 @@ extension AppDelegate: CLLocationManagerDelegate {
     guard region is CLBeaconRegion else { return }
     
     let content = UNMutableNotificationContent()
-    content.title = "Forget Me Not"
+    content.title = "Dibs"
     content.body = "Are you forgetting something?"
     content.sound = .default
     
-    let request = UNNotificationRequest(identifier: "ForgetMeNot", content: content, trigger: nil)
+    let request = UNNotificationRequest(identifier: "Dibs", content: content, trigger: nil)
     UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
   }
 }

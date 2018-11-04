@@ -11,19 +11,29 @@ import Foundation
 class MyReservation : NSObject { // Create the reservation
     
     // Local Variables
-    fileprivate var resHour : Int       // The hour of the reservation
-    fileprivate var resMin : Int        // The minnute of the reservation
-    fileprivate var resUUID : UUID      // The UUID number of the reservation
+    fileprivate var resDate : String    // (MM/DD/YYYY) Date
+    fileprivate var resHour : Int       // Start Hour
+    fileprivate var resMin : Int        // Start Minnute
+    fileprivate var resEndHour : Int    // End Hour
+    fileprivate var resEndMin : Int     // End Minnute
+    fileprivate var resUUID : UUID      // UUID number of the reservation
                                         // UUID will be broadcasted
-    fileprivate var resStatus : Bool    // Will contain the current status of the check-in 
-    fileprivate var resName : String    // The name of the party
+    fileprivate var resStatus : Bool    // Party Checkin Status
+    
+    fileprivate var resName : String    // Party Name
+    fileprivate var resSize : Int       // Size
     //Need a day, month variable
-    init (name: String, hour: Int, min: Int, uuid: UUID){
-        resName = name
+    
+    init (date: String, hour: Int, min: Int, endHour: Int, endMin: Int, uuid: UUID, name : String, size : Int){
+        resDate = date
         resHour = hour
         resMin = min
+        resEndHour = endHour
+        resEndMin = endMin
         resUUID = uuid
         resStatus = false
+        resName = name
+        resSize = size
         super.init()
     }
 

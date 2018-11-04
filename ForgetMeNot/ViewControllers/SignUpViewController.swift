@@ -11,34 +11,51 @@ import UIKit
 import Firebase
 
 class SignUpViewController : UIViewController{
+    @IBOutlet weak var userEmail: UITextField!
+    @IBOutlet weak var userPass: UITextField!
+    @IBOutlet weak var userPassConfirm: UITextField!
+    @IBOutlet weak var IDSelector: UISegmentedControl!
     
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var passwordConfirm: UITextField!
+    func showMessage (alertTitle : String, alertMessage : String, actionTitle : String){
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: actionTitle, style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     @IBAction func signUpAction(_ sender: Any) {
-        if password.text != passwordConfirm.text {
-            let alertController = UIAlertController(title: "Passwords dont match", message: "Please re-type password", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
-        else{
-            Auth.auth().createUser(withEmail: email.text!, password: password.text!){ (user, error) in
-                
-                if error == nil {
-                    self.performSegue(withIdentifier: "SignupSuccessful", sender: self)
+        var databaseRef : DatabaseReference? // Create firebase database reference variable
+        databaseRef = Database.database().reference()  // Link the firebase database
+        
+        let userID = Auth.auth().currentUser!.uid // Get the User's ID
+        let userEmailTxt = self.userEmail.text!
+        
+        if (userPass.text == userPassConfirm.text){
+            Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!)
+            { (user, error) in
+                if error == nil{
+                    // User added successful message
+                    self.showMessage(alertTitle: "Complete ✅", alertMessage: "Congratulations on your new account. Please continue to the login page.", actionTitle: "Done")
+                    
+                    // Store Company or Customer data in customer
+                    if (self.IDSelector.selectedSegmentIndex == 0){//Customer
+                        databaseRef?.child("Users").child(userID).setValue(["userType" : "Customer"])// Write to database the user is a Customer
+                    }
+                    else if (self.IDSelector.selectedSegmentIndex == 1){// Company
+                        databaseRef?.child("Users").child(userID).setValue(["userType" : "Company"])// Write to database the user is a Company
+                    }
+                    
+                    databaseRef?.child("Users/\(userID)/email").setValue(userEmailTxt)
                 }
                 else{
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    
-                    alertController.addAction(defaultAction)
-                    self.present(alertController, animated: true, completion: nil)
+                    self.showMessage(alertTitle: "Error", alertMessage: (error?.localizedDescription)!, actionTitle: "Dismiss")
+                    print ("❌" + (error?.localizedDescription)!)
                 }
+                
             }
         }
-        print("SignUp Completed 😁")
+        else{ // Passwords do not match
+            showMessage(alertTitle: "Passwords do not match", alertMessage: "Please enter identical passwords", actionTitle: "Dismiss")
+        }
     }
 }
