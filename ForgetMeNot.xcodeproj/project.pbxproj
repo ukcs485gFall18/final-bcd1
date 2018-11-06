@@ -11,7 +11,6 @@
 		250E490F217679C300D4F516 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E490E217679C300D4F516 /* Reservation.swift */; };
 		2525652C217F757E00DFADCD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2525652B217F757E00DFADCD /* GoogleService-Info.plist */; };
 		252E40BC217D1BFE00AB511E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 252E40BB217D1BFE00AB511E /* Media.xcassets */; };
-		25623054217FCCE100BA2A56 /* userSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25623053217FCCE000BA2A56 /* userSortViewController.swift */; };
 		25D6EC2E217FBCD3008A9EA5 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6EC2D217FBCD3008A9EA5 /* SignInViewController.swift */; };
 		25D6EC30217FBCE9008A9EA5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6EC2F217FBCE9008A9EA5 /* SignUpViewController.swift */; };
 		6307586F2184F5CD002E09C5 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307586E2184F5CD002E09C5 /* Alert.swift */; };
@@ -39,7 +38,6 @@
 		250E490E217679C300D4F516 /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
 		2525652B217F757E00DFADCD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ForgetMeNot/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		252E40BB217D1BFE00AB511E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		25623053217FCCE000BA2A56 /* userSortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userSortViewController.swift; sourceTree = "<group>"; };
 		25D6EC2D217FBCD3008A9EA5 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		25D6EC2F217FBCE9008A9EA5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6307586E2184F5CD002E09C5 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				6353EFF0218271E0001C1852 /* ReservationsViewController.swift */,
 				25D6EC2D217FBCD3008A9EA5 /* SignInViewController.swift */,
 				25D6EC2F217FBCE9008A9EA5 /* SignUpViewController.swift */,
-				25623053217FCCE000BA2A56 /* userSortViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 				C00360931E3EA86500234FCD /* ItemCell.swift in Sources */,
 				C00360911E3EA86500234FCD /* Icons.swift in Sources */,
 				6353EFF3218271EF001C1852 /* DatePickerViewController.swift in Sources */,
-				25623054217FCCE100BA2A56 /* userSortViewController.swift in Sources */,
 				C00360921E3EA86500234FCD /* Item.swift in Sources */,
 				6307586F2184F5CD002E09C5 /* Alert.swift in Sources */,
 				FB9CC95C1AD701910038DF33 /* AppDelegate.swift in Sources */,

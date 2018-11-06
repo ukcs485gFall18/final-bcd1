@@ -24,6 +24,8 @@ class SignUpViewController : UIViewController{
     }
     
     @IBAction func signUpAction(_ sender: Any) {
+        (sender as! UIButton).pulsate() // Animate button when pressed
+        
         var databaseRef : DatabaseReference? // Create firebase database reference variable
         databaseRef = Database.database().reference()  // Link the firebase database
         
@@ -55,6 +57,8 @@ class SignUpViewController : UIViewController{
                     databaseRef?.child("userList/\(userID)/email").setValue(userEmailTxt)
                 }
                 else{
+                    (sender as! UIButton).shake() // Animate button with error
+                    
                     self.showMessage(alertTitle: "Error", alertMessage: (error?.localizedDescription)!, actionTitle: "Dismiss")
                     print ("❌" + (error?.localizedDescription)!)
                 }
