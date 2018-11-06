@@ -87,6 +87,7 @@
                     </view>
                     <connections>
                         <outlet property="email" destination="qii-Z8-Aic" id="WZQ-7B-9ip"/>
+                        <outlet property="loginButton" destination="mPg-Sn-U8A" id="965-Qf-2q5"/>
                         <outlet property="password" destination="i2G-np-JOf" id="DLl-VK-soB"/>
                         <segue destination="nzp-AX-Fjn" kind="show" identifier="LoginToCustomer" id="xWD-1z-hHa"/>
                     </connections>
