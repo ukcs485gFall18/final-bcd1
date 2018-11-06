@@ -24,15 +24,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundBlue" translatesAutoresizingMaskIntoConstraints="NO" id="PZe-9d-9hp">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="UzW-TG-Z5e">
-                                <rect key="frame" x="-68.5" y="77.5" width="512" height="512"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="fVC-vT-qq8">
+                                <rect key="frame" x="16" y="169" width="343" height="330"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="PZe-9d-9hp" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="7Ui-Zm-tLi"/>
-                            <constraint firstItem="UzW-TG-Z5e" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="RsK-CP-QRd"/>
-                            <constraint firstItem="UzW-TG-Z5e" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="WS9-ym-S5h"/>
                             <constraint firstItem="PZe-9d-9hp" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="bUg-Fd-MAV"/>
                             <constraint firstAttribute="trailing" secondItem="PZe-9d-9hp" secondAttribute="trailing" id="j7y-VK-B2S"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="PZe-9d-9hp" secondAttribute="bottom" id="lbZ-sY-7Fq"/>
