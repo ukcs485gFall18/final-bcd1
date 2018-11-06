@@ -45,7 +45,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Host"/>
                                 <connections>
-                                    <segue destination="Y0o-4a-aon" kind="show" id="3e4-ks-Efk"/>
+                                    <segue destination="Y0o-4a-aon" kind="show" identifier="LoginToHost" id="3e4-ks-Efk"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dibs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeL-JX-UrK">
@@ -88,7 +88,7 @@
                     <connections>
                         <outlet property="email" destination="qii-Z8-Aic" id="WZQ-7B-9ip"/>
                         <outlet property="password" destination="i2G-np-JOf" id="DLl-VK-soB"/>
-                        <segue destination="nzp-AX-Fjn" kind="show" identifier="LoginSuccessful" id="xWD-1z-hHa"/>
+                        <segue destination="nzp-AX-Fjn" kind="show" identifier="LoginToCustomer" id="xWD-1z-hHa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NH0-d4-08Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
