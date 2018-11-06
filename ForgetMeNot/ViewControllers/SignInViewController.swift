@@ -64,7 +64,6 @@ func getUsersData(_ users: [String], handler: @escaping (_ usersArray: [Users]) 
     
     // Create firebase reference and link to database
     let dataRef = Database.database().reference()
-    //dataRef.queryOrdered(byChild: "")
     
     dataRef.child("userList").observe(.value) { (datasnapshot) in
         guard let usersnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
