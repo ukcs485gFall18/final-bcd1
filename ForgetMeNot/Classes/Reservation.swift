@@ -12,36 +12,32 @@ class MyReservation : NSObject { // Create the reservation
     
     // Local Variables
     fileprivate var resDate : String    // (MM/DD/YYYY) Date
-    fileprivate var resHour : Int       // Start Hour
-    fileprivate var resMin : Int        // Start Minnute
-    fileprivate var resEndHour : Int    // End Hour
-    fileprivate var resEndMin : Int     // End Minnute
+    //fileprivate var resHour : Int       // Start Hour
+    //fileprivate var resMin : Int        // Start Minnute
+    //fileprivate var resEndHour : Int    // End Hour
+    //fileprivate var resEndMin : Int     // End Minnute
     fileprivate var resUUID : UUID      // UUID number of the reservation
                                         // UUID will be broadcasted
     fileprivate var resStatus : Bool    // Party Checkin Status
-    
+    fileprivate var resCompName: String //resturant Name
     fileprivate var resName : String    // Party Name
     fileprivate var resSize : Int       // Size
-    //Need a day, month variable
     
-    init (date: String, hour: Int, min: Int, endHour: Int, endMin: Int, uuid: UUID, name : String, size : Int){
+    init (date: String, uuid: UUID, CompName: String, name : String, size : Int){
         resDate = date
-        resHour = hour
-        resMin = min
-        resEndHour = endHour
-        resEndMin = endMin
         resUUID = uuid
         resStatus = false
+        resCompName = CompName
         resName = name
         resSize = size
         super.init()
     }
 
     // Modify a reservation time
-    func updateResTime(hour : Int, min : Int){
+    /*func updateResTime(hour : Int, min : Int){
         resHour = hour
         resMin = min
-    }
+    }*/
     
     // MOdify 
     
@@ -53,5 +49,28 @@ class MyReservation : NSObject { // Create the reservation
         else{
             return false
         }
+    }
+    
+    func getUUID() -> UUID {
+        return resUUID
+    }
+    
+    func getUUIDString() -> String {
+        return resUUID.uuidString
+    }
+    func getDate() -> String {
+        return resDate
+    }
+    
+    func getPartyName() -> String {
+        return resName
+    }
+    
+    func getPartySize() -> Int {
+        return resSize
+    }
+    
+    func getCompName() -> String {
+        return resCompName
     }
 }

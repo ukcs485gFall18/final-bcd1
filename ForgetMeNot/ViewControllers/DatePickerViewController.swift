@@ -9,11 +9,13 @@
 //  Reference: https://medium.com/@javedmultani16/uidatepicker-in-swift-3-and-swift-4-example-35a1f23bca4b
 
 import UIKit
+import Firebase
 
 class DatePickerViewController: UIViewController {
     
     //Text Field Connection
     @IBOutlet weak var txtPartyName: UITextField!
+    @IBOutlet weak var txtPartySize: UITextField!
     @IBOutlet weak var txtDatePicker: UITextField!
     @IBOutlet weak var txtTime: UITextField!
     
@@ -22,10 +24,12 @@ class DatePickerViewController: UIViewController {
     
     //UI Date picker
     let datePicker = UIDatePicker()
+    var dateOfReservation = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         txtPartyName.placeholder = "Party's Name"
+        txtPartySize.placeholder = "Party's Size"
         txtDatePicker.placeholder = "MM/DD/YYYY"
         txtTime.placeholder = "HH:MM"
 
@@ -64,16 +68,16 @@ class DatePickerViewController: UIViewController {
         
         let formatter = DateFormatter()
         let form = DateFormatter()
-        //formatter.locale = Locale(identifier: "en_US_POSIX")
-        //formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let dateFormatter = DateFormatter()
         
-        //let form = DateComponentsFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
         form.dateFormat = "HH:mm"
-        //form.zeroFormattingBehavior()
-        //txtPartyName.text = form.string(from: datePicker.date)
+        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+
         txtDatePicker.text = formatter.string(from: datePicker.date)
         txtTime.text = form.string(from: datePicker.date)
+        dateOfReservation = dateFormatter.string(from: datePicker.date)
+        print(dateOfReservation)
         self.view.endEditing(true)
     }
     
@@ -91,6 +95,10 @@ class DatePickerViewController: UIViewController {
             ValidReservationFlag = false
             print("name is empty")
         }
+        else if(txtPartySize.text?.isEmpty ?? true){
+            ValidReservationFlag = false
+            print("party size is empty")
+        }
         else if (txtDatePicker.text?.isEmpty ?? true) {
             ValidReservationFlag = false
             print("date is empty")
@@ -103,15 +111,35 @@ class DatePickerViewController: UIViewController {
         //if info vaild create reservation and add it to the calendar
         if(ValidReservationFlag){
             print("You Comfired your reservation")
-            let Name = txtPartyName.text!
-            let Date = txtDatePicker.text!
-            let Time = txtTime.text!
-            print(Name)
-            print(Date)
-            print(Time)
+            let pName = txtPartyName.text!
+            let pSize = Int(txtPartySize.text!)
+            let pDate = txtDatePicker.text!
+            let pTime = txtTime.text!
+            let pCompName = "Chilis"
+            print(pName)
+            print(pSize)
+            print(pDate)
+            print(pTime)
+            print(dateOfReservation)
             
-            //MyReservation(name: Name, hour: , min: 0, uuid: UUID())
-            #warning("add reservation to calendar")
+            var databaseRef : DatabaseReference? // Create firebase database reference variable
+            databaseRef = Database.database().reference()  // Link the firebase database
+            
+            let userReservation = MyReservation(date: dateOfReservation, uuid: UUID(),  CompName: pCompName, name: pName, size: pSize!)
+            
+            databaseRef?.child("reservation").child(userReservation.getCompName()).child(userReservation.getPartyName()).setValue(["partyDate" : userReservation.getDate()])
+            
+            
+            databaseRef?.child("reservation/\(userReservation.getCompName())/\(userReservation.getPartyName())/partySize").setValue(userReservation.getPartySize())
+            
+            databaseRef?.child("reservation/\(userReservation.getCompName())/\(userReservation.getPartyName())/partyUUID").setValue(userReservation.getUUIDString())
+
+    
+            
+            //databaseRef?.child("reservation/\(userReservation.getUUID)").setValue(userReservation)
+            
+
+            #warning("add reservation to database")
             
             //this is a confirmation alert...need to link so afterwards it exits
             //Alert.showConfirmReservationAlert(on:self)

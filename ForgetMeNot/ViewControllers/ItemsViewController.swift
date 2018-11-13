@@ -210,7 +210,7 @@ extension ItemsViewController: CLLocationManagerDelegate {
             cell.checkedIn()
             
             // Each row becomes a reservation : Blake
-            let reservation = MyReservation(date: "", hour: 0, min: 0, endHour: 0, endMin: 0, uuid: UUID(), name: "", size: 0)
+            let reservation = MyReservation(date: "", uuid: UUID(), CompName: "", name: "", size: 0)
         }
     }
     
