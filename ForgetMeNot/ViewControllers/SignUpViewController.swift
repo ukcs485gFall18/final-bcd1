@@ -24,30 +24,41 @@ class SignUpViewController : UIViewController{
     }
     
     @IBAction func signUpAction(_ sender: Any) {
+        (sender as! UIButton).pulsate() // Animate button when pressed
+        
         var databaseRef : DatabaseReference? // Create firebase database reference variable
         databaseRef = Database.database().reference()  // Link the firebase database
         
-        let userID = Auth.auth().currentUser!.uid // Get the User's ID
         let userEmailTxt = self.userEmail.text!
         
         if (userPass.text == userPassConfirm.text){
             Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!)
             { (user, error) in
+                
                 if error == nil{
+                    
+                    guard let createdUser = user else{
+                        return
+                    }
+                    
+                    let userID = createdUser.user.uid
+                    
                     // User added successful message
                     self.showMessage(alertTitle: "Complete ✅", alertMessage: "Congratulations on your new account. Please continue to the login page.", actionTitle: "Done")
                     
                     // Store Company or Customer data in customer
                     if (self.IDSelector.selectedSegmentIndex == 0){//Customer
-                        databaseRef?.child("Users").child(userID).setValue(["userType" : "Customer"])// Write to database the user is a Customer
+                        databaseRef?.child("userList").child(userID).setValue(["userType" : "Customer"])// Write to database the user is a Customer
                     }
                     else if (self.IDSelector.selectedSegmentIndex == 1){// Company
-                        databaseRef?.child("Users").child(userID).setValue(["userType" : "Company"])// Write to database the user is a Company
+                        databaseRef?.child("userList").child(userID).setValue(["userType" : "Company"])// Write to database the user is a Company
                     }
                     
-                    databaseRef?.child("Users/\(userID)/email").setValue(userEmailTxt)
+                    databaseRef?.child("userList/\(userID)/email").setValue(userEmailTxt)
                 }
                 else{
+                    (sender as! UIButton).shake() // Animate button with error
+                    
                     self.showMessage(alertTitle: "Error", alertMessage: (error?.localizedDescription)!, actionTitle: "Dismiss")
                     print ("❌" + (error?.localizedDescription)!)
                 }
