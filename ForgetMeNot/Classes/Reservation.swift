@@ -19,14 +19,15 @@ class MyReservation : NSObject { // Create the reservation
     fileprivate var resUUID : UUID      // UUID number of the reservation
                                         // UUID will be broadcasted
     fileprivate var resStatus : Bool    // Party Checkin Status
-    
+    fileprivate var resCompName: String //resturant Name
     fileprivate var resName : String    // Party Name
     fileprivate var resSize : Int       // Size
     
-    init (date: String, uuid: UUID, name : String, size : Int){
+    init (date: String, uuid: UUID, CompName: String, name : String, size : Int){
         resDate = date
         resUUID = uuid
         resStatus = false
+        resCompName = CompName
         resName = name
         resSize = size
         super.init()
@@ -48,5 +49,28 @@ class MyReservation : NSObject { // Create the reservation
         else{
             return false
         }
+    }
+    
+    func getUUID() -> UUID {
+        return resUUID
+    }
+    
+    func getUUIDString() -> String {
+        return resUUID.uuidString
+    }
+    func getDate() -> String {
+        return resDate
+    }
+    
+    func getPartyName() -> String {
+        return resName
+    }
+    
+    func getPartySize() -> Int {
+        return resSize
+    }
+    
+    func getCompName() -> String {
+        return resCompName
     }
 }
