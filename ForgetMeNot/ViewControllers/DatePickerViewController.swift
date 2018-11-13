@@ -9,6 +9,7 @@
 //  Reference: https://medium.com/@javedmultani16/uidatepicker-in-swift-3-and-swift-4-example-35a1f23bca4b
 
 import UIKit
+import Firebase
 
 class DatePickerViewController: UIViewController {
     
@@ -114,15 +115,30 @@ class DatePickerViewController: UIViewController {
             let pSize = Int(txtPartySize.text!)
             let pDate = txtDatePicker.text!
             let pTime = txtTime.text!
+            let pCompName = "Chilis"
             print(pName)
             print(pSize)
             print(pDate)
             print(pTime)
             print(dateOfReservation)
             
-            //var Reservation =
-            MyReservation(date: dateOfReservation, uuid: UUID(), name: pName, size: pSize!)
+            var databaseRef : DatabaseReference? // Create firebase database reference variable
+            databaseRef = Database.database().reference()  // Link the firebase database
             
+            let userReservation = MyReservation(date: dateOfReservation, uuid: UUID(),  CompName: pCompName, name: pName, size: pSize!)
+            
+            databaseRef?.child("reservation").child(userReservation.getCompName()).child(userReservation.getPartyName()).setValue(["partyDate" : userReservation.getDate()])
+            
+            
+            databaseRef?.child("reservation/\(userReservation.getCompName())/\(userReservation.getPartyName())/partySize").setValue(userReservation.getPartySize())
+            
+            databaseRef?.child("reservation/\(userReservation.getCompName())/\(userReservation.getPartyName())/partyUUID").setValue(userReservation.getUUIDString())
+
+    
+            
+            //databaseRef?.child("reservation/\(userReservation.getUUID)").setValue(userReservation)
+            
+
             #warning("add reservation to database")
             
             //this is a confirmation alert...need to link so afterwards it exits
