@@ -9,6 +9,7 @@
 import UIKit
 import EventKit
 import Foundation
+import Firebase
 
 class ReservationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -58,6 +59,21 @@ class ReservationsViewController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(_ animated: Bool) {
         checkCalendarAuthorizationStatus()
     }
+    
+/*    func getReservationInfo() {
+        let dataRef = Database.database().reference()
+        
+        //partyName, reservation/\(userReservation.getCompName))/\(userReservation.getUUID())
+        dataRef.child(<#T##pathString: String##String#>).observe(.value) { (datasnapshot) in
+        guard let reservationsnapshot = datasnapshot.children.allObjects as ? [DataSnapshot] else {return}
+            for reservation in reservationsnapshot {
+                let reservationName = reservation.childSnapshot(forPath: "partyName")
+            }
+        
+            
+            
+        }
+    }*/
     
     func checkCalendarAuthorizationStatus() {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
@@ -129,6 +145,7 @@ class ReservationsViewController: UIViewController, UITableViewDataSource, UITab
         return cell
     }
     
+
     
     
     /*
