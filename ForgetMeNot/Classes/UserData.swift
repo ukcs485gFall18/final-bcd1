@@ -14,8 +14,11 @@ class UserData : NSObject{
     // Create user content
     fileprivate var reservationList : [MyReservation]
     fileprivate var prevReservationList : [MyReservation]
-    fileprivate var prevPartyNames : [String]
+    fileprivate var PartyNames : [String]
+    
     fileprivate var profilePicure : String
+    fileprivate var userEmail : String
+    fileprivate var userType : String
     
     // Initialize user content
     override init() {
@@ -23,6 +26,8 @@ class UserData : NSObject{
         self.prevReservationList = []
         self.prevPartyNames = []
         self.profilePicure = ""
+        self.userEmail = ""
+        self.userType = ""
         super.init()
     }
     
@@ -80,7 +85,69 @@ class UserData : NSObject{
     
     // Check reservations are up to date, and update them if not
     func refreshCurrReservations(){
-        
+        for reservation in reservationList{
+            let resDate = reservation.getDate()
+            //let resTime = reservation.getTime()
+            var resYear = ""
+            var resMonth = ""
+            var resDay = ""
+            //var resHour = ""
+            //var resMin = ""
+            
+            // Parse Date into 3 variables for comparison
+            var counter = 0
+            for number in resDate{
+                if (counter == 0 || counter == 1){ // Create month string
+                    resMonth = resMonth + String(number)
+                }
+                else if (counter == 3 || counter == 4){// Create day string
+                    resDay = resDay + String(number)
+                }
+                else if (counter == 6 || counter == 7 || counter == 8 || counter == 9){ // Create year string
+                    resYear = resYear + String(number)
+                }
+                else if (counter == 2 || counter == 5){
+                    // Skip the slashes
+                }
+                else{
+                    print("Error in refreshCurrReservations() function")
+                }
+                
+                counter = counter + 1
+            }
+            
+            // Convert the strings into ints
+            //var resYearInt = Int(resYear)
+            //var resMonthInt = Int(resMonth)
+            //var resDayInt = Int(resDay)
+            //var resHourInt = Int(resHour)
+            //var resMinInt = Int(resMin)
+            
+            /*if resYearInt < /*current year*/{
+             // Move reservation to prevReservations
+            }
+            else{
+             if resMonthInt < /*current month*/{
+                // Move reservation to prevReservations
+             }
+             else{
+                 if (resDayInt < /*current day*/){
+                    // Move reservation to prevReservations
+                 }
+                 else{
+                    if (resHourInt < /*current hour */){
+                        // Move reservation to prevReservations
+                    }
+                    else{
+                         if (resMinInt < /*current hour */){
+                            // Move reservation to prevReservations
+                         }
+                        else {
+                            // Reservation has not yet expired
+                        }
+                    }
+            }*/
+        }
     }
     
     // Add a profile picture to the user's data
@@ -88,19 +155,28 @@ class UserData : NSObject{
         profilePicure = link
     }
     
+    func setUserType(currUserType : String){
+        userType = currUserType
+    }
+    
+    func setUserEmail(currUserEmail : String){
+        userEmail = currUserEmail
+    }
+    
     // Keep track of the party names that the user has used
+    // Note: If you pass in a party name that is already recorded, the function will do nothing
     func updatePartyNames(newPartyName : String){
         var foundFlag = false
         
         // Check if the party name has been used by the user before
-        for partyName in prevPartyNames{
+        for partyName in PartyNames{
             if (partyName == newPartyName){
                 foundFlag = true
             }
         }
         
         if (!foundFlag){ // Add to the list
-            prevPartyNames.append(newPartyName)
+            PartyNames.append(newPartyName)
         }
     }
 }

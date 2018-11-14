@@ -32,14 +32,6 @@ class MyReservation : NSObject { // Create the reservation
         resSize = size
         super.init()
     }
-
-    // Modify a reservation time
-    /*func updateResTime(hour : Int, min : Int){
-        resHour = hour
-        resMin = min
-    }*/
-    
-    // MOdify 
     
     // Check if the reservation has been checked in
     func checkStatus () -> Bool {
