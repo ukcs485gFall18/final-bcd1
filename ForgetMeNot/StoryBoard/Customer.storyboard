@@ -98,21 +98,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Tr-9l-Zuv" customClass="txtPartyName" customModule="ForgetMeNot" customModuleProvider="target">
-                                <rect key="frame" x="16" y="107" width="150" height="30"/>
+                                <rect key="frame" x="16" y="107" width="220" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbL-zy-t7R">
-                                <rect key="frame" x="16" y="232" width="150" height="30"/>
+                                <rect key="frame" x="16" y="291" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q9d-fM-0N5">
-                                <rect key="frame" x="209" y="232" width="150" height="30"/>
+                                <rect key="frame" x="209" y="291" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -132,7 +132,14 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8au-nw-wwh" customClass="txtPartySize">
-                                <rect key="frame" x="16" y="168" width="150" height="30"/>
+                                <rect key="frame" x="16" y="236" width="220" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company for the reservation" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRf-u9-KSk">
+                                <rect key="frame" x="16" y="170" width="220" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -145,6 +152,7 @@
                     <navigationItem key="navigationItem" id="VxA-3Z-vb3"/>
                     <connections>
                         <outlet property="comfirmationBtn" destination="mCt-lP-jTW" id="pjl-88-7Lq"/>
+                        <outlet property="txtCompName" destination="tRf-u9-KSk" id="uvc-Ld-FgP"/>
                         <outlet property="txtDatePicker" destination="cbL-zy-t7R" id="EdC-yq-j3z"/>
                         <outlet property="txtPartyName" destination="5Tr-9l-Zuv" id="NLD-Ch-kVH"/>
                         <outlet property="txtPartySize" destination="8au-nw-wwh" id="gvQ-Te-Qgu"/>

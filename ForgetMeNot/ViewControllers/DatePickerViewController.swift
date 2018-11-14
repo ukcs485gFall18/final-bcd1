@@ -18,6 +18,7 @@ class DatePickerViewController: UIViewController {
     @IBOutlet weak var txtPartySize: UITextField!
     @IBOutlet weak var txtDatePicker: UITextField!
     @IBOutlet weak var txtTime: UITextField!
+    @IBOutlet weak var txtCompName: UITextField!
     
     //Comfirmation Button
     @IBOutlet weak var comfirmationBtn: UIButton!
@@ -115,12 +116,7 @@ class DatePickerViewController: UIViewController {
             let pSize = Int(txtPartySize.text!)
             let pDate = txtDatePicker.text!
             let pTime = txtTime.text!
-            let pCompName = "Chilis"
-            print(pName)
-            print(pSize)
-            print(pDate)
-            print(pTime)
-            print(dateOfReservation)
+            let pCompName = txtCompName.text!
             
             var databaseRef : DatabaseReference? // Create firebase database reference variable
             databaseRef = Database.database().reference()  // Link the firebase database
