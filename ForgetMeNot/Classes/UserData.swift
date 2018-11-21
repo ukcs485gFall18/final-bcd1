@@ -14,8 +14,7 @@ class UserData : NSObject{
     // Create user content
     fileprivate var reservationList : [MyReservation]
     fileprivate var prevReservationList : [MyReservation]
-    fileprivate var PartyNames : [String]
-    
+    fileprivate var prevPartyNames : [String]
     fileprivate var profilePicure : String
     fileprivate var userEmail : String
     fileprivate var userType : String
@@ -165,18 +164,18 @@ class UserData : NSObject{
     
     // Keep track of the party names that the user has used
     // Note: If you pass in a party name that is already recorded, the function will do nothing
-    func updatePartyNames(newPartyName : String){
+    func updatePrevPartyList(newPartyName : String){
         var foundFlag = false
         
         // Check if the party name has been used by the user before
-        for partyName in PartyNames{
+        for partyName in prevPartyNames{
             if (partyName == newPartyName){
                 foundFlag = true
             }
         }
         
-        if (!foundFlag){ // Add to the list
-            PartyNames.append(newPartyName)
+        if (!foundFlag){ // Add to the list if unused
+            prevPartyNames.append(newPartyName)
         }
     }
 }

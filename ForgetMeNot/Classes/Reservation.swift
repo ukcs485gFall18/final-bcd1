@@ -43,6 +43,12 @@ class MyReservation : NSObject { // Create the reservation
         }
     }
     
+    /* ===================================================
+     *              "Get" Functions
+     *  Returns private variables for use outside the function
+     *  but prevents modification.
+     * ===================================================
+    */
     func getUUID() -> UUID {
         return resUUID
     }
@@ -65,4 +71,5 @@ class MyReservation : NSObject { // Create the reservation
     func getCompName() -> String {
         return resCompName
     }
+    // ===================================================
 }
