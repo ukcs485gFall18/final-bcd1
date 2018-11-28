@@ -12,7 +12,6 @@ import UIKit
 import Firebase
 
 class DatePickerViewController: UIViewController {
-    
     //Text Field Connection
     @IBOutlet weak var txtPartyName: UITextField!
     @IBOutlet weak var txtPartySize: UITextField!
@@ -33,6 +32,7 @@ class DatePickerViewController: UIViewController {
         txtPartySize.placeholder = "Party's Size"
         txtDatePicker.placeholder = "MM/DD/YYYY"
         txtTime.placeholder = "HH:MM"
+        txtCompName.placeholder = "Company Name"
 
         //display date picker
         showDatePicker()
