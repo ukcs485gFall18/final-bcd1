@@ -13,7 +13,7 @@
         <!--Customer View-->
         <scene sceneID="T9P-nV-8Uw">
             <objects>
-                <viewController title="Customer View" id="QHP-O8-dd6" sceneMemberID="viewController">
+                <viewController title="Customer View" id="QHP-O8-dd6" customClass="CustomerViewController" customModule="ForgetMeNot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K1W-ms-uNp"/>
                         <viewControllerLayoutGuide type="bottom" id="lbs-Pf-ZWT"/>
@@ -54,6 +54,16 @@
                                 </state>
                                 <connections>
                                     <segue destination="X9e-uv-wcY" kind="show" id="kQx-ON-QPL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kv1-Js-Dy3">
+                                <rect key="frame" x="310" y="84" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Refresh">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshButton:" destination="QHP-O8-dd6" eventType="touchUpInside" id="Pqg-Vc-QpO"/>
                                 </connections>
                             </button>
                         </subviews>
