@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 
-// Created User model
+// Created User model for retrieving data
 class Users {
     var email: String?
     var userType: String?
@@ -111,12 +111,18 @@ class SignInViewController : UIViewController{
                     
                     // Parse array of users for desired user's type
                     for person in foundUsers{
-                        if (person.email == self.email.text!){
+                        if (person.email == self.email.text!){ // Authentication successful
 
                             // Get the current indexed user's type
                             guard let userType = person.userType else{
                                 return
                             }
+                            
+                            // Remember user's information into UserData.swift
+                            kuserEmail = person.email!
+                            kuserType = person.userType!
+                            kuserID = userID
+                            
                             
                             // Take user down specific route
                             if (userType == "Customer"){
