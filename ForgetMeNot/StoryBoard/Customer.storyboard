@@ -35,8 +35,6 @@
                                     <action selector="CompletedTapped:" destination="pKP-IK-s7J" eventType="valueChanged" id="8LM-y0-p6p"/>
                                     <action selector="UpcomingTapped:" destination="pKP-IK-s7J" eventType="valueChanged" id="aHO-Rc-B85"/>
                                     <action selector="segChange:" destination="pKP-IK-s7J" eventType="valueChanged" id="WqP-XL-of4"/>
-                                    <outletCollection property="gestureRecognizers" destination="f2R-0u-Ttj" appends="YES" id="Ml6-td-jpg"/>
-                                    <outletCollection property="gestureRecognizers" destination="f2R-0u-Ttj" appends="YES" id="tUL-hQ-36C"/>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ze-pt-nmn">
@@ -85,12 +83,6 @@
                     <navigationItem key="navigationItem" title="Dibs (Customer)" id="Sha-Bi-jov"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycq-Fd-HDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="f2R-0u-Ttj">
-                    <connections>
-                        <action selector="UpcomingTapped:" destination="pKP-IK-s7J" id="Igq-Z8-VIZ"/>
-                        <outlet property="delegate" destination="YwG-gV-1eP" id="GFZ-yn-USk"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <exit id="pKP-IK-s7J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3940" y="1055.6221889055473"/>
