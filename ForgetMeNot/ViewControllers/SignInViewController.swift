@@ -10,17 +10,6 @@ import Foundation
 import UIKit
 import Firebase
 
-// Created User model for retrieving data
-class Users {
-    var email: String?
-    var userType: String?
-    
-    init(email: String, userType: String) {
-        self.email = email
-        self.userType = userType
-    }
-}
-
 // Button animations
 extension UIButton{
     func pulsate(){
