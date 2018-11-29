@@ -127,12 +127,12 @@ class DatePickerViewController: UIViewController {
             
             let userReservation = MyReservation(date: dateOfReservation, uuid: UUID(),  CompName: pCompName, name: pName, size: pSize!)
             
-            databaseRef?.child("reservation").child(userReservation.getCompName()).child(userReservation.getPartyName()).setValue(["partyDate" : userReservation.getDate()])
+            databaseRef?.child("reservation").child(userReservation.getPartyName()).child(userReservation.getCompName()).setValue(["partyDate" : userReservation.getDate()])
             
             
-            databaseRef?.child("reservation/\(userReservation.getCompName())/\(userReservation.getPartyName())/partySize").setValue(userReservation.getPartySize())
+            databaseRef?.child("reservation/\(userReservation.getPartyName())/\(userReservation.getCompName())/partySize").setValue(userReservation.getPartySize())
             
-            databaseRef?.child("reservation/\(userReservation.getCompName())/\(userReservation.getPartyName())/partyUUID").setValue(userReservation.getUUIDString())
+            databaseRef?.child("reservation/\(userReservation.getPartyName())/\(userReservation.getCompName())/partyUUID").setValue(userReservation.getUUIDString())
 
     
             
