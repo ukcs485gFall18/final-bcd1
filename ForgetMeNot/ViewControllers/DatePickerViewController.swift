@@ -1,9 +1,5 @@
-//
 //  DatePickerViewController.swift
-//  ForgetMeNot
-//
 //  Created by David Mercado on 10/23/18.
-//  Copyright © 2018 Ray Wenderlich. All rights reserved.
 //
 //  The user uses this to pick their reservation time slot. This displays a UI Date picker
 //  Reference: https://medium.com/@javedmultani16/uidatepicker-in-swift-3-and-swift-4-example-35a1f23bca4b
@@ -38,6 +34,7 @@ class DatePickerViewController: UIViewController {
         showDatePicker()
     }
 
+    //function to display UI date picker
     func showDatePicker(){
         //Formate Date
         datePicker.datePickerMode = .dateAndTime
@@ -47,12 +44,13 @@ class DatePickerViewController: UIViewController {
         let toolbar = UIToolbar();
         toolbar.sizeToFit()
         
-        //Done button
+        //'Done' button
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
         
+        //space between 'done' and 'cancel' buttons
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         
-        //Cancel button
+        //'Cancel' button
         let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
         
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
@@ -64,9 +62,10 @@ class DatePickerViewController: UIViewController {
         txtTime.inputView = datePicker
     }
     
-    //What happens when 'Done' is pressed in date picker
+    //When 'Done' is pressed in date picker and scrubs user input to prep for storing reservation
     @objc func donedatePicker(){
         
+        //used to format date and time from UIDate picker
         let formatter = DateFormatter()
         let form = DateFormatter()
         let dateFormatter = DateFormatter()
@@ -78,11 +77,12 @@ class DatePickerViewController: UIViewController {
         txtDatePicker.text = formatter.string(from: datePicker.date)
         txtTime.text = form.string(from: datePicker.date)
         dateOfReservation = dateFormatter.string(from: datePicker.date)
-        print(dateOfReservation)
+        
+        print(dateOfReservation)            //DEBUGGING PURPOSE
         self.view.endEditing(true)
     }
     
-    //what happens when 'Cancel' is pressed in date picker
+    //When 'Cancel' is pressed in date picker
     @objc func cancelDatePicker(){
         self.view.endEditing(true)
     }
@@ -92,6 +92,8 @@ class DatePickerViewController: UIViewController {
         var ValidReservationFlag = true
         
         //check to see if text fields are filled out
+        #warning("check for validity")
+        
         if (txtPartyName.text?.isEmpty ?? true) {
             ValidReservationFlag = false
             print("name is empty")
@@ -116,29 +118,37 @@ class DatePickerViewController: UIViewController {
             let pSize = Int(txtPartySize.text!)
             let pDate = txtDatePicker.text!
             let pTime = txtTime.text!
+
+            #warning("make pname dynamic so user can make an input")
+            let pCompName = "Chilis"
+            print(pName)
+            print(pSize)
+            print(pDate)
+            print(pTime)
+            print(dateOfReservation)        //DEBUGGING PURPOSES
+        
             let pCompName = txtCompName.text!
             
             var databaseRef : DatabaseReference? // Create firebase database reference variable
             databaseRef = Database.database().reference()  // Link the firebase database
+
             
+            //init a new reservation
             let userReservation = MyReservation(date: dateOfReservation, uuid: UUID(),  CompName: pCompName, name: pName, size: pSize!)
             
-            databaseRef?.child("reservation").child(userReservation.getPartyName()).child(userReservation.getCompName()).setValue(["partyDate" : userReservation.getDate()])
+            //call firebase and insert user's reservation into database
+        databaseRef?.child("reservation").child(userReservation.getPartyName()).child(userReservation.getCompName()).setValue(["partyDate" : userReservation.getDate()])
             
             
             databaseRef?.child("reservation/\(userReservation.getPartyName())/\(userReservation.getCompName())/partySize").setValue(userReservation.getPartySize())
             
             databaseRef?.child("reservation/\(userReservation.getPartyName())/\(userReservation.getCompName())/partyUUID").setValue(userReservation.getUUIDString())
-
-    
             
             //databaseRef?.child("reservation/\(userReservation.getUUID)").setValue(userReservation)
             
-
-            #warning("add reservation to database")
-            
             //this is a confirmation alert...need to link so afterwards it exits
             //Alert.showConfirmReservationAlert(on:self)
+            
             
             self.performSegue(withIdentifier: "HomeSegue", sender: self)
         }

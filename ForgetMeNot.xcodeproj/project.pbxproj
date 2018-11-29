@@ -20,6 +20,7 @@
 		6307586F2184F5CD002E09C5 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307586E2184F5CD002E09C5 /* Alert.swift */; };
 		6307587221850602002E09C5 /* Customer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6307587121850602002E09C5 /* Customer.storyboard */; };
 		63075874218507BF002E09C5 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63075873218507BF002E09C5 /* Host.storyboard */; };
+		630C1BE921B08F2D00755F71 /* CompData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C1BE821B08F2D00755F71 /* CompData.swift */; };
 		6353EFF1218271E1001C1852 /* ReservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353EFF0218271E0001C1852 /* ReservationsViewController.swift */; };
 		6353EFF3218271EF001C1852 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353EFF2218271EF001C1852 /* DatePickerViewController.swift */; };
 		635EA40721611F3D00F51096 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635EA40621611F3D00F51096 /* CalendarViewController.swift */; };
@@ -51,6 +52,7 @@
 		6307586E2184F5CD002E09C5 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		6307587121850602002E09C5 /* Customer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Customer.storyboard; sourceTree = "<group>"; };
 		63075873218507BF002E09C5 /* Host.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Host.storyboard; sourceTree = "<group>"; };
+		630C1BE821B08F2D00755F71 /* CompData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompData.swift; sourceTree = "<group>"; };
 		6353EFF0218271E0001C1852 /* ReservationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationsViewController.swift; sourceTree = "<group>"; };
 		6353EFF2218271EF001C1852 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		635EA40621611F3D00F51096 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				25E3BF3D21A500E6003DECBA /* Helper.swift */,
 				25D26E1821AE800600C301A4 /* Users.swift */,
 				25B1D640219BA28D00D81863 /* UserData.swift */,
+				630C1BE821B08F2D00755F71 /* CompData.swift */,
 				C003608A1E3EA86500234FCD /* Icons.swift */,
 				C003608B1E3EA86500234FCD /* Item.swift */,
 				250E490E217679C300D4F516 /* Reservation.swift */,
@@ -339,6 +342,7 @@
 				25D6EC2E217FBCD3008A9EA5 /* SignInViewController.swift in Sources */,
 				25E9FDEB21AE7D490073DF78 /* CustomerViewController.swift in Sources */,
 				635EA40721611F3D00F51096 /* CalendarViewController.swift in Sources */,
+				630C1BE921B08F2D00755F71 /* CompData.swift in Sources */,
 				C00360941E3EA86500234FCD /* AddItemViewController.swift in Sources */,
 				250E490F217679C300D4F516 /* Reservation.swift in Sources */,
 				C00360971E3EA88F00234FCD /* IconCell.swift in Sources */,
