@@ -84,25 +84,37 @@ class MyReservation : NSObject { // Create the reservation
     func getPartiesWithReservations(_ userPartyName : String, handler: @escaping (_ reservationsArray: [MyReservation]) -> ()){
         let dataRef = Database.database().reference() // Firebase reference link
         var reservationsArray = [MyReservation]()
+        var currPartyName = ""
         
         dataRef.child("reservation").observe(.value) { (datasnapshot) in
             guard let partySnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
             
             for currParty in partySnapshot {
-                
-                let currDate = currParty.childSnapshot(forPath: "partyDate").value as! String
-                let currUUIDString = currParty.childSnapshot(forPath: "partySize").value as! String
-                let currComp = currParty.childSnapshot(forPath: "partyDate").value as! String
-                let currPartyName = currParty.key
-                let currSize = currParty.childSnapshot(forPath: "partyDate").value as! String
-                
-                // Convert UUIDString back to a normal UUID to be placed into reservation
-                let currUUID = UUID(uuidString: currUUIDString)
-                let randomUUID = UUID()
-                
-                let resObj = MyReservation(date: currDate, uuid: currUUID ?? randomUUID, CompName: currComp, name: currPartyName, size: Int(currSize) ?? 0)
-                
-                reservationsArray.append(resObj)
+                if (userPartyName == currParty.key){
+                    currPartyName = currParty.key
+                    guard let reservations = currParty.value as? [String:Any] else{
+                        return
+                    }
+                    
+                    // Each reservation referenced inside loop
+                    print ("\(currPartyName)'s active reservations: ")
+                    for reservation in reservations{
+                        print(reservation)
+                        let partyValues = reservation.value as! [String : Any]   // Dictionary containing each value pair as an element
+                        
+                        let currComp = reservation.key
+                        let currDate = partyValues["partyDate"] as! String
+                        let currPartySize = partyValues["partyDate"] as! Int
+                        let currUUIDString = partyValues["partySize"] as! String
+                        
+                        // Convert UUIDString back to a normal UUID to be placed into reservation
+                        let currUUID = UUID(uuidString: currUUIDString)
+                        
+                        let resObj = MyReservation(date: currDate, uuid: currUUID ?? UUID(), CompName: currComp, name: currPartyName, size: currPartySize)
+                        
+                        reservationsArray.append(resObj)
+                    }
+                }
             }
             handler(reservationsArray) // Returns an array of "MyReservation" objects`
         }
