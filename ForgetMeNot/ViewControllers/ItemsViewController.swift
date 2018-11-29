@@ -22,6 +22,8 @@
 
 import UIKit
 import CoreLocation
+import Foundation
+import Firebase
 
 let storedItemsKey = "storedItems"
 
@@ -44,6 +46,14 @@ class ItemsViewController: UIViewController {
     @IBAction func segChange(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
             //dispaly upcoming reservations
+            let ref = Database.database().reference(withPath: "reservation")
+            /*ref.observe(.value, with: {snapshot in
+            /*ref.child("reservation").observe(.childAdded, with: { (snapshot) in
+                if let reservation = snapshot.value as? String{
+                    guard let reservationtime =
+                }
+            })*/
+         */
         }
         else{
             //display completed reservations
