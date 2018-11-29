@@ -8,12 +8,12 @@ import UIKit
 import Firebase
 
 class DatePickerViewController: UIViewController {
-    
     //Text Field Connection
     @IBOutlet weak var txtPartyName: UITextField!
     @IBOutlet weak var txtPartySize: UITextField!
     @IBOutlet weak var txtDatePicker: UITextField!
     @IBOutlet weak var txtTime: UITextField!
+    @IBOutlet weak var txtCompName: UITextField!
     
     //Comfirmation Button
     @IBOutlet weak var comfirmationBtn: UIButton!
@@ -28,6 +28,7 @@ class DatePickerViewController: UIViewController {
         txtPartySize.placeholder = "Party's Size"
         txtDatePicker.placeholder = "MM/DD/YYYY"
         txtTime.placeholder = "HH:MM"
+        txtCompName.placeholder = "Company Name"
 
         //display date picker
         showDatePicker()
@@ -117,6 +118,7 @@ class DatePickerViewController: UIViewController {
             let pSize = Int(txtPartySize.text!)
             let pDate = txtDatePicker.text!
             let pTime = txtTime.text!
+
             #warning("make pname dynamic so user can make an input")
             let pCompName = "Chilis"
             print(pName)
@@ -125,8 +127,11 @@ class DatePickerViewController: UIViewController {
             print(pTime)
             print(dateOfReservation)        //DEBUGGING PURPOSES
         
-            var databaseRef : DatabaseReference?                // Create firebase database reference variable
-            databaseRef = Database.database().reference()       // Link the firebase database
+            let pCompName = txtCompName.text!
+            
+            var databaseRef : DatabaseReference? // Create firebase database reference variable
+            databaseRef = Database.database().reference()  // Link the firebase database
+
             
             //init a new reservation
             let userReservation = MyReservation(date: dateOfReservation, uuid: UUID(),  CompName: pCompName, name: pName, size: pSize!)
