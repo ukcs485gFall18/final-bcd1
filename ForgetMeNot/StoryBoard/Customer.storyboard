@@ -13,7 +13,7 @@
         <!--Customer View-->
         <scene sceneID="T9P-nV-8Uw">
             <objects>
-                <viewController title="Customer View" id="QHP-O8-dd6" sceneMemberID="viewController">
+                <viewController title="Customer View" id="QHP-O8-dd6" customClass="CustomerViewController" customModule="ForgetMeNot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K1W-ms-uNp"/>
                         <viewControllerLayoutGuide type="bottom" id="lbs-Pf-ZWT"/>
@@ -35,8 +35,6 @@
                                     <action selector="CompletedTapped:" destination="pKP-IK-s7J" eventType="valueChanged" id="8LM-y0-p6p"/>
                                     <action selector="UpcomingTapped:" destination="pKP-IK-s7J" eventType="valueChanged" id="aHO-Rc-B85"/>
                                     <action selector="segChange:" destination="pKP-IK-s7J" eventType="valueChanged" id="WqP-XL-of4"/>
-                                    <outletCollection property="gestureRecognizers" destination="f2R-0u-Ttj" appends="YES" id="Ml6-td-jpg"/>
-                                    <outletCollection property="gestureRecognizers" destination="f2R-0u-Ttj" appends="YES" id="tUL-hQ-36C"/>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ze-pt-nmn">
@@ -54,6 +52,16 @@
                                 </state>
                                 <connections>
                                     <segue destination="X9e-uv-wcY" kind="show" id="kQx-ON-QPL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kv1-Js-Dy3">
+                                <rect key="frame" x="310" y="84" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Refresh">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshButton:" destination="QHP-O8-dd6" eventType="touchUpInside" id="Pqg-Vc-QpO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -75,12 +83,6 @@
                     <navigationItem key="navigationItem" title="Dibs (Customer)" id="Sha-Bi-jov"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycq-Fd-HDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="f2R-0u-Ttj">
-                    <connections>
-                        <action selector="UpcomingTapped:" destination="pKP-IK-s7J" id="Igq-Z8-VIZ"/>
-                        <outlet property="delegate" destination="YwG-gV-1eP" id="GFZ-yn-USk"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <exit id="pKP-IK-s7J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3940" y="1055.6221889055473"/>
@@ -98,21 +100,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Tr-9l-Zuv" customClass="txtPartyName" customModule="ForgetMeNot" customModuleProvider="target">
-                                <rect key="frame" x="16" y="107" width="150" height="30"/>
+                                <rect key="frame" x="16" y="107" width="220" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbL-zy-t7R">
-                                <rect key="frame" x="16" y="232" width="150" height="30"/>
+                                <rect key="frame" x="16" y="291" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q9d-fM-0N5">
-                                <rect key="frame" x="209" y="232" width="150" height="30"/>
+                                <rect key="frame" x="209" y="291" width="150" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -132,7 +134,14 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8au-nw-wwh" customClass="txtPartySize">
-                                <rect key="frame" x="16" y="168" width="150" height="30"/>
+                                <rect key="frame" x="16" y="236" width="220" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company for the reservation" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRf-u9-KSk">
+                                <rect key="frame" x="16" y="170" width="220" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -145,6 +154,7 @@
                     <navigationItem key="navigationItem" id="VxA-3Z-vb3"/>
                     <connections>
                         <outlet property="comfirmationBtn" destination="mCt-lP-jTW" id="pjl-88-7Lq"/>
+                        <outlet property="txtCompName" destination="tRf-u9-KSk" id="uvc-Ld-FgP"/>
                         <outlet property="txtDatePicker" destination="cbL-zy-t7R" id="EdC-yq-j3z"/>
                         <outlet property="txtPartyName" destination="5Tr-9l-Zuv" id="NLD-Ch-kVH"/>
                         <outlet property="txtPartySize" destination="8au-nw-wwh" id="gvQ-Te-Qgu"/>
