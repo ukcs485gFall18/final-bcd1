@@ -12,13 +12,12 @@ import UIKit
 class CustomerViewController : UIViewController{
     
     @IBAction func refreshButton(_ sender: Any) {
-        // Local Variables
-        let partyName : String
-        let reservation : MyReservation
+        let resObj : MyReservation = MyReservation(date: "", uuid: UUID(), CompName: "", name: "", size: 1)
         
         // Set the party name
-        getUsersData([kuserID], handler: { (foundUsers) in
+        resObj.getPartiesWithReservations(kPartyNames[0], handler: { (foundUsers) in
             for person in foundUsers{
+                print(person)
             }
         })
         

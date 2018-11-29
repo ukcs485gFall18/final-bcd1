@@ -115,12 +115,12 @@
 			isa = PBXGroup;
 			children = (
 				25E3BF3D21A500E6003DECBA /* Helper.swift */,
+				25D26E1821AE800600C301A4 /* Users.swift */,
 				25B1D640219BA28D00D81863 /* UserData.swift */,
 				C003608A1E3EA86500234FCD /* Icons.swift */,
 				C003608B1E3EA86500234FCD /* Item.swift */,
 				250E490E217679C300D4F516 /* Reservation.swift */,
 				6307586E2184F5CD002E09C5 /* Alert.swift */,
-				25D26E1821AE800600C301A4 /* Users.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
