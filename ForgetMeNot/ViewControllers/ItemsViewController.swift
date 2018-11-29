@@ -46,14 +46,20 @@ class ItemsViewController: UIViewController {
     @IBAction func segChange(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
             //dispaly upcoming reservations
-            let ref = Database.database().reference(withPath: "reservation")
+            
+            // LOOK IN RESERVATION.SWIFT FOR CODE BLAKE WROTE
+            //
+            //let ref = Database.database().reference(withPath: "reservation")
+            
             /*ref.observe(.value, with: {snapshot in
             /*ref.child("reservation").observe(.childAdded, with: { (snapshot) in
                 if let reservation = snapshot.value as? String{
                     guard let reservationtime =
                 }
             })*/
-         */
+ 
+        }*/
+        
         }
         else{
             //display completed reservations
@@ -131,7 +137,7 @@ extension ItemsViewController : UITableViewDataSource {
     
     return cell
   }
-  
+  // ^^^ THIS IS WHERE RESERVATIONS NEED TO BE ADDED. CREATE AN ARRAY STORING EACH ONE AND SET CELL. SOMETHING TO DISPLAY THEM
   func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
     return true
   }
