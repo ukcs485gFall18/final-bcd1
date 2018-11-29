@@ -104,14 +104,14 @@ class MyReservation : NSObject { // Create the reservation
                         
                         let currComp = reservation.key
                         let currDate = partyValues["partyDate"] as! String
-                        let currPartySize = partyValues["partyDate"] as! Int
+                        let currPartySize = partyValues["partyDate"] as! String
                         let currUUIDString = partyValues["partySize"] as! String
                         
                         // Convert UUIDString back to a normal UUID to be placed into reservation
                         let currUUID = UUID(uuidString: currUUIDString)
                         
-                        let resObj = MyReservation(date: currDate, uuid: currUUID ?? UUID(), CompName: currComp, name: currPartyName, size: currPartySize)
-                        
+                        // Compile all info into reservation object and add to array
+                        let resObj = MyReservation(date: currDate, uuid: currUUID ?? UUID(), CompName: currComp, name: currPartyName, size: Int(currPartySize) ?? 0)
                         reservationsArray.append(resObj)
                     }
                 }
