@@ -38,8 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let center = UNUserNotificationCenter.current()
     center.requestAuthorization(options:[.alert, .sound]) { (granted, error) in }
     
+    FirebaseConfiguration.shared.setLoggerLevel(.min)
     FirebaseApp.configure() // Use Firebase library to configure APIs
-    var currUser : UserData // Create a space for the user's information
     
     return true
   }
