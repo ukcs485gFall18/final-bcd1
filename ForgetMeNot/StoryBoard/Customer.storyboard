@@ -54,10 +54,10 @@
                                     <segue destination="X9e-uv-wcY" kind="show" id="kQx-ON-QPL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kv1-Js-Dy3">
-                                <rect key="frame" x="310" y="84" width="53" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kv1-Js-Dy3">
+                                <rect key="frame" x="319" y="77" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Refresh">
+                                <state key="normal" image="Reload">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -184,4 +184,7 @@
             <point key="canvasLocation" x="3000.8000000000002" y="1055.6221889055473"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Reload" width="50" height="50"/>
+    </resources>
 </document>
