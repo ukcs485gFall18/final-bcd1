@@ -91,51 +91,33 @@ class MyReservation : NSObject { // Create the reservation
             
             for currParty in partySnapshot {
                 if (userPartyName == currParty.key){
+                    // Local Variables
                     currPartyName = currParty.key
                     guard let reservations = currParty.value as? [String:Any] else{
                         return
                     }
                     
                     // Each reservation referenced inside loop
-                    print ("\(currPartyName)'s active reservations: ")
                     for reservation in reservations{
-                        print(reservation)
-                        let partyValues = reservation.value as! [String : Any]   // Dictionary containing each value pair as an element
+                        // Store variables as a dictionary
+                        let partyValues = reservation.value as! [String : Any]   // Dictionary containing each value pair of res
                         
+                        // Collect variables from database
                         let currComp = reservation.key
                         let currDate = partyValues["partyDate"] as! String
-                        let currPartySize = partyValues["partyDate"] as! String
-                        let currUUIDString = partyValues["partySize"] as! String
+                        let currPartySize = partyValues["partySize"] as! Int
+                        let currUUIDString = partyValues["partyUUID"] as! String
                         
                         // Convert UUIDString back to a normal UUID to be placed into reservation
                         let currUUID = UUID(uuidString: currUUIDString)
                         
                         // Compile all info into reservation object and add to array
-                        let resObj = MyReservation(date: currDate, uuid: currUUID ?? UUID(), CompName: currComp, name: currPartyName, size: Int(currPartySize) ?? 0)
+                        let resObj = MyReservation(date: currDate, uuid: currUUID ?? UUID(), CompName: currComp, name: currPartyName, size: currPartySize)
                         reservationsArray.append(resObj)
                     }
                 }
             }
             handler(reservationsArray) // Returns an array of "MyReservation" objects`
         }
-    }
-    
-    // Get the active reservations
-    // Returns a list of reservations the user has
-    func getReservations(userPartyName : String) -> [MyReservation]{
-        var currReservations : [MyReservation] = []
-        
-        getPartiesWithReservations(userPartyName, handler: { (foundPartiesWithReservations) in
-            for reservation in foundPartiesWithReservations{
-                print (reservation)
-                /*if (reservation.getPartyName() == userPartyName){
-                 currReservations.append(reservation)
-                 }*/
-            }
-            
-        }
-        )
-        
-        return currReservations
     }
 }
