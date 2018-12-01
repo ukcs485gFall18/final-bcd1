@@ -133,13 +133,15 @@ class ReservationsViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HostCell") as! ReservationsHostTableViewCell
+        
+        cell.customerNameLabel?.text = String("Test \(indexPath.item)")
         
         if let calendars = self.calendars {
             let calendarName = calendars[(indexPath as NSIndexPath).row].title
-            cell.textLabel?.text = calendarName
+            cell.dateLabel?.text = calendarName
         } else {
-            cell.textLabel?.text = "Unknown Calendar Name"
+            cell.dateLabel?.text = "Unknown Calendar Name"
         }
         
         return cell

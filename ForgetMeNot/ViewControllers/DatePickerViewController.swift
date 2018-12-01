@@ -127,7 +127,7 @@ class DatePickerViewController: UIViewController {
             print(pTime)
             print(dateOfReservation)        //DEBUGGING PURPOSES
         
-            let pCompName = txtCompName.text!
+            //let pCompName = txtCompName.text!
             
             var databaseRef : DatabaseReference? // Create firebase database reference variable
             databaseRef = Database.database().reference()  // Link the firebase database
