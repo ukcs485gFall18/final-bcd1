@@ -142,7 +142,7 @@ class DatePickerViewController: UIViewController {
             #warning("NOT SURE IF THIS IS NEEDED")
             let userReservation = MyReservation(date: dateOfReservation, uuid: UUID(),  CompName: pCompName, name: pName, size: pSize!)
             
-            #warning("TODO: NEED TO ADD PARTY NAME TO KPARTYNAMES...MAYBE?")
+            kPartyNames.insert(pName, at: 0)
             
             //================================================================//
             //                    *Firebase insertions                        //

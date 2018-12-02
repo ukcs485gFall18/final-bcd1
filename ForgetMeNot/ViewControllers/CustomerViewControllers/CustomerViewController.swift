@@ -27,7 +27,8 @@ class CustomerViewController : UIViewController{
                 
                 for reservation in foundParties{
                     currReservationList.append(reservation)
-                    print("     " + reservation.getCompName())
+                    print()
+                    print("     " + reservation.getPartyName() + ": " + reservation.getCompName())
                 }
             })
             
