@@ -1,14 +1,12 @@
-//
 //  Alert.swift
-//  ForgetMeNot
 //
 //  Created by David Mercado on 10/27/18.
-//  Copyright © 2018 Ray Wenderlich. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
+//struct for easier display of alerts
 struct Alert {
     
     private static func showBasicAlert(on vc: UIViewController, with title: String, message: String){
@@ -22,7 +20,7 @@ struct Alert {
     }
     
     static func showIncompleteFormAlert(on vc: UIViewController){
-        showBasicAlert(on: vc, with: "Error", message: "Please enter a Party's Name, Size, Date, and Time")
+        showBasicAlert(on: vc, with: "Error", message: "Please enter the Party's Name, Resturant Name, Party's Size, Date, and Time")
     }
     /*
     let alertController = UIAlertController(title: "Reservation", message: "Reservation Comfirmed for \(Name) on \(Date) at \(Time)", preferredStyle: .alert)
