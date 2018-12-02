@@ -17,6 +17,9 @@ class CustomerViewController : UIViewController{
         var currReservationList : [MyReservation] = []
         var counter = 0
         
+        // Spin Animation
+        (sender as! UIButton).spin() // Animate button when pressed
+        
         // Get a list of reservations for every party name of the user
         for _ in kPartyNames{
             resObj.getPartiesWithReservations(kPartyNames[counter], handler: { (foundParties) in
