@@ -13,7 +13,7 @@ import Firebase
    ========================================= */
 var kreservationList : [MyReservation] = []
 var kprevReservationList : [MyReservation] = []
-var kPartyNames : [String] = ["BlakeGoesToChilis"]  // Always store current party name in the first element
+var kPartyNames : [String] = ["BlakeGoesToChilis", "Bday"]  // Always store current party name in the first element
 var kprofilePicure : String = ""
 var kuserEmail : String = ""                        // Stored on login
 var kuserType : String = ""                         // Stored on login
