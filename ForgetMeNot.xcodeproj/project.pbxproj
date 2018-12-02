@@ -24,6 +24,8 @@
 		6353EFF1218271E1001C1852 /* ReservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353EFF0218271E0001C1852 /* ReservationsViewController.swift */; };
 		6353EFF3218271EF001C1852 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6353EFF2218271EF001C1852 /* DatePickerViewController.swift */; };
 		635EA40721611F3D00F51096 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635EA40621611F3D00F51096 /* CalendarViewController.swift */; };
+		91A24FB621B2F5E900DA5E8A /* ReservationsCustomerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A24FB521B2F5E900DA5E8A /* ReservationsCustomerTableViewCell.swift */; };
+		91A24FB821B2F97400DA5E8A /* ReservationsHostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A24FB721B2F97400DA5E8A /* ReservationsHostTableViewCell.swift */; };
 		C00360541E39747F00234FCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00360531E39747F00234FCD /* LaunchScreen.storyboard */; };
 		C00360911E3EA86500234FCD /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003608A1E3EA86500234FCD /* Icons.swift */; };
 		C00360921E3EA86500234FCD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003608B1E3EA86500234FCD /* Item.swift */; };
@@ -57,6 +59,8 @@
 		6353EFF2218271EF001C1852 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		635EA40621611F3D00F51096 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		7DA296AB4079D8244CD75961 /* Pods_ForgetMeNot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForgetMeNot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91A24FB521B2F5E900DA5E8A /* ReservationsCustomerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationsCustomerTableViewCell.swift; sourceTree = "<group>"; };
+		91A24FB721B2F97400DA5E8A /* ReservationsHostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsHostTableViewCell.swift; sourceTree = "<group>"; };
 		9649CB67C8B90A637B4D0175 /* Pods-ForgetMeNot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForgetMeNot.release.xcconfig"; path = "Pods/Target Support Files/Pods-ForgetMeNot/Pods-ForgetMeNot.release.xcconfig"; sourceTree = "<group>"; };
 		C00360531E39747F00234FCD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C003608A1E3EA86500234FCD /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
@@ -102,6 +106,25 @@
 			path = StoryBoard;
 			sourceTree = "<group>";
 		};
+		6335615221B4469700E3C493 /* CustomerViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6353EFF2218271EF001C1852 /* DatePickerViewController.swift */,
+				25E9FDEA21AE7D490073DF78 /* CustomerViewController.swift */,
+			);
+			path = CustomerViewControllers;
+			sourceTree = "<group>";
+		};
+		6335615321B446C400E3C493 /* HostViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C003608F1E3EA86500234FCD /* AddItemViewController.swift */,
+				6353EFF0218271E0001C1852 /* ReservationsViewController.swift */,
+				635EA40621611F3D00F51096 /* CalendarViewController.swift */,
+			);
+			path = HostViewControllers;
+			sourceTree = "<group>";
+		};
 		C00360521E3973ED00234FCD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,8 +154,10 @@
 		C003608C1E3EA86500234FCD /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				91A24FB521B2F5E900DA5E8A /* ReservationsCustomerTableViewCell.swift */,
 				C003608D1E3EA86500234FCD /* ItemCell.swift */,
 				C00360961E3EA88F00234FCD /* IconCell.swift */,
+				91A24FB721B2F97400DA5E8A /* ReservationsHostTableViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -140,12 +165,9 @@
 		C003608E1E3EA86500234FCD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				25E9FDEA21AE7D490073DF78 /* CustomerViewController.swift */,
-				C003608F1E3EA86500234FCD /* AddItemViewController.swift */,
-				635EA40621611F3D00F51096 /* CalendarViewController.swift */,
+				6335615321B446C400E3C493 /* HostViewControllers */,
+				6335615221B4469700E3C493 /* CustomerViewControllers */,
 				C00360901E3EA86500234FCD /* ItemsViewController.swift */,
-				6353EFF2218271EF001C1852 /* DatePickerViewController.swift */,
-				6353EFF0218271E0001C1852 /* ReservationsViewController.swift */,
 				25D6EC2D217FBCD3008A9EA5 /* SignInViewController.swift */,
 				25D6EC2F217FBCE9008A9EA5 /* SignUpViewController.swift */,
 			);
@@ -341,11 +363,13 @@
 			files = (
 				25D6EC2E217FBCD3008A9EA5 /* SignInViewController.swift in Sources */,
 				25E9FDEB21AE7D490073DF78 /* CustomerViewController.swift in Sources */,
+				91A24FB621B2F5E900DA5E8A /* ReservationsCustomerTableViewCell.swift in Sources */,
 				635EA40721611F3D00F51096 /* CalendarViewController.swift in Sources */,
 				630C1BE921B08F2D00755F71 /* CompData.swift in Sources */,
 				C00360941E3EA86500234FCD /* AddItemViewController.swift in Sources */,
 				250E490F217679C300D4F516 /* Reservation.swift in Sources */,
 				C00360971E3EA88F00234FCD /* IconCell.swift in Sources */,
+				91A24FB821B2F97400DA5E8A /* ReservationsHostTableViewCell.swift in Sources */,
 				6353EFF1218271E1001C1852 /* ReservationsViewController.swift in Sources */,
 				C00360951E3EA86500234FCD /* ItemsViewController.swift in Sources */,
 				25E3BF3E21A500E6003DECBA /* Helper.swift in Sources */,
