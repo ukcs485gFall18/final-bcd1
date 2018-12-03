@@ -34,7 +34,7 @@ class CustomerViewController : UIViewController /*UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let resCell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath)
+        let resCell = tableView.dequeueReusableCell(withIdentifier: "resCell", for: indexPath)
         switch(segmentedControl.selectedSegmentIndex){
         case 0:
             resCell.textLabel!.text = "this won't work"
