@@ -3,37 +3,77 @@
 //  ForgetMeNot
 //
 //  Created by Blake Sweet on 11/28/18.
-//  Copyright © 2018 Ray Wenderlich. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class CustomerViewController : UIViewController{
+class CustomerViewController : UIViewController, UITableViewDataSource{
+    @IBOutlet weak var customerReservationTableView: UITableView!
     
-    @IBAction func refreshButton(_ sender: Any) {
-        // Local Variables
-        let resObj : MyReservation = MyReservation(date: "", uuid: UUID(), CompName: "", name: "", size: 0)
-        var currReservationList : [MyReservation] = []
-        var counter = 0
+    // Local Variables & Outlets
+    var currReservationList : [MyReservation] = []
+    
+    
+    override func viewDidLoad() {
+        //Reload reservations when loading in for first time
+        reloadCustomerReservations()
         
-        // Spin Animation
-        (sender as! UIButton).spin() // Animate button when pressed
+        super.viewDidLoad()
+        
+        //customerReservationTableView.dataSource = self
+    }
+    
+    
+    /*  =========================
+     *      Table Properties
+     *  ========================= */
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currReservationList.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = customerReservationTableView.dequeueReusableCell(withIdentifier: "reservationReusableCell", for: indexPath)
+        
+        // Modify Cell attributes
+        cell.textLabel?.text = currReservationList[indexPath.row].getCompName()
+        
+        return cell
+    }
+    
+    
+    /*  =========================
+     *      View Functions
+     *  ========================= */
+    func reloadCustomerReservations(){
+        
+        // Local Variables
+        var counter = 0 // Used to track the number of party names the user has
+        let resObj = MyReservation(date: "", uuid: UUID(), CompName: "", name: "", size: 0)
         
         // Get a list of reservations for every party name of the user
         for _ in kPartyNames{
             resObj.getPartiesWithReservations(kPartyNames[counter], handler: { (foundParties) in
-                print ("Companies: ")
                 
+                // Parse each reservation per the found party name
                 for reservation in foundParties{
-                    currReservationList.append(reservation)
-                    print("     " + reservation.getCompName())
+                    self.currReservationList.append(reservation)
                 }
             })
             
             counter += 1
         }
-
-        // Reload reservations into cells
+    }
+    
+    /*  =========================
+     *      View Controls
+     *  ========================= */
+    @IBAction func refreshButton(_ sender: Any) {
+        print ("Reloading reservations")
+        
+        // Spin Animation
+        (sender as! UIButton).spin()
+        
+        // Reload reservations
+        reloadCustomerReservations()
     }
 }

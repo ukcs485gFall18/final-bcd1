@@ -3,7 +3,6 @@
 //  ForgetMeNot
 //
 //  Created by Corey Baker on 12/1/18.
-//  Copyright © 2018 Ray Wenderlich. All rights reserved.
 //
 
 import UIKit
