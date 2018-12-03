@@ -16,6 +16,7 @@ class SignUpViewController : UIViewController{
     @IBOutlet weak var userPassConfirm: UITextField!
     @IBOutlet weak var IDSelector: UISegmentedControl!
     
+    #warning("Can add this to the Alert.swift")
     func showMessage (alertTitle : String, alertMessage : String, actionTitle : String){
         let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: actionTitle, style: .cancel, handler: nil)
@@ -43,6 +44,7 @@ class SignUpViewController : UIViewController{
                     
                     let userID = createdUser.user.uid
                     
+                    #warning("Can add this to the Alert.swift")
                     // User added successful message
                     self.showMessage(alertTitle: "Complete ✅", alertMessage: "Congratulations on your new account. Please continue to the login page.", actionTitle: "Done")
                     
@@ -53,6 +55,7 @@ class SignUpViewController : UIViewController{
                     else if (self.IDSelector.selectedSegmentIndex == 1){// Company
                         databaseRef?.child("userList").child(userID).setValue(["userType" : "Company"])// Write to database the user is a Company
                     }
+                    #warning("TODO: NEED TO ADD A TEXT FIELD WHEN COMPANY IS SELECTED TO TYPE IN THE COMPANY'S NAME")
                     
                     databaseRef?.child("userList/\(userID)/email").setValue(userEmailTxt)
                 }
@@ -66,6 +69,7 @@ class SignUpViewController : UIViewController{
             }
         }
         else{ // Passwords do not match
+            #warning("Can add this to the Alert.swift")
             showMessage(alertTitle: "Passwords do not match", alertMessage: "Please enter identical passwords", actionTitle: "Dismiss")
         }
     }

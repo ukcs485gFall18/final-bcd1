@@ -20,6 +20,8 @@ class DatePickerViewController: UIViewController {
     
     //UI Date picker
     let datePicker = UIDatePicker()
+    #warning("MAKE THIS DYNAMIC")
+    let avaiableResturants = ["Chilis"]             //TODO: GET THIS INFO FROM FIREBASE TABLE
     var dateOfReservation = ""
     
     //--------------------------------------------------------------------------
@@ -35,6 +37,8 @@ class DatePickerViewController: UIViewController {
         showDatePicker()
     }
 
+    #warning("TODO: MAKE UIPICKER FOR RESTURANTS")
+    
     //--------------------------------------------------------------------------
     //function to display UI date picker when either date or time text fields are clicked on
     func showDatePicker(){
@@ -139,7 +143,6 @@ class DatePickerViewController: UIViewController {
             print(dateOfReservation)                                            //DEBUGGING PURPOSES
             
             //init a new reservation
-            #warning("NOT SURE IF THIS IS NEEDED")
             let userReservation = MyReservation(date: dateOfReservation, uuid: UUID(),  CompName: pCompName, name: pName, size: pSize!)
             
             kPartyNames.insert(pName, at: 0)
@@ -150,7 +153,7 @@ class DatePickerViewController: UIViewController {
             var databaseRef : DatabaseReference?            // Create firebase database reference variable
             databaseRef = Database.database().reference()   // Link the firebase database
             
-            //Call firebase and insert user's Party name and Resturant into firebase
+            //Call firebase and insert user's Party name into firebase
         databaseRef?.child("reservation").child(userReservation.getPartyName()).child(userReservation.getCompName()).setValue(["partyDate" : userReservation.getDate()])
             
             //Call firebase and insert Party's size into firebase under same Party name as above
@@ -158,9 +161,19 @@ class DatePickerViewController: UIViewController {
             
             //Call firebase and insert Party's UUID into firebase under same Party name as above
             databaseRef?.child("reservation/\(userReservation.getPartyName())/\(userReservation.getCompName())/partyUUID").setValue(userReservation.getUUIDString())
+
+            //------------------------------------------------------------------
+            //Call firebase and insert user's reservation into Resturant's table
+        databaseRef?.child(userReservation.getCompName()).child(userReservation.getUUIDString()).setValue(["partyDate" : userReservation.getDate()])
             
+            //Call firebase and insert Party's Name into firebase under same Party UUID
+            databaseRef?.child("\(userReservation.getCompName())/\(userReservation.getUUIDString())/partyName").setValue(userReservation.getPartyName())
             
-            
+            //Call firebase and insert Party's Size into firebase under same Party UUID
+            databaseRef?.child("\(userReservation.getCompName())/\(userReservation.getUUIDString())/partySize").setValue(userReservation.getPartySize())
+
+            //================================================================//
+
             #warning("for better UI experience intergrade this")
             //this is a confirmation alert to user...need to seague so afterwards it exits
             //Alert.showConfirmReservationAlert(on:self)

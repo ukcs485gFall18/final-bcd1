@@ -11,6 +11,7 @@ import UIKit
 
 class CustomerViewController : UIViewController{
     
+    @IBOutlet weak var userReservationTableView: UITableView!
     @IBAction func refreshButton(_ sender: Any) {
         // Local Variables
         let resObj : MyReservation = MyReservation(date: "", uuid: UUID(), CompName: "", name: "", size: 0)
@@ -34,7 +35,8 @@ class CustomerViewController : UIViewController{
             
             counter += 1
         }
-
+        #warning("TODO")
         // Reload reservations into cells
+        self.userReservationTableView.reloadData()
     }
 }

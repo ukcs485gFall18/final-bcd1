@@ -36,6 +36,7 @@ class SignInViewController : UIViewController{
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    #warning("Can add this to the Alert.swift")
     // Display a popup alert
     func showMessage (alertTitle : String, alertMessage : String, actionTitle : String){
         let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
@@ -59,7 +60,6 @@ class SignInViewController : UIViewController{
                 // Gather userType from database for the current user
                 getUsersData([userID], handler: { (foundUsers) in
 
-                    
                     // Parse array of users for desired user's type
                     for person in foundUsers{
                         if (person.email == self.email.text!){ // Authentication successful
@@ -85,6 +85,7 @@ class SignInViewController : UIViewController{
                                 print("User: " + userID + " has been signed in to company side")
                             }
                             else{
+                                #warning("Can add this to the Alert.swift")
                                 self.showMessage(alertTitle: "Error",
                                                  alertMessage: "User attempted to sign in with no user type.",
                                                  actionTitle: "Dismiss")
@@ -98,6 +99,7 @@ class SignInViewController : UIViewController{
             else{
                 (sender as! UIButton).shake() // Shake button animation
                 
+                #warning("Can add this to the Alert.swift")
                 // Display message with Error
                 let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
