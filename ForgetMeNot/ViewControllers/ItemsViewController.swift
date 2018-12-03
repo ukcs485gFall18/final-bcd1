@@ -41,14 +41,6 @@ class ItemsViewController: UIViewController {
     loadItems()
   }
   
-    @IBAction func segChange(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0{
-            //dispaly upcoming reservations
-        }
-        else{
-            //display completed reservations
-        }
-    }
     
 /*
     //David Mercado added this
@@ -118,7 +110,6 @@ extension ItemsViewController : UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath) as! ItemCell
     cell.item = items[indexPath.row]
-    
     return cell
   }
   
