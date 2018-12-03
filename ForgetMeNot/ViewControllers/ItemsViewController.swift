@@ -43,7 +43,7 @@ class ItemsViewController: UIViewController {
     loadItems()
   }
   
-    @IBAction func segChange(_ sender: UISegmentedControl) {
+ /*   @IBAction func segChange(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
             //dispaly upcoming reservations
             
@@ -64,7 +64,7 @@ class ItemsViewController: UIViewController {
         else{
             //display completed reservations
         }
-    }
+    }*/
     
 /*
     //David Mercado added this
