@@ -48,32 +48,28 @@ class MyReservation : NSObject { // Create the reservation
      *  but prevents modification.
      * ===================================================
     */
-    func getUUID() -> UUID {
-        return resUUID
-    }
-    
-    func getUUIDString() -> String {
-        return resUUID.uuidString
-    }
     func getDate() -> String {
         return resDate
     }
-    
+    func getUUID() -> UUID {
+        return resUUID
+    }
+    func getUUIDString() -> String {
+        return resUUID.uuidString
+    }
+    func getCheckInStatus() -> Bool{
+        return resStatus
+    }
+    func getCompName() -> String {
+        return resCompName
+    }
     func getPartyName() -> String {
         return resName
     }
-    
     func getPartySize() -> Int {
         return resSize
     }
     
-    func getCompName() -> String {
-        return resCompName
-    }
-    
-    func getCheckInStatus() -> Bool{
-        return resStatus
-    }
     // ===================================================
     
     /* ===================================================
@@ -120,4 +116,6 @@ class MyReservation : NSObject { // Create the reservation
             handler(reservationsArray) // Returns an array of "MyReservation" objects`
         }
     }
+    
+    
 }

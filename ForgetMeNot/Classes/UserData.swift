@@ -1,6 +1,5 @@
 //
 //  UserData.swift
-//  ForgetMeNot
 //
 //  Created by Blake Sweet on 11/13/18.
 //

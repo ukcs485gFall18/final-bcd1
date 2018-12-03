@@ -103,6 +103,9 @@
                         <viewLayoutGuide key="safeArea" id="PTv-6U-bHJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Dibs (Customer)" id="Sha-Bi-jov"/>
+                    <connections>
+                        <outlet property="userReservationTableView" destination="5ze-pt-nmn" id="ZOk-ad-uGT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycq-Fd-HDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pKP-IK-s7J" userLabel="Exit" sceneMemberID="exit"/>
