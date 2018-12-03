@@ -52,8 +52,8 @@ class CustomerViewController : UIViewController /*UITableViewDataSource, UITable
 
         var counter = 0
         
-        // Spin Animation
-        //(sender as! UIButton).spin() // Animate button when pressed
+        //Spin Animation
+        (sender as! UIButton).spin() // Animate button when pressed
         
         // Get a list of reservations for every party name of the user
         for _ in kPartyNames{
