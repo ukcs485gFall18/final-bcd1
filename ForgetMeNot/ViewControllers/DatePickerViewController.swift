@@ -7,7 +7,7 @@
 import UIKit
 import Firebase
 
-class DatePickerViewController: UIViewController {
+class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     //Text Field Connection
     @IBOutlet weak var txtPartyName: UITextField!
     @IBOutlet weak var txtCompName: UITextField!
@@ -20,8 +20,10 @@ class DatePickerViewController: UIViewController {
     
     //UI Date picker
     let datePicker = UIDatePicker()
+    let resturantPicker = UIPickerView()
+    
     #warning("MAKE THIS DYNAMIC")
-    let avaiableResturants = ["Chilis"]             //TODO: GET THIS INFO FROM FIREBASE TABLE
+    let avaiableResturants = ["Chilis", "Applebees", "TGI Friday's"]             //TODO: GET THIS INFO FROM FIREBASE TABLE
     var dateOfReservation = ""
     
     //--------------------------------------------------------------------------
@@ -35,6 +37,7 @@ class DatePickerViewController: UIViewController {
 
         //display date picker
         showDatePicker()
+        showResturantPicker()
     }
 
     #warning("TODO: MAKE UIPICKER FOR RESTURANTS")
@@ -69,6 +72,52 @@ class DatePickerViewController: UIViewController {
     }
     
     //--------------------------------------------------------------------------
+    //function to display UI picker for resturants when text box is tapped
+    func showResturantPicker(){
+        resturantPicker.delegate = self
+        resturantPicker.delegate?.pickerView?(resturantPicker, didSelectRow: 0, inComponent: 0)
+    
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        
+        //'Done' button
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneRestPicker));
+        
+        //space between 'done' and 'cancel' buttons
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        
+        //'Cancel' button
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        //adding date picker to textfields (Company name)
+        txtCompName.inputAccessoryView = toolbar
+        txtCompName.inputView = resturantPicker
+    }
+    
+    //number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    //number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return avaiableResturants.count
+    }
+    
+    //data being returned
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return avaiableResturants[row]
+    }
+    
+    //sets textfield to resturant name
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        txtCompName.text =  avaiableResturants[row]
+    }
+    
+    //--------------------------------------------------------------------------
     //When 'Done' is pressed in date picker and scrubs user input to prep for storing reservation
     @objc func donedatePicker(){
         
@@ -86,6 +135,14 @@ class DatePickerViewController: UIViewController {
         dateOfReservation = dateFormatter.string(from: datePicker.date)
         
         print(dateOfReservation)                                                //DEBUGGING PURPOSE
+        self.view.endEditing(true)
+    }
+    
+    //--------------------------------------------------------------------------
+    //When 'Done' is pressed in resturant picker and scrubs user input to prep for storing reservation
+    @objc func doneRestPicker(){
+        //txtCompName.text = resturantPicker.dataSource as? String
+        print(txtCompName.text!)                                                //DEBUGGING PURPOSE
         self.view.endEditing(true)
     }
     
@@ -145,6 +202,7 @@ class DatePickerViewController: UIViewController {
             //init a new reservation
             let userReservation = MyReservation(date: dateOfReservation, uuid: UUID(),  CompName: pCompName, name: pName, size: pSize!)
             
+            #warning("no longer active, use new USER CLASS")
             kPartyNames.insert(pName, at: 0)
             
             //================================================================//
@@ -153,7 +211,7 @@ class DatePickerViewController: UIViewController {
             var databaseRef : DatabaseReference?            // Create firebase database reference variable
             databaseRef = Database.database().reference()   // Link the firebase database
             
-            //Call firebase and insert user's Party name into firebase
+            //Call firebase and insert user's reservation into user's Party name
         databaseRef?.child("reservation").child(userReservation.getPartyName()).child(userReservation.getCompName()).setValue(["partyDate" : userReservation.getDate()])
             
             //Call firebase and insert Party's size into firebase under same Party name as above
@@ -164,13 +222,20 @@ class DatePickerViewController: UIViewController {
 
             //------------------------------------------------------------------
             //Call firebase and insert user's reservation into Resturant's table
-        databaseRef?.child(userReservation.getCompName()).child(userReservation.getUUIDString()).setValue(["partyDate" : userReservation.getDate()])
+            
+            databaseRef?.child("companyList/\(userReservation.getCompName())/\(userReservation.getUUIDString())").setValue(userReservation.getUUIDString())
+            databaseRef?.child("companyList/\(userReservation.getCompName())/\(userReservation.getUUIDString())/PartyDate").setValue(userReservation.getDate())
+            databaseRef?.child("companyList/\(userReservation.getCompName())/\(userReservation.getUUIDString())/PartyName").setValue(userReservation.getPartyName())
+            databaseRef?.child("companyList/\(userReservation.getCompName())/\(userReservation.getUUIDString())/PartySize").setValue(userReservation.getPartySize())
+
+            /*
+            databaseRef?.child(userReservation.getCompName()).child(userReservation.getUUIDString()).setValue(["partyDate" : userReservation.getDate()])
             
             //Call firebase and insert Party's Name into firebase under same Party UUID
             databaseRef?.child("\(userReservation.getCompName())/\(userReservation.getUUIDString())/partyName").setValue(userReservation.getPartyName())
             
             //Call firebase and insert Party's Size into firebase under same Party UUID
-            databaseRef?.child("\(userReservation.getCompName())/\(userReservation.getUUIDString())/partySize").setValue(userReservation.getPartySize())
+            databaseRef?.child("\(userReservation.getCompName())/\(userReservation.getUUIDString())/partySize").setValue(userReservation.getPartySize())*/
 
             //================================================================//
 
