@@ -35,7 +35,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         
         // Modify Cell attributes
         cell.backgroundColor = UIColor.black
-        cell.companyNameLabel = currReservationList[indexPath.row].getCompName()
+        cell.companyNameLabel?.text = currReservationList[indexPath.row].getCompName()
         
         return cell
     }

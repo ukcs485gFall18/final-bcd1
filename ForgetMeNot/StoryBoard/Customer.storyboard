@@ -82,7 +82,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="companyNameLabel" destination="x9K-33-UgR" id="Ecp-dX-nDm"/>
+                                            <outlet property="companyNameLabel" destination="x9K-33-UgR" id="rIA-J3-mSH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -207,6 +207,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Reload" width="50" height="50"/>
+        <image name="Reload" width="37.5" height="37.5"/>
     </resources>
 </document>
