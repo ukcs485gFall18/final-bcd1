@@ -8,20 +8,18 @@
 import Foundation
 import UIKit
 
-class CustomerViewController : UIViewController, UITableViewDataSource{
+class CustomerViewController : UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var customerReservationTableView: UITableView!
-    
-    // Local Variables & Outlets
-    var currReservationList : [MyReservation] = []
     
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         //Reload reservations when loading in for first time
         reloadCustomerReservations()
         
-        super.viewDidLoad()
-        
-        //customerReservationTableView.dataSource = self
+        customerReservationTableView.dataSource = self
+        customerReservationTableView.delegate = self
     }
     
     
@@ -29,13 +27,14 @@ class CustomerViewController : UIViewController, UITableViewDataSource{
      *      Table Properties
      *  ========================= */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currReservationList.count
+        return kreservationList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = customerReservationTableView.dequeueReusableCell(withIdentifier: "reservationReusableCell", for: indexPath)
         
         // Modify Cell attributes
-        cell.textLabel?.text = currReservationList[indexPath.row].getCompName()
+        cell.backgroundColor = UIColor.black
+        //cell.textLabel?.text = kreservationList[indexPath.row].getCompName()
         
         return cell
     }
@@ -56,7 +55,9 @@ class CustomerViewController : UIViewController, UITableViewDataSource{
                 
                 // Parse each reservation per the found party name
                 for reservation in foundParties{
-                    self.currReservationList.append(reservation)
+                    //if (reservation.isUnique()){
+                        kreservationList.append(reservation)
+                    //}
                 }
             })
             
