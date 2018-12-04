@@ -225,20 +225,21 @@ func populateCompany(Host: Company) {
     // Create firebase reference and link to database
     let dataRef = Database.database().reference()
     
-    dataRef.child(Host.getName()).observe(.value) { (datasnapshot) in
+    dataRef.child("companyList").child(Host.getName()).observe(.value) { (datasnapshot) in
         guard let partySnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
-        print("SnapShot: \(partySnapshot)")
+        print("SnapShot: \(partySnapshot)")                                     //DEBUGGING PURPOSES
         
         //iterate through the Company's reservation table
         for currParty in partySnapshot{
+            print("currParty: \(currParty.key)")
             guard let reservations = currParty.value as? [String:Any] else{
                 return
             }
-            print("reservations: \(reservations)")
+            print("reservations: \(reservations)")                              //DEBUGGING PURPOSES
             // Each reservation referenced inside loop
             for reservation in reservations{
                 // Store variables as a dictionary
-                print("reservation: \(reservation)")
+                print("reservation: \(reservation)")                            //DEBUGGING PURPOSES
                 #warning("FIX ME!!!")
                /* let partyValues = reservation.value as! [String:Any] //else{
                     //return
