@@ -109,8 +109,8 @@
 		63330EAD21B706F100E4F712 /* HostViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				635EA40621611F3D00F51096 /* CalendarViewController.swift */,
 				6353EFF0218271E0001C1852 /* ReservationsViewController.swift */,
+				635EA40621611F3D00F51096 /* CalendarViewController.swift */,
 			);
 			path = HostViewControllers;
 			sourceTree = "<group>";
@@ -118,8 +118,8 @@
 		63330EAE21B7070900E4F712 /* CustomerViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				25E9FDEA21AE7D490073DF78 /* CustomerViewController.swift */,
 				6353EFF2218271EF001C1852 /* DatePickerViewController.swift */,
+				25E9FDEA21AE7D490073DF78 /* CustomerViewController.swift */,
 			);
 			path = CustomerViewControllers;
 			sourceTree = "<group>";
