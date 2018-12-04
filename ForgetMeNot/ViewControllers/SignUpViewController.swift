@@ -31,6 +31,7 @@ class SignUpViewController : UIViewController{
         databaseRef = Database.database().reference()  // Link the firebase database
         
         let userEmailTxt = self.userEmail.text!
+        let userCompanyName = "Chilis"
         
         if (userPass.text == userPassConfirm.text){
             Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!)
@@ -54,6 +55,11 @@ class SignUpViewController : UIViewController{
                     }
                     else if (self.IDSelector.selectedSegmentIndex == 1){// Company
                         databaseRef?.child("userList").child(userID).setValue(["userType" : "Company"])// Write to database the user is a Company
+                        databaseRef?.child("userList/\(userID)/name").setValue(userCompanyName)
+
+                        //insert to company database
+                        databaseRef?.child("companyList").child(userCompanyName).setValue(["userID" : "\(userID)"])
+                        
                     }
                     #warning("TODO: NEED TO ADD A TEXT FIELD WHEN COMPANY IS SELECTED TO TYPE IN THE COMPANY'S NAME")
                     
