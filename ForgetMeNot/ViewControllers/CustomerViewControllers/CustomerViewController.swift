@@ -35,7 +35,7 @@ class CustomerViewController : UIViewController{
             
             counter += 1
         }
-        #warning("TODO")
+        
         // Reload reservations into cells
         self.userReservationTableView.reloadData()
     }
