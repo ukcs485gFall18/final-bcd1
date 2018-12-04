@@ -58,6 +58,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="companyLabelName" destination="niK-OR-YbC" id="6QL-V9-Yeq"/>
                                             <outlet property="companyNameLabel" destination="V2L-OC-BQQ" id="BKt-n0-l7G"/>
                                         </connections>
                                     </tableViewCell>
@@ -82,9 +83,6 @@
                                 <state key="normal" image="Reload">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="refreshButton:" destination="QHP-O8-dd6" eventType="touchUpInside" id="IqM-1Q-osX"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.14811462163925171" green="0.48751288652420044" blue="0.7906232476234436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -104,7 +102,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Dibs (Customer)" id="Sha-Bi-jov"/>
                     <connections>
-                        <outlet property="customerReservationTableView" destination="5ze-pt-nmn" id="kTB-Fr-TXf"/>
+                        <outlet property="customerReservationTableView" destination="5ze-pt-nmn" id="Jat-Im-ac9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycq-Fd-HDE" userLabel="First Responder" sceneMemberID="firstResponder"/>

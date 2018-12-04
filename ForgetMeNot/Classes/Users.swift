@@ -100,10 +100,11 @@ class Users {
     }*/
     
     // Load reservations for the user
-    func loadReservations(){
+    func loadReservations() -> [MyReservation]{
             
         // Local Variables
         var counter = 0 // Used to track the number of party names the user has
+        var currReservationList : [MyReservation] = []
         
         // Get a list of reservations for every party name of the user
         for _ in reservationList{
@@ -112,13 +113,15 @@ class Users {
                 // Parse each reservation per the found party name
                 for reservation in foundParties{
                     //if (reservation.isUnique()){
-                    self.reservationList.append(reservation)
+                    currReservationList.append(reservation)
                     //}
                 }
             })
             
             counter += 1
         }
+        
+        return currReservationList
     }
     
     // Get partyNames
