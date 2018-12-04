@@ -30,11 +30,11 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         return kreservationList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = customerReservationTableView.dequeueReusableCell(withIdentifier: "reservationReusableCell", for: indexPath)
+        let cell = customerReservationTableView.dequeueReusableCell(withIdentifier: "reservationReusableCell", for: indexPath) as! ReservationsCustomerTableViewCell
         
         // Modify Cell attributes
         cell.backgroundColor = UIColor.black
-        //cell.textLabel?.text = kreservationList[indexPath.row].getCompName()
+        cell.companyNameLabel = kreservationList[indexPath.row].getCompName()
         
         return cell
     }
