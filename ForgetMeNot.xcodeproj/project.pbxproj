@@ -106,6 +106,24 @@
 			path = StoryBoard;
 			sourceTree = "<group>";
 		};
+		63330EAD21B706F100E4F712 /* HostViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				635EA40621611F3D00F51096 /* CalendarViewController.swift */,
+				6353EFF0218271E0001C1852 /* ReservationsViewController.swift */,
+			);
+			path = HostViewControllers;
+			sourceTree = "<group>";
+		};
+		63330EAE21B7070900E4F712 /* CustomerViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				25E9FDEA21AE7D490073DF78 /* CustomerViewController.swift */,
+				6353EFF2218271EF001C1852 /* DatePickerViewController.swift */,
+			);
+			path = CustomerViewControllers;
+			sourceTree = "<group>";
+		};
 		C00360521E3973ED00234FCD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,12 +164,10 @@
 		C003608E1E3EA86500234FCD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				63330EAE21B7070900E4F712 /* CustomerViewControllers */,
+				63330EAD21B706F100E4F712 /* HostViewControllers */,
 				C00360901E3EA86500234FCD /* ItemsViewController.swift */,
-				6353EFF0218271E0001C1852 /* ReservationsViewController.swift */,
 				C003608F1E3EA86500234FCD /* AddItemViewController.swift */,
-				635EA40621611F3D00F51096 /* CalendarViewController.swift */,
-				6353EFF2218271EF001C1852 /* DatePickerViewController.swift */,
-				25E9FDEA21AE7D490073DF78 /* CustomerViewController.swift */,
 				25D6EC2D217FBCD3008A9EA5 /* SignInViewController.swift */,
 				25D6EC2F217FBCE9008A9EA5 /* SignUpViewController.swift */,
 			);
