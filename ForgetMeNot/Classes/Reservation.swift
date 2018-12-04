@@ -35,13 +35,13 @@ class MyReservation : NSObject { // Create the reservation
      *
      * ===================================================
      */
-    func isUnique() -> Bool{
+    /*func isUnique(reservation : MyReservation) -> Bool{
         var flag = true // Assume unique until same reservation is found
         
         for reservation in {
-            if (Users.resDate)
+            if (){
         }
-    }
+    }*/
     
     
     /* ===================================================

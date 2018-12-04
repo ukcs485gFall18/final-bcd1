@@ -198,7 +198,7 @@ func getCompanyData(/*handler: @escaping (_ Host: Company) -> ()*/) {
         
         var myCompany: Company
         for user in usersnapshot {
-            if (user.key == kuserID){
+            /*if (user.key == kuserID){
                 let name = user.childSnapshot(forPath: "name").value as! String
                 
                 myCompany = Company(cName: name, ID: kuserID)
@@ -212,7 +212,7 @@ func getCompanyData(/*handler: @escaping (_ Host: Company) -> ()*/) {
                 #warning("FIX ME")
                 //error if company ID doesn't exist
                 //Alert.showCompanyErrorAlert(on: ReservationsViewController)
-            }
+            }*/
         }
     }
     

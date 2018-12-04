@@ -80,10 +80,32 @@ class Users {
      *  ==========================*/
     
     // Load all data for the user
-    func loadUser(){
+    /*func loadUser(){
         
         /* Load in reservations  */
         var counter = 0
+        for _ in reservationList{
+            getPartiesWithReservations(reservationList[counter].getPartyName(), handler: { (foundParties) in
+                
+                // Parse each reservation per the found party name
+                for reservation in foundParties{
+                    //if (reservation.isUnique()){
+                    self.reservationList.append(reservation)
+                    //}
+                }
+            })
+            
+            counter += 1
+        }
+    }*/
+    
+    // Load reservations for the user
+    func loadReservations(){
+            
+        // Local Variables
+        var counter = 0 // Used to track the number of party names the user has
+        
+        // Get a list of reservations for every party name of the user
         for _ in reservationList{
             getPartiesWithReservations(reservationList[counter].getPartyName(), handler: { (foundParties) in
                 
