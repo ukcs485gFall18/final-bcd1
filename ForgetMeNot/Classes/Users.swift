@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 // Created User model for retrieving data
 class Users {

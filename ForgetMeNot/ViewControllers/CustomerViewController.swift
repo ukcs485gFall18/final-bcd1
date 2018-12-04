@@ -36,6 +36,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         // Modify Cell attributes
         cell.backgroundColor = UIColor.black
         cell.companyNameLabel?.text = currReservationList[indexPath.row].getCompName()
+        print ("DEBUG: " + currReservationList[indexPath.row].getCompName())
         
         return cell
     }
@@ -57,7 +58,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
                 // Parse each reservation per the found party name
                 for reservation in foundParties{
                     //if (reservation.isUnique()){
-                        currReservationList.append(reservation)
+                    self.currReservationList.append(reservation)
                     //}
                 }
             })
