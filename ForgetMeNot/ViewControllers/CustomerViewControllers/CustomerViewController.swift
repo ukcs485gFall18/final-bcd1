@@ -13,7 +13,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     
     // Local Variables
     var currReservationList : [MyReservation] = []
-    var myCustomer : Users
+    var myCustomer : Users = Users(email: "", userType: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
