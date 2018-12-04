@@ -10,31 +10,14 @@ import Foundation
 import UIKit
 import Firebase
 
-func getUsersData(_ users: [String], handler: @escaping (_ usersArray: [Users]) -> ()) {
-    var usersArray = [Users]()
-    
-    // Create firebase reference and link to database
-    let dataRef = Database.database().reference()
-    
-    dataRef.child("userList").observe(.value) { (datasnapshot) in
-        guard let usersnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
-        
-        for user in usersnapshot {
-            let email = user.childSnapshot(forPath: "email").value as! String
-            let userType = user.childSnapshot(forPath: "userType").value as! String
-            
-            let userObj = Users(email: email, userType: userType)
-            usersArray.append(userObj)
-        }
-        handler(usersArray)
-    }
-}
-
 class SignInViewController : UIViewController{
     
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    
+    // User object
+    var myCustomer : Users = Users(email: "", userType: "")
     
     #warning("Can add this to the Alert.swift")
     // Display a popup alert
@@ -58,7 +41,7 @@ class SignInViewController : UIViewController{
                 }
                 
                 // Gather userType from database for the current user
-                getUsersData([userID], handler: { (foundUsers) in
+                self.myCustomer.getUsersData([userID], handler: { (foundUsers) in
 
                     // Parse array of users for desired user's type
                     for person in foundUsers{
@@ -70,9 +53,9 @@ class SignInViewController : UIViewController{
                             }
                             
                             // Remember user's information into UserData.swift
-                            kuserEmail = person.email!
-                            kuserType = person.userType!
-                            kuserID = userID
+                            //kuserEmail = person.email!
+                            //kuserType = person.userType!
+                            //kuserID = userID
                             
                             
                             // Take user down specific route
