@@ -10,6 +10,7 @@ import UIKit
 
 class CustomerViewController : UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var customerReservationTableView: UITableView!
+    var currReservationList : [MyReservation] = []
     
     
     override func viewDidLoad() {
@@ -27,14 +28,14 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
      *      Table Properties
      *  ========================= */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return kreservationList.count
+        return currReservationList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = customerReservationTableView.dequeueReusableCell(withIdentifier: "reservationReusableCell", for: indexPath) as! ReservationsCustomerTableViewCell
         
         // Modify Cell attributes
         cell.backgroundColor = UIColor.black
-        cell.companyNameLabel = kreservationList[indexPath.row].getCompName()
+        cell.companyNameLabel = currReservationList[indexPath.row].getCompName()
         
         return cell
     }
@@ -56,7 +57,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
                 // Parse each reservation per the found party name
                 for reservation in foundParties{
                     //if (reservation.isUnique()){
-                        kreservationList.append(reservation)
+                        currReservationList.append(reservation)
                     //}
                 }
             })
