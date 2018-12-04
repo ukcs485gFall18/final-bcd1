@@ -17,7 +17,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myCustomer.loadReservations() // Load all info on the user
+        currReservationList = myCustomer.loadReservations() // Load all info on the user
         
         customerReservationTableView.dataSource = self
         customerReservationTableView.delegate = self
@@ -35,7 +35,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         
         // Modify Cell attributes
         cell.backgroundColor = UIColor.black
-        cell.companyNameLabel?.text = currReservationList[indexPath.row].getCompName()
+        cell.companyLabelName?.text = currReservationList[indexPath.row].getCompName()
         print ("DEBUG: " + currReservationList[indexPath.row].getCompName())
         
         return cell
@@ -51,6 +51,6 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         (sender as! UIButton).spin()
         
         // Reload reservations
-        myCustomer.loadReservations()
+        currReservationList = myCustomer.loadReservations()
     }
 }

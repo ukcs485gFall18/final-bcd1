@@ -11,8 +11,7 @@ import UIKit
 
 //You should following naming conventions in Swift, look at how I renamed this class
 class ReservationsCustomerTableViewCell : UITableViewCell {
-    
-    @IBOutlet weak var companyNameLabel: UIView!
+    @IBOutlet weak var companyLabelName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
