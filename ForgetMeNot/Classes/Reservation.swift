@@ -30,16 +30,25 @@ class MyReservation : NSObject { // Create the reservation
         super.init()
     }
     
+    /* ===================================================
+     *              Utility Functions
+     *
+     * ===================================================
+     */
+    func isUnique() -> Bool{
+        var flag = true // Assume unique until same reservation is found
+        
+        for reservation in {
+            if (Users.resDate)
+        }
+    }
+    
     
     /* ===================================================
      *              "Set" Functions
      *  Modify a variable from outside of the class
      * ===================================================
      */
-    // Set the active reservations
-    func setReservations(reservations : [MyReservation]){
-        kreservationList = reservations
-    }
     
     
     /* ===================================================
@@ -76,48 +85,5 @@ class MyReservation : NSObject { // Create the reservation
     }
     // ===================================================
     
-    /* ===================================================
-                    Processing Functions
-       =================================================== */
     
-    // Gets a list of parties from the database
-    func getPartiesWithReservations(_ userPartyName : String, handler: @escaping (_ reservationsArray: [MyReservation]) -> ()){
-        let dataRef = Database.database().reference() // Firebase reference link
-        var reservationsArray = [MyReservation]()
-        var currPartyName = ""
-        
-        dataRef.child("reservation").observe(.value) { (datasnapshot) in
-            guard let partySnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
-            
-            for currParty in partySnapshot {
-                if (userPartyName == currParty.key){
-                    // Local Variables
-                    currPartyName = currParty.key
-                    guard let reservations = currParty.value as? [String:Any] else{
-                        return
-                    }
-                    
-                    // Each reservation referenced inside loop
-                    for reservation in reservations{
-                        // Store variables as a dictionary
-                        let partyValues = reservation.value as! [String : Any]   // Dictionary containing each value pair of res
-                        
-                        // Collect variables from database
-                        let currComp = reservation.key
-                        let currDate = partyValues["partyDate"] as! String
-                        let currPartySize = partyValues["partySize"] as! Int
-                        let currUUIDString = partyValues["partyUUID"] as! String
-                        
-                        // Convert UUIDString back to a normal UUID to be placed into reservation
-                        let currUUID = UUID(uuidString: currUUIDString)
-                        
-                        // Compile all info into reservation object and add to array
-                        let resObj = MyReservation(date: currDate, uuid: currUUID ?? UUID(), CompName: currComp, name: currPartyName, size: currPartySize)
-                        reservationsArray.append(resObj)
-                    }
-                }
-            }
-            handler(reservationsArray) // Returns an array of "MyReservation" objects`
-        }
-    }
 }
