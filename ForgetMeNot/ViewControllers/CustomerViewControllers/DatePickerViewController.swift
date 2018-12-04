@@ -203,7 +203,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             let userReservation = MyReservation(date: dateOfReservation, uuid: UUID(),  CompName: pCompName, name: pName, size: pSize!)
             
             #warning("no longer active, use new USER CLASS")
-            kPartyNames.insert(pName, at: 0)
+            //kPartyNames.insert(pName, at: 0)
             
             //================================================================//
             //                    *Firebase insertions                        //
