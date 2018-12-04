@@ -13,7 +13,7 @@ class MyReservation : NSObject { // Create the reservation
     // Local Variables
     fileprivate var resDate : String    // (MM/DD/YYYY) Date
     fileprivate var resUUID : UUID      // UUID number of the reservation
-                                        // UUID will be broadcasted
+    // UUID will be broadcasted
     fileprivate var resStatus : Bool    // Party Checkin Status
     fileprivate var resCompName: String //resturant Name
     fileprivate var resName : String    // Party Name
@@ -30,16 +30,25 @@ class MyReservation : NSObject { // Create the reservation
         super.init()
     }
     
+    /* ===================================================
+     *              Utility Functions
+     *
+     * ===================================================
+     */
+    func isUnique() -> Bool{
+        var flag = true // Assume unique until same reservation is found
+        
+        for reservation in {
+            if (Users.resDate)
+        }
+    }
+    
     
     /* ===================================================
      *              "Set" Functions
      *  Modify a variable from outside of the class
      * ===================================================
      */
-    // Set the active reservations
-    func setReservations(reservations : [MyReservation]){
-        kreservationList = reservations
-    }
     
     
     /* ===================================================
@@ -47,75 +56,34 @@ class MyReservation : NSObject { // Create the reservation
      *  Returns private variables for use outside the function
      *  but prevents modification.
      * ===================================================
-    */
-    func getDate() -> String {
-        return resDate
-    }
+     */
     func getUUID() -> UUID {
         return resUUID
     }
+    
     func getUUIDString() -> String {
         return resUUID.uuidString
     }
-    func getCheckInStatus() -> Bool{
-        return resStatus
+    func getDate() -> String {
+        return resDate
     }
-    func getCompName() -> String {
-        return resCompName
-    }
+    
     func getPartyName() -> String {
         return resName
     }
+    
     func getPartySize() -> Int {
         return resSize
     }
     
-    // ===================================================
-    
-    /* ===================================================
-                    Processing Functions
-       =================================================== */
-    
-    // Gets a list of parties from the database
-    func getPartiesWithReservations(_ userPartyName : String, handler: @escaping (_ reservationsArray: [MyReservation]) -> ()){
-        let dataRef = Database.database().reference() // Firebase reference link
-        var reservationsArray = [MyReservation]()
-        var currPartyName = ""
-        
-        dataRef.child("reservation").observe(.value) { (datasnapshot) in
-            guard let partySnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
-            
-            for currParty in partySnapshot {
-                if (userPartyName == currParty.key){
-                    // Local Variables
-                    currPartyName = currParty.key
-                    guard let reservations = currParty.value as? [String:Any] else{
-                        return
-                    }
-                    
-                    // Each reservation referenced inside loop
-                    for reservation in reservations{
-                        // Store variables as a dictionary
-                        let partyValues = reservation.value as! [String : Any]   // Dictionary containing each value pair of res
-                        
-                        // Collect variables from database
-                        let currComp = reservation.key
-                        let currDate = partyValues["partyDate"] as! String
-                        let currPartySize = partyValues["partySize"] as! Int
-                        let currUUIDString = partyValues["partyUUID"] as! String
-                        
-                        // Convert UUIDString back to a normal UUID to be placed into reservation
-                        let currUUID = UUID(uuidString: currUUIDString)
-                        
-                        // Compile all info into reservation object and add to array
-                        let resObj = MyReservation(date: currDate, uuid: currUUID ?? UUID(), CompName: currComp, name: currPartyName, size: currPartySize)
-                        reservationsArray.append(resObj)
-                    }
-                }
-            }
-            handler(reservationsArray) // Returns an array of "MyReservation" objects`
-        }
+    func getCompName() -> String {
+        return resCompName
     }
+    
+    func getCheckInStatus() -> Bool{
+        return resStatus
+    }
+    // ===================================================
     
     
 }
