@@ -75,31 +75,17 @@ class Users {
     }
     
     
-    /*  ==========================
-     *        Get Functions
-     *  ==========================*/
+    /*  ====================================================
+     *  ====================================================
+     *                      Get Functions
+     *  ====================================================
+     *  ====================================================*/
     
-    // Load all data for the user
-    /*func loadUser(){
-        
-        /* Load in reservations  */
-        var counter = 0
-        for _ in reservationList{
-            getPartiesWithReservations(reservationList[counter].getPartyName(), handler: { (foundParties) in
-                
-                // Parse each reservation per the found party name
-                for reservation in foundParties{
-                    //if (reservation.isUnique()){
-                    self.reservationList.append(reservation)
-                    //}
-                }
-            })
-            
-            counter += 1
-        }
-    }*/
-    
-    // Load reservations for the user
+    /* ===================================================
+     *              Load Reservations
+     *  Return a list of reservations a user has
+     * ===================================================
+     */
     func loadReservations() -> [MyReservation]{
             
         // Local Variables
@@ -124,11 +110,46 @@ class Users {
         return currReservationList
     }
     
-    // Get partyNames
+    /* ===================================================
+     *              Get Users Info
+     *  Get a list of users from the database
+     *  Note: Only builds a user with email and userType
+     * ===================================================
+     */
+    func getUsersData(_ users: [String], handler: @escaping (_ usersArray: [Users]) -> ()) {
+        var usersArray = [Users]()
+        
+        // Create firebase reference and link to database
+        let dataRef = Database.database().reference()
+        
+        dataRef.child("userList").observe(.value) { (datasnapshot) in
+            guard let usersnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for user in usersnapshot {
+                let email = user.childSnapshot(forPath: "email").value as! String
+                let userType = user.childSnapshot(forPath: "userType").value as! String
+                
+                let userObj = Users(email: email, userType: userType)
+                usersArray.append(userObj)
+            }
+            handler(usersArray)
+        }
+    }
+    
+    /* ===================================================
+     *              Get Party Names
+     *  Get a list of the user's CURRENT party names (already found)
+     * ===================================================
+     */
     func getPartyNames() -> [String]{
         return partyNames
     }
     
+    /* ===================================================
+     *              Get Reservations
+     *  Get a list of the user's CURRENT reservations (already found)
+     * ===================================================
+     */
     func getReservations() -> [MyReservation]{
         return reservationList
     }
@@ -136,8 +157,14 @@ class Users {
     
     
     
-    
-    // Gets a list of parties from the database and returns all reservations for each party
+    /* ===================================================
+     *              Get Parties with Reservations
+     *  Method can be used in order to find all reservations in the system
+     *
+     *  Gets a list of parties from the database and returns all reservations for each party'
+     *  Note: ASync method that fetches the database in the background thread
+     * ===================================================
+     */
     func getPartiesWithReservations(_ userPartyName : String, handler: @escaping (_ reservationsArray: [MyReservation]) -> ()){
         let dataRef = Database.database().reference() // Firebase reference link
         var reservationsArray = [MyReservation]()
