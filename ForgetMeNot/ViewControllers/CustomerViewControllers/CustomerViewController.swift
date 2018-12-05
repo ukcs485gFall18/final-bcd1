@@ -65,7 +65,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         }
         
         // Modify Cell attributes
-        cell.backgroundColor = UIColor.black
+        cell.companyLabelName!.text = currReservationList[indexPath.row].getCompName()
         print ("DEBUG: " + currReservationList[indexPath.row].getCompName())
         
         return cell
@@ -82,5 +82,10 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         
         // Reload reservations
         currReservationList = myCustomer.loadReservations()
+        
+        
+        // Begin Updates
+        // for each element in currReservations, insert
+        // End Updates
     }
 }

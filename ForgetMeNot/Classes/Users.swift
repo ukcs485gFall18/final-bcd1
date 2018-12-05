@@ -92,6 +92,10 @@ class Users {
         var counter = 0 // Used to track the number of party names the user has
         var currReservationList : [MyReservation] = []
         
+        // Insert temp reservation for DEBUGGING
+        let tempReservation : MyReservation = MyReservation(date: "Today", uuid: UUID(), CompName: "NotChilis", name: "NotBlake", size: 1)
+        currReservationList.append(tempReservation)
+        
         // Get a list of reservations for every party name of the user
         for _ in reservationList{
             getPartiesWithReservations(reservationList[counter].getPartyName(), handler: { (foundParties) in
