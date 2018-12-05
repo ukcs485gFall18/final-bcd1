@@ -16,6 +16,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     // Local Variables
     var currReservationList : [MyReservation] = []
     var prevReservationList : [MyReservation] = []
+    var resDate = [""]
     var myCustomer : Users = Users(email: "", userType: "")
     @IBAction func segmentIndexChanged(_ sender: Any) {
         currReservationList = myCustomer.loadReservations()
@@ -29,6 +30,8 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         customerReservationTableView.dataSource = self
         customerReservationTableView.delegate = self
     }
+    
+    
     
     
     /*  =========================
@@ -50,16 +53,19 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         let cell = customerReservationTableView.dequeueReusableCell(withIdentifier: "reservationReusableCell", for: indexPath) as! ReservationsCustomerTableViewCell
         switch(segmentedControl.selectedSegmentIndex){
         case 0:
-            cell.textLabel!.text = "Is this going to work?"
+            cell.textLabel!.text = currReservationList[indexPath.row].getCompName()
+            resDate = [currReservationList[indexPath.row].getDate()]
+            //loop through array of dates, compare to current date
+            //call removeReservationFromCurr for dates behind current
+            //append to prevReservationList
         case 1:
-            cell.textLabel!.text = "I really hope so"
+            cell.textLabel!.text = prevReservationList[indexPath.row].getCompName()
         default:
             cell.textLabel!.text = "No reservations to display!"
         }
         
         // Modify Cell attributes
         cell.backgroundColor = UIColor.black
-        cell.companyLabelName?.text = currReservationList[indexPath.row].getCompName()
         print ("DEBUG: " + currReservationList[indexPath.row].getCompName())
         
         return cell
