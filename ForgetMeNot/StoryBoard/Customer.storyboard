@@ -48,14 +48,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niK-OR-YbC">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niK-OR-YbC">
                                                     <rect key="frame" x="15" y="11" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="niK-OR-YbC" firstAttribute="leading" secondItem="V2L-OC-BQQ" secondAttribute="leadingMargin" constant="-1" id="MVq-6A-InR"/>
+                                                <constraint firstItem="niK-OR-YbC" firstAttribute="centerY" secondItem="V2L-OC-BQQ" secondAttribute="centerY" id="duf-sH-J5S"/>
+                                                <constraint firstItem="niK-OR-YbC" firstAttribute="top" secondItem="V2L-OC-BQQ" secondAttribute="topMargin" constant="-20" id="mAa-7o-wHD"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="companyLabelName" destination="niK-OR-YbC" id="6QL-V9-Yeq"/>
@@ -64,8 +68,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VG-fg-taS">
-                                <rect key="frame" x="76" y="80" width="222" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VG-fg-taS">
+                                <rect key="frame" x="91" y="82" width="193" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <inset key="titleEdgeInsets" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -77,26 +81,34 @@
                                     <segue destination="X9e-uv-wcY" kind="show" id="kQx-ON-QPL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kv1-Js-Dy3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kv1-Js-Dy3">
                                 <rect key="frame" x="319" y="77" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="L1R-1T-jQD"/>
+                                </constraints>
                                 <state key="normal" image="Reload">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="refreshButton:" destination="QHP-O8-dd6" eventType="touchUpInside" id="9mw-26-BDw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.14811462163925171" green="0.48751288652420044" blue="0.7906232476234436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0VG-fg-taS" firstAttribute="leading" secondItem="PTv-6U-bHJ" secondAttribute="leading" constant="91" id="Ber-pd-gvI"/>
+                            <constraint firstItem="kv1-Js-Dy3" firstAttribute="top" secondItem="K1W-ms-uNp" secondAttribute="bottom" constant="13" id="03b-wg-OAg"/>
                             <constraint firstItem="5ze-pt-nmn" firstAttribute="leading" secondItem="PTv-6U-bHJ" secondAttribute="leading" id="Bqq-bv-5nX"/>
                             <constraint firstItem="5ze-pt-nmn" firstAttribute="top" secondItem="YwG-gV-1eP" secondAttribute="bottom" constant="8" id="Ix5-6I-XBR"/>
-                            <constraint firstItem="0VG-fg-taS" firstAttribute="top" secondItem="K1W-ms-uNp" secondAttribute="bottom" constant="18" id="MnQ-bg-Fxw"/>
                             <constraint firstItem="YwG-gV-1eP" firstAttribute="trailing" secondItem="PTv-6U-bHJ" secondAttribute="trailing" id="OmN-9k-ken"/>
                             <constraint firstItem="lbs-Pf-ZWT" firstAttribute="top" secondItem="5ze-pt-nmn" secondAttribute="bottom" id="QYP-6d-0Fh"/>
+                            <constraint firstItem="kv1-Js-Dy3" firstAttribute="leading" secondItem="0VG-fg-taS" secondAttribute="trailing" constant="35" id="UuO-jJ-M7O"/>
+                            <constraint firstItem="0VG-fg-taS" firstAttribute="centerX" secondItem="YwG-gV-1eP" secondAttribute="centerX" id="Vpk-Py-bUt"/>
+                            <constraint firstItem="0VG-fg-taS" firstAttribute="leading" secondItem="PTv-6U-bHJ" secondAttribute="leading" constant="91" id="WKm-EP-XuL"/>
                             <constraint firstItem="YwG-gV-1eP" firstAttribute="leading" secondItem="PTv-6U-bHJ" secondAttribute="leading" id="gWM-8W-OoH"/>
-                            <constraint firstItem="PTv-6U-bHJ" firstAttribute="trailing" secondItem="0VG-fg-taS" secondAttribute="trailing" constant="91" id="tsr-wg-gDz"/>
-                            <constraint firstItem="YwG-gV-1eP" firstAttribute="top" secondItem="0VG-fg-taS" secondAttribute="bottom" constant="25" id="wQH-Hr-qeJ"/>
+                            <constraint firstItem="0VG-fg-taS" firstAttribute="top" secondItem="K1W-ms-uNp" secondAttribute="bottom" constant="18" id="lVT-3t-9EP"/>
+                            <constraint firstItem="YwG-gV-1eP" firstAttribute="top" secondItem="0VG-fg-taS" secondAttribute="bottom" constant="25" id="yDL-wA-sbs"/>
                             <constraint firstItem="5ze-pt-nmn" firstAttribute="trailing" secondItem="PTv-6U-bHJ" secondAttribute="trailing" id="z8d-ei-Yal"/>
+                            <constraint firstItem="kv1-Js-Dy3" firstAttribute="trailing" secondItem="dyM-rr-ABU" secondAttribute="trailingMargin" id="zBp-hI-qpX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PTv-6U-bHJ"/>
                     </view>
