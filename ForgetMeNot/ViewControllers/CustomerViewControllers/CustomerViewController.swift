@@ -82,5 +82,10 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         
         // Reload reservations
         currReservationList = myCustomer.loadReservations()
+        
+        
+        // Begin Updates
+        // for each element in currReservations, insert
+        // End Updates
     }
 }
