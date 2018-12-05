@@ -72,6 +72,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     //--------------------------------------------------------------------------
+    //Reference: https://codewithchris.com/uipickerview-example/
     //function to display UI picker for resturants when text box is tapped
     func showResturantPicker(){
         resturantPicker.delegate = self
@@ -201,9 +202,6 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             
             //init a new reservation
             let userReservation = MyReservation(date: dateOfReservation, uuid: UUID(),  CompName: pCompName, name: pName, size: pSize!)
-            
-            #warning("no longer active, use new USER CLASS")
-            //kPartyNames.insert(pName, at: 0)
             
             //================================================================//
             //                    *Firebase insertions                        //

@@ -45,8 +45,14 @@ class Company/*: NSObject*/{
     }
     
     //Reservation getters
-    func getReservationDate(customerRes: MyReservation) -> String {
-        return customerRes.getDate()
+    func getNumOfReservations() -> Int {
+        return reservationList.count
+    }
+    func getReservationName(pos: Int) -> String {
+        return reservationList[pos].getPartyName()
+    }
+    func getReservationDate(pos: Int) -> String {
+        return reservationList[pos].getDate()
     }
     func getReservationUUID(customerRes: MyReservation) -> UUID {
         return customerRes.getUUID()
@@ -54,9 +60,7 @@ class Company/*: NSObject*/{
     func getReservationStatus(customerRes: MyReservation) -> Bool {
         return customerRes.getCheckInStatus()
     }
-    func getReservationName(customerRes: MyReservation) -> String {
-        return customerRes.getPartyName()
-    }
+    
     func getReservationName(customerRes: MyReservation) -> Int {
         return customerRes.getPartySize()
     }
@@ -110,7 +114,10 @@ class Company/*: NSObject*/{
             //print("company UUID: \(uid)")                                       //DEBUGGING PURPOSES
             setCompanyID(id: uid)
         }
-        findMyName()
+        //DispatchQueue.main.async(execute: {
+            self.findMyName()
+        //})
+        
     }
     
     //Function used to find Company's name once signed in
@@ -130,8 +137,10 @@ class Company/*: NSObject*/{
                     //break??
                  }
             }
-            self.printTEST()
-            self.populateSelf()
+            //self.printTEST()
+            //DispatchQueue.main.async(execute: {
+                self.populateSelf()
+            //})
         }
         
     }
@@ -184,7 +193,7 @@ class Company/*: NSObject*/{
                     }
                 }
             }
-            self.printAll()
+            //self.printAll()
         }
     }
 }
