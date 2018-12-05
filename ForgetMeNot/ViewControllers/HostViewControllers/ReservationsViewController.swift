@@ -9,9 +9,6 @@ import UIKit
 import Firebase
 import EventKit
 
-// Create firebase reference and link to database
-//let dataRef = Database.database().reference()
-
 class ReservationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var reservationTableView: UITableView!
@@ -28,8 +25,10 @@ class ReservationsViewController: UIViewController, UITableViewDataSource, UITab
     var calendars: [EKCalendar]?
     
     override func viewDidLoad() {
-        //retrieveCompany()
-        getCompanyData()
+        let myCompany = Company()
+        myCompany.whoAmI()
+        //myCompany.findMyName()
+        //myCompany.printTEST()
         super.viewDidLoad()
         /*
         //This is the navagation bar------
@@ -52,18 +51,6 @@ class ReservationsViewController: UIViewController, UITableViewDataSource, UITab
         */
     }
     
-    func retrieveCompanyData() {
-        //var databaseRef : DatabaseReference?            // Create firebase database reference variable
-        //databaseRef = Database.database().reference()   // Link the firebase database
-        /*
-        getCompanyData(handler: {_ in
-            var host = Host
-            print("Host returned \(host)")
-        })*/
-    }
-    
-    
-    
     /*
     @objc func tapBackButton(){
         print("YOu tapped Back!!")
@@ -77,21 +64,6 @@ class ReservationsViewController: UIViewController, UITableViewDataSource, UITab
     override func viewWillAppear(_ animated: Bool) {
         checkCalendarAuthorizationStatus()
     }
-    
-/*    func getReservationInfo() {
-        let dataRef = Database.database().reference()
-        
-        //partyName, reservation/\(userReservation.getCompName))/\(userReservation.getUUID())
-        dataRef.child(<#T##pathString: String##String#>).observe(.value) { (datasnapshot) in
-        guard let reservationsnapshot = datasnapshot.children.allObjects as ? [DataSnapshot] else {return}
-            for reservation in reservationsnapshot {
-                let reservationName = reservation.childSnapshot(forPath: "partyName")
-            }
-        
-            
-            
-        }
-    }*/
     
     func checkCalendarAuthorizationStatus() {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
@@ -149,7 +121,6 @@ class ReservationsViewController: UIViewController, UITableViewDataSource, UITab
         return 0
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HostCell") as! ReservationsHostTableViewCell
         
@@ -181,41 +152,6 @@ class ReservationsViewController: UIViewController, UITableViewDataSource, UITab
         cell.textLabel?.text = dataSourceArray[indexPath.row]
         return cell
     }*/
-}
-
-//------------------------------------------------------------------------------
-//Function that gets the Company's name via their ID
-func getCompanyData(/*handler: @escaping (_ Host: Company) -> ()*/) {
-    //var usersArray = [Users]()
-    //var Host = Company(cName: "", ID: "")
-
-    // Create firebase reference and link to database
-    let dataRef = Database.database().reference()
-    
-    //Call firebase and start looking for the Company's name via its ID
-    dataRef.child("userList").observe(.value) { (datasnapshot) in
-        guard let usersnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
-        
-        var myCompany: Company
-        for user in usersnapshot {
-            /*if (user.key == kuserID){
-                let name = user.childSnapshot(forPath: "name").value as! String
-                
-                myCompany = Company(cName: name, ID: kuserID)
-                print("host name: \(myCompany.getName())")                           //DEBUGGING PURPOSES
-                print("host ID: \(myCompany.getID())")                               //DEBUGGING PURPOSES
-                
-                //populate Company with list of reservations
-                populateCompany(Host: myCompany)
-            }
-            else{
-                #warning("FIX ME")
-                //error if company ID doesn't exist
-                //Alert.showCompanyErrorAlert(on: ReservationsViewController)
-            }*/
-        }
-    }
-    
 }
 
 //------------------------------------------------------------------------------
