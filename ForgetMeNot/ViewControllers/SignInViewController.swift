@@ -52,11 +52,6 @@ class SignInViewController : UIViewController{
                                 return
                             }
                             
-                            // Remember user's information into UserData.swift
-                            //kuserEmail = person.email!
-                            //kuserType = person.userType!
-                            //kuserID = userID
-                            
                             
                             // Take user down specific route
                             if (userType == "Customer"){

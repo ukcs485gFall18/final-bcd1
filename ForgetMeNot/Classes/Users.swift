@@ -10,14 +10,16 @@ import Firebase
 
 // Created User model for retrieving data
 class Users {
-    var email: String?
-    var userType: String?
+    var userID : String?
+    var email : String?
+    var userType : String?
     var reservationList : [MyReservation]
     var prevReservationList : [MyReservation]
     var partyNames : [String]
     var profilePicure : String = ""
     
     init(email: String, userType: String) {
+        self.userID = ""
         self.email = email
         self.userType = userType
         self.profilePicure = ""
@@ -25,23 +27,6 @@ class Users {
         self.reservationList = []
         self.prevReservationList = []
         self.partyNames = []
-    }
-    
-    
-    // Add a party name to the user's list
-    // Note: If you pass in a party name that is already recorded, the function will do nothing
-    func updatePartyNameList(newPartyName : String){
-        var foundFlag = false
-        
-        for partyName in partyNames{ // Check if the party name has been used by the user before
-            if (partyName == newPartyName){
-                foundFlag = true
-            }
-        }
-        
-        if (!foundFlag){ // Add to the list if unused
-            partyNames.append(newPartyName)
-        }
     }
     
     // Remove a reservation from "reservationList"
@@ -60,8 +45,20 @@ class Users {
     /*  ==========================
      *        Set Functions
      *  ==========================*/
-    func addPartyName(newPartyName : String){
-        partyNames.append(newPartyName)
+    // Add a party name to the user's list
+    // Note: If you pass in a party name that is already recorded, the function will do nothing
+    func addPartyNameList(newPartyName : String){
+        var foundFlag = false
+        
+        for partyName in partyNames{ // Check if the party name has been used by the user before
+            if (partyName == newPartyName){
+                foundFlag = true
+            }
+        }
+        
+        if (!foundFlag){ // Add to the list if unused
+            partyNames.append(newPartyName)
+        }
     }
     
     func addReservation(newReservation : MyReservation){
@@ -81,6 +78,7 @@ class Users {
      *  ====================================================
      *  ====================================================*/
     
+    
     /* ===================================================
      *              Load Reservations
      *  Return a list of reservations a user has
@@ -91,10 +89,6 @@ class Users {
         // Local Variables
         var counter = 0 // Used to track the number of party names the user has
         var currReservationList : [MyReservation] = []
-        
-        // Insert temp reservation for DEBUGGING
-        let tempReservation : MyReservation = MyReservation(date: "Today", uuid: UUID(), CompName: "NotChilis", name: "NotBlake", size: 1)
-        currReservationList.append(tempReservation)
         
         // Get a list of reservations for every party name of the user
         for _ in reservationList{
@@ -107,7 +101,6 @@ class Users {
                     //}
                 }
             })
-            
             counter += 1
         }
         
@@ -115,7 +108,64 @@ class Users {
     }
     
     /* ===================================================
-     *              Get Users Info
+     *           Load Party Names of the user
+     *             Return as a simple array
+     * ===================================================
+     */
+    func loadPartyNames() -> [String]{
+        
+        var foundPartyNames : [String] = []
+        
+        getPartyNamesForUser (handler:{ (newPartyNames) in
+            for newName in newPartyNames{
+                foundPartyNames.append(newName)
+            }
+        })
+        
+        return foundPartyNames
+    }
+    
+    /* ===================================================
+     *              Get Party Names
+     *  Get a list of the user's CURRENT party names (already found)
+     * ===================================================
+     */
+    func getPartyNames() -> [String]{
+        return partyNames
+    }
+    
+    /* ===================================================
+     *              Get Reservations
+     *  Get a list of the user's CURRENT reservations (already found)
+     * ===================================================
+     */
+    func getReservations() -> [MyReservation]{
+        return reservationList
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*  ====================================================
+     *  ====================================================
+     *                      ASync Functions
+     *  ====================================================
+     *  ====================================================*/
+    
+    
+    /* ===================================================
+     *              Get Users Email and Type
      *  Get a list of users from the database
      *  Note: Only builds a user with email and userType
      * ===================================================
@@ -141,25 +191,32 @@ class Users {
     }
     
     /* ===================================================
-     *              Get Party Names
-     *  Get a list of the user's CURRENT party names (already found)
+     *              Get Users party List
+     *  Get all the party names for a user
      * ===================================================
      */
-    func getPartyNames() -> [String]{
-        return partyNames
+    func getPartyNamesForUser(handler: @escaping (_ newPartyNameList: [String]) -> ()){
+        var newPartyNameList : [String] = []
+        
+        if (userID == ""){
+            print ("Error: userID empty in loadPartyNames()")
+        }
+        else{
+            // Create firebase reference and link to database
+            let dataRef = Database.database().reference()
+            
+            dataRef.child("userList/\(userID!)/partyNameList").observe(.value) { (datasnapshot) in
+                guard let partynamesnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
+                
+                for eachPartyName in partynamesnapshot {
+                    guard let newpartyName : String = eachPartyName.childSnapshot(forPath: "partyName").value as? String else{return}
+                    newPartyNameList.append(newpartyName)
+                    print("DEBUGGING: Added \(newpartyName) to (handler) partyNames")
+                }
+            }
+        }
+        handler(newPartyNameList)
     }
-    
-    /* ===================================================
-     *              Get Reservations
-     *  Get a list of the user's CURRENT reservations (already found)
-     * ===================================================
-     */
-    func getReservations() -> [MyReservation]{
-        return reservationList
-    }
-    
-    
-    
     
     /* ===================================================
      *              Get Parties with Reservations
