@@ -42,11 +42,11 @@ class SignInViewController : UIViewController{
                 
                 // Gather userType from database for the current user
                 self.myCustomer.getUsersData([userID], handler: { (foundUsers) in
-
+                    
                     // Parse array of users for desired user's type
                     for person in foundUsers{
                         if (person.email == self.email.text!){ // Authentication successful
-
+                            
                             // Get the current indexed user's type
                             guard let userType = person.userType else{
                                 return
@@ -64,15 +64,15 @@ class SignInViewController : UIViewController{
                             }
                             else{
                                 #warning("Can add this to the Alert.swift")
-                                //self.showMessage(alertTitle: "Error",
-                                  //               alertMessage: "User attempted to sign in with no user type.",
-                                    //             actionTitle: "Dismiss")
+                                self.showMessage(alertTitle: "Error",
+                                                 alertMessage: "User attempted to sign in with no user type.",
+                                                 actionTitle: "Dismiss")
                             }
                         }
                     }
                     
                 })
-
+                
             }
             else{
                 (sender as! UIButton).shake() // Shake button animation

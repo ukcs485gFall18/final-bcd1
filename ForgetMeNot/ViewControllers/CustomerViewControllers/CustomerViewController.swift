@@ -11,17 +11,9 @@ import Firebase
 
 class CustomerViewController : UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var customerReservationTableView: UITableView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // Local Variables
-    var currReservationList : [MyReservation] = []
-    var prevReservationList : [MyReservation] = []
-    var resDate = [""]
     var myCustomer : Users = Users(email: "", userType: "")
-    @IBAction func segmentIndexChanged(_ sender: Any) {
-        currReservationList = myCustomer.loadReservations()
-        prevReservationList = myCustomer.loadReservations()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +28,6 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     
-    
-    
     /*  =========================
      *      Table Properties
      *  ========================= */
@@ -46,18 +36,6 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = customerReservationTableView.dequeueReusableCell(withIdentifier: "reservationReusableCell", for: indexPath) as! ReservationsCustomerTableViewCell
-        switch(segmentedControl.selectedSegmentIndex){
-        case 0:
-            cell.textLabel!.text = currReservationList[indexPath.row].getCompName()
-            resDate = [currReservationList[indexPath.row].getDate()]
-            //loop through array of dates, compare to current date
-            //call removeReservationFromCurr for dates behind current
-            //append to prevReservationList
-        case 1:
-            cell.textLabel!.text = prevReservationList[indexPath.row].getCompName()
-        default:
-            cell.textLabel!.text = "No reservations to display!"
-        }
         
         // Modify Cell attributes
         cell.companyLabelName!.text = myCustomer.reservationList[indexPath.row].getCompName()
