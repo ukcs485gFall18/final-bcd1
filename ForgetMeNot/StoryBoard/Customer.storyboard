@@ -63,8 +63,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="companyLabelName" destination="niK-OR-YbC" id="6QL-V9-Yeq"/>
-                                            <outlet property="companyNameLabel" destination="V2L-OC-BQQ" id="BKt-n0-l7G"/>
+                                            <outlet property="companyLabelName" destination="niK-OR-YbC" id="3ET-4r-Rxe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -91,7 +90,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="refreshButton:" destination="QHP-O8-dd6" eventType="touchUpInside" id="9mw-26-BDw"/>
+                                    <action selector="refreshButton:" destination="QHP-O8-dd6" eventType="touchUpInside" id="iTv-Jd-UIm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -115,7 +114,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Dibs (Customer)" id="Sha-Bi-jov"/>
                     <connections>
-                        <outlet property="customerReservationTableView" destination="5ze-pt-nmn" id="Jat-Im-ac9"/>
+                        <outlet property="customerReservationTableView" destination="5ze-pt-nmn" id="mLA-lM-SUE"/>
                         <outlet property="segmentedControl" destination="YwG-gV-1eP" id="HI5-uY-jWf"/>
                     </connections>
                 </viewController>
