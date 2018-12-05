@@ -69,9 +69,9 @@ class SignInViewController : UIViewController{
                             }
                             else{
                                 #warning("Can add this to the Alert.swift")
-                                self.showMessage(alertTitle: "Error",
-                                                 alertMessage: "User attempted to sign in with no user type.",
-                                                 actionTitle: "Dismiss")
+                                //self.showMessage(alertTitle: "Error",
+                                  //               alertMessage: "User attempted to sign in with no user type.",
+                                    //             actionTitle: "Dismiss")
                             }
                         }
                     }
