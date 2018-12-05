@@ -42,11 +42,11 @@ class SignInViewController : UIViewController{
                 
                 // Gather userType from database for the current user
                 self.myCustomer.getUsersData([userID], handler: { (foundUsers) in
-
+                    
                     // Parse array of users for desired user's type
                     for person in foundUsers{
                         if (person.email == self.email.text!){ // Authentication successful
-
+                            
                             // Get the current indexed user's type
                             guard let userType = person.userType else{
                                 return
@@ -72,7 +72,7 @@ class SignInViewController : UIViewController{
                     }
                     
                 })
-
+                
             }
             else{
                 (sender as! UIButton).shake() // Shake button animation

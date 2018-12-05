@@ -85,7 +85,7 @@ class Users {
      * ===================================================
      */
     func loadReservations() -> [MyReservation]{
-            
+        
         // Local Variables
         var counter = 0 // Used to track the number of party names the user has
         var currReservationList : [MyReservation] = []
