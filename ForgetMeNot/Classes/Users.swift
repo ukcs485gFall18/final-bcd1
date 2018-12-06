@@ -17,6 +17,7 @@ class Users {
     var prevReservationList : [MyReservation]
     var partyNames : [String]
     var profilePicure : String = ""
+    var resDate : [String]
     
     init(email: String, userType: String) {
         self.userID = ""
@@ -27,6 +28,7 @@ class Users {
         self.reservationList = []
         self.prevReservationList = []
         self.partyNames = []
+        self.resDate = []
     }
     
     // Remove a reservation from "reservationList"
@@ -133,6 +135,7 @@ class Users {
     func getPartyNames() -> [String]{
         return partyNames
     }
+    
     
     /* ===================================================
      *              Get Reservations

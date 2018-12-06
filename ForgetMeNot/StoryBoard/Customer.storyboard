@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cfN-c9-vgy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cfN-c9-vgy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,6 +34,7 @@
                                 <connections>
                                     <action selector="CompletedTapped:" destination="pKP-IK-s7J" eventType="valueChanged" id="8LM-y0-p6p"/>
                                     <action selector="UpcomingTapped:" destination="pKP-IK-s7J" eventType="valueChanged" id="aHO-Rc-B85"/>
+                                    <action selector="indexValueChanged:" destination="QHP-O8-dd6" eventType="valueChanged" id="30h-zR-Vyx"/>
                                     <action selector="segChange:" destination="pKP-IK-s7J" eventType="valueChanged" id="WqP-XL-of4"/>
                                     <action selector="segmentIndexChanged:" destination="QHP-O8-dd6" eventType="valueChanged" id="UeL-Az-lSD"/>
                                 </connections>
@@ -115,7 +116,7 @@
                     <navigationItem key="navigationItem" title="Dibs (Customer)" id="Sha-Bi-jov"/>
                     <connections>
                         <outlet property="customerReservationTableView" destination="5ze-pt-nmn" id="mLA-lM-SUE"/>
-                        <outlet property="segmentedControl" destination="YwG-gV-1eP" id="HI5-uY-jWf"/>
+                        <outlet property="segmentedControl" destination="YwG-gV-1eP" id="94R-4Y-Hag"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycq-Fd-HDE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,6 +226,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Reload" width="37.5" height="37.5"/>
+        <image name="Reload" width="50" height="50"/>
     </resources>
 </document>
