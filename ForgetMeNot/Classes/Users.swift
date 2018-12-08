@@ -195,11 +195,11 @@ class Users {
      *  Get all the party names for a user
      * ===================================================
      */
-    func getPartyNamesForUser(handler: @escaping (_ newPartyNameList: [String]) -> ()){
-        var newPartyNameList : [String] = []
+    func getPartyNamesForUser(handler: @escaping () -> ()){
         
         if (userID == ""){
-            print ("Error: userID empty in loadPartyNames()")
+            print ("Error: userID empty in getPartyNamesForUser()")
+            //handler(self.partyNames)
         }
         else{
             // Create firebase reference and link to database
@@ -209,13 +209,12 @@ class Users {
                 guard let partynamesnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
                 
                 for eachPartyName in partynamesnapshot {
-                    guard let newpartyName : String = eachPartyName.childSnapshot(forPath: "partyName").value as? String else{return}
-                    newPartyNameList.append(newpartyName)
-                    print("DEBUGGING: Added \(newpartyName) to (handler) partyNames")
+                    guard let newpartyName : String = eachPartyName.value as? String else{return}
+                    self.partyNames.append(newpartyName)
                 }
+                //handler(self.partyNames)
             }
         }
-        handler(newPartyNameList)
     }
     
     /* ===================================================
@@ -265,8 +264,5 @@ class Users {
             handler(reservationsArray) // Returns an array of "MyReservation" objects`
         }
     }
-    
-    
-    
-    
+
 }
