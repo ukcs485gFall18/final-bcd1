@@ -52,7 +52,6 @@ class SignInViewController : UIViewController{
                                 return
                             }
                             
-                            
                             // Take user down specific route
                             if (userType == "Customer"){
                                 self.performSegue(withIdentifier: "LoginToCustomer", sender: self)
@@ -72,7 +71,6 @@ class SignInViewController : UIViewController{
                     }
                     
                 })
-                
             }
             else{
                 (sender as! UIButton).shake() // Shake button animation

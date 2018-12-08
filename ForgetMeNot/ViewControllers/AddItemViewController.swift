@@ -22,9 +22,9 @@
 
 import UIKit
 
-protocol AddBeacon {
+/*protocol AddBeacon {
   func addBeacon(item: Item)
-}
+}*/
 
 class AddItemViewController: UIViewController {
 	
@@ -33,7 +33,7 @@ class AddItemViewController: UIViewController {
   @IBOutlet weak var txtMajor: UITextField!
   @IBOutlet weak var txtMinor: UITextField!
   @IBOutlet weak var imgIcon: UIImageView!
-	@IBOutlet weak var btnAdd: UIButton!
+  @IBOutlet weak var btnAdd: UIButton!
  
   let uuidRegex = try! NSRegularExpression(pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", options: .caseInsensitive)
   
