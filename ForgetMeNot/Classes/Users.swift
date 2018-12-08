@@ -112,6 +112,7 @@ class Users {
      *             Return as a simple array
      * ===================================================
      */
+    /*
     func loadPartyNames() -> [String]{
         
         var foundPartyNames : [String] = []
@@ -123,7 +124,7 @@ class Users {
         })
         
         return foundPartyNames
-    }
+    }*/
     
     /* ===================================================
      *              Get Party Names
@@ -142,19 +143,6 @@ class Users {
     func getReservations() -> [MyReservation]{
         return reservationList
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     /*  ====================================================
