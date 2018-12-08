@@ -23,18 +23,15 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         myCustomer.userID = Auth.auth().currentUser!.uid
         
         // Load all parties to the user
-        //myCustomer.partyNames = myCustomer.loadPartyNames()
-        // Create firebase reference and link to database
-        
-        dataRef.child("userList/\(myCustomer.userID!)/partyNameList").observe(.value) { (datasnapshot) in
+        myCustomer.getPartyNamesForUser {}
+        /*dataRef.child("userList/\(myCustomer.userID!)/partyNameList").observe(.value) { (datasnapshot) in
             guard let partynamesnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
             
             for eachPartyName in partynamesnapshot {
-                guard let newpartyName : String = eachPartyName.childSnapshot(forPath: "partyName").value as? String else{return}
+                guard let newpartyName : String = eachPartyName.value as? String else{return}
                 self.myCustomer.partyNames.append(newpartyName)
-                print("DEBUGGING: Added \(newpartyName) to (handler) partyNames")
             }
-        }
+        }*/
         
         // Load all reservations on the user
         myCustomer.reservationList = myCustomer.loadReservations()
