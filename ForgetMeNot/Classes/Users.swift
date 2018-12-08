@@ -200,6 +200,7 @@ class Users {
         
         if (userID == ""){
             print ("Error: userID empty in loadPartyNames()")
+            handler(newPartyNameList)
         }
         else{
             // Create firebase reference and link to database
@@ -213,9 +214,9 @@ class Users {
                     newPartyNameList.append(newpartyName)
                     print("DEBUGGING: Added \(newpartyName) to (handler) partyNames")
                 }
+                handler(newPartyNameList)
             }
         }
-        handler(newPartyNameList)
     }
     
     /* ===================================================
@@ -265,8 +266,5 @@ class Users {
             handler(reservationsArray) // Returns an array of "MyReservation" objects`
         }
     }
-    
-    
-    
-    
+
 }
