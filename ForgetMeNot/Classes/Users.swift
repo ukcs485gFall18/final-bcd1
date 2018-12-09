@@ -140,6 +140,9 @@ class Users {
     func getUserResName(pos: Int) -> String {
         return reservationList[pos].getPartyName()
     }
+    func getUserResDate(pos: Int) -> String{
+        return reservationList[pos].getDate()
+    }
     
     /* ===================================================
      *              Get Party Names

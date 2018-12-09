@@ -121,6 +121,9 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         }
         else{
             cell.companyLabelName?.text = myCustomer.getUserResCompName(pos: indexPath.item)
+            cell.dateLabel?.text = myCustomer.getUserResDate(pos: indexPath.item)
+            cell.partyLabelName?.text = myCustomer.getUserResName(pos: indexPath.item)
+            cell.logoSlot.image = UIImage(named: "Coming_Soon")
             return cell
         }
     }
