@@ -11,6 +11,8 @@ import Firebase
 class Company {
     var companyName : String                        //Host's name
     var companyID : String                          //Host's ID
+    var companyMajor : Int
+    var companyMinor : Int
     var reservationList : [MyReservation]           //Host's list of Current Reservations
     var prevReservationList : [MyReservation]       //Host's list of Past Reservations
     //var partyNames : [String]                       //Host's list of Party names
@@ -18,6 +20,8 @@ class Company {
     init(){
         self.companyName = ""
         self.companyID = Auth.auth().currentUser!.uid
+        self.companyMajor = 0
+        self.companyMinor = 0
         self.reservationList = []
         self.prevReservationList = []
         //self.partyNames = []
@@ -44,14 +48,19 @@ class Company {
     func getID() -> String {
         return companyID
     }
-    func printTEST() {
-        print("Host name: \(self.getName())")
-        print("Host ID: \(self.getID())")
+    func getMajor() -> Int{
+        return companyMajor
+    }
+    func getMinor() -> Int{
+        return companyMinor
     }
     
     //Reservation getters
     func getNumOfReservations() -> Int {
         return reservationList.count
+    }
+    func getRes(pos: Int) -> MyReservation {
+        return reservationList[pos]
     }
     func getReservationName(pos: Int) -> String {
         return reservationList[pos].getPartyName()
@@ -59,8 +68,8 @@ class Company {
     func getReservationDate(pos: Int) -> String {
         return reservationList[pos].getDate()
     }
-    func getReservationUUID(customerRes: MyReservation) -> UUID {
-        return customerRes.getUUID()
+    func getReservationUUID(pos: Int) -> UUID {
+        return reservationList[pos].getUUID()
     }
     func getReservationStatus(customerRes: MyReservation) -> Bool {
         return customerRes.getCheckInStatus()
@@ -89,6 +98,14 @@ class Company {
     }
     func setCompanyID(id: String) {
         companyID = id
+    }
+    func setMajorAndMinor(name: String){
+        //var NAME = name.uppercased()
+        //var firstChar = NAME.prefix(1)
+        //var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        //var pos = alphabet.firstIndex(of: firstChar)
+        self.companyMajor = 0 //first letter of name
+        self.companyMinor = 0 //second letter of name
     }
     func appendReservation(customerRes: MyReservation){
         reservationList.append(customerRes)
@@ -136,6 +153,7 @@ class Company {
                     let name = user.childSnapshot(forPath: kCompanyName).value as! String
                     //print("host name: \(name)")                           //DEBUGGING PURPOSES
                     self.companyName = name
+                    self.setMajorAndMinor(name: name)
                 }
             }
             completionClosure()
@@ -143,9 +161,9 @@ class Company {
     }
     
     func pullReservations(completionClosure: @escaping() -> ()){
-        print("inside of pullRes: ")
-        print("name: \(self.companyName)")
-        print("id: \(self.companyID)")
+        //print("inside of pullRes: ")
+        //print("name: \(self.companyName)")
+        //print("id: \(self.companyID)")
         let dataRef = Database.database().reference()
         
         dataRef.child(kCompanyList).observe(.value) { (datasnapshot) in
@@ -160,11 +178,11 @@ class Company {
                         return
                     }
                     //print("currParty: \(currParty.key)")                                //DEBUGGING PURPOSES
-                    print("reservations: \(reservations)")                              //DEBUGGING PURPOSES
+                    //print("reservations: \(reservations)")                              //DEBUGGING PURPOSES
                     
                     // Each reservation referenced inside loop
                     for reservation in reservations{
-                        print("reservation: \(reservation)")                            //DEBUGGING PURPOSES
+                        //print("reservation: \(reservation)")                            //DEBUGGING PURPOSES
                         
                         if(reservation.key != kCompanyUserID){
                             // Store variables as a dictionary

@@ -8,13 +8,13 @@ import Foundation
 import UIKit
 
 protocol AddBeacon {
-    func addBeacon(item: Item)
+    func addBeacon(index: Int, item: Item)
 }
 
 class ReservationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var reservationTableView: UITableView!
     var myCompany : Company = Company()
-    var Delegate: AddBeacon?
+    var delegate: AddBeacon?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,20 @@ class ReservationsViewController: UIViewController, UITableViewDataSource, UITab
         
         //call function to populate the host
         myCompany.populateSelf(){
-            self.myCompany.printAll()
+            //self.myCompany.printAll()
+            
+            //turn reservations into iBeacons
+            for index in 0...(self.myCompany.getNumOfReservations() - 1){
+                let resName = self.myCompany.getReservationName(pos: index)
+                let resUUID = self.myCompany.getReservationUUID(pos: index)
+                let resMajor = self.myCompany.getMajor()
+                let resMinor = self.myCompany.getMinor()
+                
+                let newItem = Item(name: resName, uuid: resUUID, majorValue: resMajor, minorValue: resMinor)
+                self.delegate?.addBeacon(index: index, item: newItem)
+            }
             self.reservationTableView.reloadData()
+            //self.dismiss(animated: true, completion: nil)
         }
     }
     
