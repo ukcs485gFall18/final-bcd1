@@ -143,6 +143,9 @@ class Users {
     func getUserResDate(pos: Int) -> String{
         return reservationList[pos].getDate()
     }
+    func getUserResStatus(pos: Int) -> Bool{
+        return reservationList[pos].getCheckInStatus()
+    }
     
     /* ===================================================
      *              Get Party Names

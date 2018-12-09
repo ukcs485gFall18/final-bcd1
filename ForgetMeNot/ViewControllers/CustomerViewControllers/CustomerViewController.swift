@@ -124,6 +124,16 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
             cell.dateLabel?.text = myCustomer.getUserResDate(pos: indexPath.item)
             cell.partyLabelName?.text = myCustomer.getUserResName(pos: indexPath.item)
             cell.logoSlot.image = UIImage(named: "Coming_Soon")
+            
+            if myCustomer.getUserResStatus(pos: indexPath.item) == false{
+                cell.statusLabel?.text = "❌"
+            }
+            if myCustomer.getUserResStatus(pos: indexPath.item) == false{
+                cell.statusLabel?.text = "✅"
+            }
+            else{
+                cell.statusLabel?.text = "Eror"
+            }
             return cell
         }
     }
