@@ -19,6 +19,10 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        customerReservationTableView.dataSource = self
+        customerReservationTableView.delegate = self
+        
         let group = DispatchGroup()
         
         // Collect user data for table
@@ -83,8 +87,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         // Notify main thread of completion
         group.notify(queue: .main){
             print ("Finished Loading reservations")
-            self.customerReservationTableView.dataSource = self
-            self.customerReservationTableView.delegate = self
+            
             self.customerReservationTableView.reloadData()
         }
     }
@@ -94,16 +97,32 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
      *      Table Properties
      *  ========================= */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myCustomer.reservationList.count
+        if(myCustomer.getNumOfUserReservations() == 0){
+            return 0
+        }
+        else{
+            return myCustomer.getNumOfUserReservations()
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = customerReservationTableView.dequeueReusableCell(withIdentifier: "reservationReusableCell", for: indexPath) as! ReservationsCustomerTableViewCell
+        //let cell = customerReservationTableView.dequeueReusableCell(withIdentifier: "reservationReusableCell", for: indexPath) as! ReservationsCustomerTableViewCell
         
         // Modify Cell attributes
-        cell.companyLabelName!.text = myCustomer.reservationList[indexPath.row].getCompName()
-        print ("-DEBUG- (Reservation) for: " + myCustomer.reservationList[indexPath.row].getCompName())
+        //cell.companyLabelName!.text = myCustomer.reservationList[indexPath.row].getCompName()
+        //print ("-DEBUG- (Reservation) for: " + myCustomer.reservationList[indexPath.row].getCompName())
         
-        return cell
+        //return cell
+        
+        
+        let cell = customerReservationTableView.dequeueReusableCell(withIdentifier: "reservationReusableCell") as! ReservationsCustomerTableViewCell
+        
+        if(myCustomer.getNumOfUserReservations() == 0){
+            return cell
+        }
+        else{
+            cell.companyLabelName?.text = myCustomer.getUserResCompName(pos: indexPath.item)
+            return cell
+        }
     }
     
     /*  =========================

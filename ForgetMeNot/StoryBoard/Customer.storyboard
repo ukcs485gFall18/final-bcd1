@@ -37,18 +37,18 @@
                                     <action selector="segChange:" destination="pKP-IK-s7J" eventType="valueChanged" id="WqP-XL-of4"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ze-pt-nmn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ze-pt-nmn">
                                 <rect key="frame" x="0.0" y="177" width="375" height="490"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reservationReusableCell" id="7Oe-xb-nhD" customClass="ReservationsCustomerTableViewCell" customModule="ForgetMeNot" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Oe-xb-nhD" id="V2L-OC-BQQ">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="7Oe-xb-nhD" id="V2L-OC-BQQ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niK-OR-YbC">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niK-OR-YbC">
                                                     <rect key="frame" x="15" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -66,6 +66,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="QHP-O8-dd6" id="FmM-D8-VVa"/>
+                                    <outlet property="delegate" destination="QHP-O8-dd6" id="acN-6v-ngi"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VG-fg-taS">
                                 <rect key="frame" x="91" y="82" width="193" height="34"/>
@@ -97,6 +101,7 @@
                         <constraints>
                             <constraint firstItem="kv1-Js-Dy3" firstAttribute="top" secondItem="K1W-ms-uNp" secondAttribute="bottom" constant="13" id="03b-wg-OAg"/>
                             <constraint firstItem="5ze-pt-nmn" firstAttribute="leading" secondItem="PTv-6U-bHJ" secondAttribute="leading" id="Bqq-bv-5nX"/>
+                            <constraint firstItem="5ze-pt-nmn" firstAttribute="trailing" secondItem="PTv-6U-bHJ" secondAttribute="trailing" id="IEe-ag-P7s"/>
                             <constraint firstItem="5ze-pt-nmn" firstAttribute="top" secondItem="YwG-gV-1eP" secondAttribute="bottom" constant="8" id="Ix5-6I-XBR"/>
                             <constraint firstItem="YwG-gV-1eP" firstAttribute="trailing" secondItem="PTv-6U-bHJ" secondAttribute="trailing" id="OmN-9k-ken"/>
                             <constraint firstItem="lbs-Pf-ZWT" firstAttribute="top" secondItem="5ze-pt-nmn" secondAttribute="bottom" id="QYP-6d-0Fh"/>
@@ -106,7 +111,6 @@
                             <constraint firstItem="YwG-gV-1eP" firstAttribute="leading" secondItem="PTv-6U-bHJ" secondAttribute="leading" id="gWM-8W-OoH"/>
                             <constraint firstItem="0VG-fg-taS" firstAttribute="top" secondItem="K1W-ms-uNp" secondAttribute="bottom" constant="18" id="lVT-3t-9EP"/>
                             <constraint firstItem="YwG-gV-1eP" firstAttribute="top" secondItem="0VG-fg-taS" secondAttribute="bottom" constant="25" id="yDL-wA-sbs"/>
-                            <constraint firstItem="5ze-pt-nmn" firstAttribute="trailing" secondItem="PTv-6U-bHJ" secondAttribute="trailing" id="z8d-ei-Yal"/>
                             <constraint firstItem="kv1-Js-Dy3" firstAttribute="trailing" secondItem="dyM-rr-ABU" secondAttribute="trailingMargin" id="zBp-hI-qpX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PTv-6U-bHJ"/>

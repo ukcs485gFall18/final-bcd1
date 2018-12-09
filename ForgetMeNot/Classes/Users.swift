@@ -131,6 +131,21 @@ class Users {
      *  Get a list of the user's CURRENT party names (already found)
      * ===================================================
      */
+    func getNumOfUserReservations() -> Int{
+        return reservationList.count
+    }
+    func getUserResCompName(pos: Int) -> String {
+        return reservationList[pos].getCompName()
+    }
+    func getUserResName(pos: Int) -> String {
+        return reservationList[pos].getPartyName()
+    }
+    
+    /* ===================================================
+     *              Get Party Names
+     *  Get a list of the user's CURRENT party names (already found)
+     * ===================================================
+     */
     func getPartyNames() -> [String]{
         return partyNames
     }
