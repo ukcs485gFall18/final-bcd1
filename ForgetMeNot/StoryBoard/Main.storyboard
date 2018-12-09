@@ -100,7 +100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BackgroundBlue" translatesAutoresizingMaskIntoConstraints="NO" id="nLv-hE-IoD">
-                                <rect key="frame" x="16" y="216" width="343" height="148"/>
+                                <rect key="frame" x="16" y="216" width="343" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="email" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qW2-7r-2ZE">
@@ -141,11 +141,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="o26-mH-KHS">
-                                <rect key="frame" x="21" y="373" width="333" height="273"/>
+                                <rect key="frame" x="21" y="394" width="333" height="273"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="IDSelector" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="b9Y-xW-2D8">
-                                <rect key="frame" x="35" y="330" width="229" height="29"/>
+                                <rect key="frame" x="35" y="355" width="229" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Customer"/>
@@ -172,11 +172,19 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="8" height="-5"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="cName" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iI1-hF-GKz" customClass="email">
+                                <rect key="frame" x="35" y="323" width="229" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
                         <outlet property="IDSelector" destination="b9Y-xW-2D8" id="GHg-6b-f4B"/>
+                        <outlet property="cName" destination="iI1-hF-GKz" id="x2w-Sl-Urb"/>
                         <outlet property="userEmail" destination="qW2-7r-2ZE" id="VMl-Bi-hSh"/>
                         <outlet property="userPass" destination="SHc-8T-upd" id="RKk-6k-pxV"/>
                         <outlet property="userPassConfirm" destination="0iP-Ro-u8B" id="jFR-r2-ZKn"/>

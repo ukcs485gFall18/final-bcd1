@@ -14,7 +14,9 @@ class SignUpViewController : UIViewController{
     @IBOutlet weak var userEmail: UITextField!
     @IBOutlet weak var userPass: UITextField!
     @IBOutlet weak var userPassConfirm: UITextField!
+    @IBOutlet weak var cName: UITextField!
     @IBOutlet weak var IDSelector: UISegmentedControl!
+
     
     #warning("Can add this to the Alert.swift")
     func showMessage (alertTitle : String, alertMessage : String, actionTitle : String){
@@ -42,15 +44,16 @@ class SignUpViewController : UIViewController{
         var databaseRef : DatabaseReference? // Create firebase database reference variable
         databaseRef = Database.database().reference()  // Link the firebase database
         
+        #warning("Need to check that email is not empty")
+        #warning("Need to check that password is not empty")
         let userEmailTxt = self.userEmail.text!
-        let userCompanyName = "Chilis"
+       
         
         if (userPass.text == userPassConfirm.text){
             Auth.auth().createUser(withEmail: userEmail.text!, password: userPass.text!)
             { (user, error) in
                 
                 if error == nil{
-                    
                     guard let createdUser = user else{
                         return
                     }
@@ -63,14 +66,21 @@ class SignUpViewController : UIViewController{
                         databaseRef?.child("userList").child(userID).child("partyNameList").setValue(["partyName" : "Initial"])// Write to database the user is a Company
                     }
                     else if (self.IDSelector.selectedSegmentIndex == 1){// Company
-                        databaseRef?.child("userList").child(userID).setValue(["userType" : "Company"])// Write to database the user is a Company
-                        databaseRef?.child("userList/\(userID)/name").setValue(userCompanyName)
+                        //check to make sure "Company Name" is not empty
+                        #warning("fix logic")
+                        if(self.cName.text?.isEmpty ?? true){
+                            Alert.showMissingNameAlert(on: self)
+                        }
+                        else{
+                            let userCompanyName = self.cName.text!
 
-                        //insert to company database
-                        databaseRef?.child("companyList").child(userCompanyName).setValue(["userID" : "\(userID)"])
-                        
+                            databaseRef?.child("userList").child(userID).setValue(["userType" : "Company"])// Write to database the user is a Company
+                            databaseRef?.child("userList/\(userID)/companyName").setValue(userCompanyName)
+
+                            //insert to company database
+                            databaseRef?.child("companyList").child(userCompanyName).setValue(["userID" : "\(userID)"])
+                        }
                     }
-                    #warning("TODO: NEED TO ADD A TEXT FIELD WHEN COMPANY IS SELECTED TO TYPE IN THE COMPANY'S NAME")
                     
                     databaseRef?.child("userList/\(userID)/email").setValue(userEmailTxt)
                     

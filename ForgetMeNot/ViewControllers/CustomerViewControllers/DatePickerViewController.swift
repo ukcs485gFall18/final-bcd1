@@ -23,24 +23,22 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     let resturantPicker = UIPickerView()
     
     #warning("MAKE THIS DYNAMIC")
-    let avaiableResturants = ["Chilis", "Applebees", "TGI Friday's"]             //TODO: GET THIS INFO FROM FIREBASE TABLE
+    let avaiableResturants = ["Chilis", "Applebees", "Hooters"]             //TODO: GET THIS INFO FROM FIREBASE TABLE
     var dateOfReservation = ""
     
     //--------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtPartyName.placeholder = "Party's Name"
+        /*txtPartyName.placeholder = "Party's Name"
         txtPartySize.placeholder = "Party's Size"
         txtCompName.placeholder = "Resturant's Name"
         txtDatePicker.placeholder = "MM/DD/YYYY"
-        txtTime.placeholder = "HH:MM"
+        txtTime.placeholder = "HH:MM"*/
 
         //display date picker
         showDatePicker()
         showResturantPicker()
     }
-
-    #warning("TODO: MAKE UIPICKER FOR RESTURANTS")
     
     //--------------------------------------------------------------------------
     //function to display UI date picker when either date or time text fields are clicked on
@@ -72,6 +70,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     //--------------------------------------------------------------------------
+    #warning("pull resturants from FIREBASE")
     //Reference: https://codewithchris.com/uipickerview-example/
     //function to display UI picker for resturants when text box is tapped
     func showResturantPicker(){
@@ -119,6 +118,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     //--------------------------------------------------------------------------
+    #warning("FIXME: make sure the dates and times show from current date forward")
     //When 'Done' is pressed in date picker and scrubs user input to prep for storing reservation
     @objc func donedatePicker(){
         
@@ -209,40 +209,31 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             var databaseRef : DatabaseReference?            // Create firebase database reference variable
             databaseRef = Database.database().reference()   // Link the firebase database
             
+            //------------------------------------------------------------------
             //Call firebase and insert user's reservation into user's Party name
-        databaseRef?.child("reservation").child(userReservation.getPartyName()).child(userReservation.getCompName()).setValue(["partyDate" : userReservation.getDate()])
+            #warning("FIXME: so when a resturant already exisit in the party's name, it doesnt get overwritten")
+        databaseRef?.child(kReservation).child(userReservation.getPartyName()).child(userReservation.getCompName()).setValue([kPartyDate : userReservation.getDate()])
             
             //Call firebase and insert Party's size into firebase under same Party name as above
-            databaseRef?.child("reservation/\(userReservation.getPartyName())/\(userReservation.getCompName())/partySize").setValue(userReservation.getPartySize())
+            databaseRef?.child("\(kReservation)/\(userReservation.getPartyName())/\(userReservation.getCompName())/\(kPartySize)").setValue(userReservation.getPartySize())
             
             //Call firebase and insert Party's UUID into firebase under same Party name as above
-            databaseRef?.child("reservation/\(userReservation.getPartyName())/\(userReservation.getCompName())/partyUUID").setValue(userReservation.getUUIDString())
+            databaseRef?.child("\(kReservation)/\(userReservation.getPartyName())/\(userReservation.getCompName())/\(kPartyUUID)").setValue(userReservation.getUUIDString())
 
             //------------------------------------------------------------------
             //Call firebase and insert user's reservation into Resturant's table
             
-            databaseRef?.child("companyList/\(userReservation.getCompName())/\(userReservation.getUUIDString())").setValue(userReservation.getUUIDString())
-            databaseRef?.child("companyList/\(userReservation.getCompName())/\(userReservation.getUUIDString())/PartyDate").setValue(userReservation.getDate())
-            databaseRef?.child("companyList/\(userReservation.getCompName())/\(userReservation.getUUIDString())/PartyName").setValue(userReservation.getPartyName())
-            databaseRef?.child("companyList/\(userReservation.getCompName())/\(userReservation.getUUIDString())/PartySize").setValue(userReservation.getPartySize())
-
-            /*
-            databaseRef?.child(userReservation.getCompName()).child(userReservation.getUUIDString()).setValue(["partyDate" : userReservation.getDate()])
-            
-            //Call firebase and insert Party's Name into firebase under same Party UUID
-            databaseRef?.child("\(userReservation.getCompName())/\(userReservation.getUUIDString())/partyName").setValue(userReservation.getPartyName())
-            
-            //Call firebase and insert Party's Size into firebase under same Party UUID
-            databaseRef?.child("\(userReservation.getCompName())/\(userReservation.getUUIDString())/partySize").setValue(userReservation.getPartySize())*/
-
+            databaseRef?.child("\(kCompanyList)/\(userReservation.getCompName())/\(userReservation.getUUIDString())").setValue(userReservation.getUUIDString())
+            databaseRef?.child("\(kCompanyList)/\(userReservation.getCompName())/\(userReservation.getUUIDString())/\(kPartyDate)").setValue(userReservation.getDate())
+            databaseRef?.child("\(kCompanyList)/\(userReservation.getCompName())/\(userReservation.getUUIDString())/\(kPartyName)").setValue(userReservation.getPartyName())
+            databaseRef?.child("\(kCompanyList)/\(userReservation.getCompName())/\(userReservation.getUUIDString())/\(kPartySize)").setValue(userReservation.getPartySize())
             //================================================================//
 
-            #warning("for better UI experience intergrade this")
-            //this is a confirmation alert to user...need to seague so afterwards it exits
-            //Alert.showConfirmReservationAlert(on:self)
+            //this is a confirmation alert to user, seagues back to previous page
+            Alert.showConfirmReservationAlert(on: self)
             
             //return to previous page
-            self.performSegue(withIdentifier: "HomeSegue", sender: self)
+            //self.performSegue(withIdentifier: "HomeSegue", sender: self)
         }
         else{
             Alert.showIncompleteFormAlert(on: self)

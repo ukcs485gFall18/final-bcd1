@@ -23,24 +23,32 @@
 import UIKit
 import CoreLocation
 
-let storedItemsKey = "storedItems"
-
 class ItemsViewController: UIViewController {
-	
-  @IBOutlet weak var tableView: UITableView!
+   // @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
-  var items = [Item]()
-  let locationManager = CLLocationManager()
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    var items = [Item]()
+    let locationManager = CLLocationManager()
     
-    locationManager.delegate = self
-    locationManager.requestAlwaysAuthorization()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        //cleanItems()
+        loadItems()
+    }
     
-    loadItems()
-  }
-  
+    override func viewWillAppear(_ animated: Bool) {
+        print("now i will reload")
+        loadItems()
+        //tableView.reloadData()
+    }
+    /*
+    - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData]; // to reload selected cell
+    }
+    
     @IBAction func segChange(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
             //dispaly upcoming reservations
@@ -48,55 +56,86 @@ class ItemsViewController: UIViewController {
         else{
             //display completed reservations
         }
-    }
+    }*/
     
-/*
+    /*
     //David Mercado added this
     @IBAction func calendarButtonTapped(_ sender: Any) {
         UIApplication.shared.openURL(NSURL(string: "calshow://")! as URL)
     }*/
     
-  func loadItems() {
-    guard let storedItems = UserDefaults.standard.array(forKey: storedItemsKey) as? [Data] else { return }
-    for itemData in storedItems {
-      guard let item = NSKeyedUnarchiver.unarchiveObject(with: itemData) as? Item else { continue }
-      items.append(item)
-      startMonitoringItem(item)
+    //--------------------------------------------------------------------------
+    //Function used to load 'Item' from userDefaults.standard.array(forKey: storedItems)
+    func loadItems() {
+        print("Loading Items!")
+        guard let storedItems = UserDefaults.standard.array(forKey: kStoredItemsKey) as? [Data] else {
+            print("No Stored Data!")
+            return
+        }
+        print("storedItems: \(storedItems)")        //DEBUGGING PURPOSES
+        
+        for itemData in storedItems {
+            print("itemData: \(itemData)")          //DEBUGGING PURPOSES
+            guard let item = NSKeyedUnarchiver.unarchiveObject(with: itemData) as? Item else { continue }
+            
+            print("item: \(item)")          //DEBUGGING PURPOSES
+            items.append(item)
+            startMonitoringItem(item)
+        }
     }
-  }
-  
-  func persistItems() {
-    var itemsData = [Data]()
-    for item in items {
-      let itemData = NSKeyedArchiver.archivedData(withRootObject: item)
-      itemsData.append(itemData)
+    //--------------------------------------------------------------------------
+    //Function used to store 'Item' data into userDefaults.standard.array(forKey: storedItems)
+    func persistItems() {
+        print("Storing Item!")
+        var itemsData = [Data]()
+        for item in items {
+            let itemData = NSKeyedArchiver.archivedData(withRootObject: item)
+            itemsData.append(itemData)
+        }
+        UserDefaults.standard.set(itemsData, forKey: kStoredItemsKey)
+        UserDefaults.standard.synchronize()
     }
-    UserDefaults.standard.set(itemsData, forKey: storedItemsKey)
-    UserDefaults.standard.synchronize()
-  }
+    
+    //--------------------------------------------------------------------------
+    //Function used to clean 'Item' data from userDefaults.standard.array(forKey: storedItems)
+    /*func cleanItems(){
+        print("Cleaning Items!")
+        UserDefaults.standard.removeObject(forKey: kStoredItemsKey)
+        UserDefaults.standard.synchronize()
+        loadItems()
+    }*/
 
-  func startMonitoringItem(_ item: Item) {
-    let beaconRegion = item.asBeaconRegion()
-    locationManager.startMonitoring(for: beaconRegion)
-    locationManager.startRangingBeacons(in: beaconRegion)
-  }
-  
-  func stopMonitoringItem(_ item: Item) {
-    let beaconRegion = item.asBeaconRegion()
-    locationManager.stopMonitoring(for: beaconRegion)
-    locationManager.stopRangingBeacons(in: beaconRegion)
-  }
-  
-    //This is the Add Item button
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "segueAdd", let viewController = segue.destination as? AddItemViewController {
-      viewController.delegate = self
+    //--------------------------------------------------------------------------
+    func startMonitoringItem(_ item: Item) {
+        let beaconRegion = item.asBeaconRegion()
+        locationManager.startMonitoring(for: beaconRegion)
+        locationManager.startRangingBeacons(in: beaconRegion)
     }
-  }
+  
+    //--------------------------------------------------------------------------
+    func stopMonitoringItem(_ item: Item) {
+        let beaconRegion = item.asBeaconRegion()
+        locationManager.stopMonitoring(for: beaconRegion)
+        locationManager.stopRangingBeacons(in: beaconRegion)
+    }
+  
+    //--------------------------------------------------------------------------
+    //This is the Add Item button
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == kSeagueReservations, let viewController = segue.destination as? ReservationsViewController{
+                viewController.delegate = self
+            }
+        
+        /*if segue.identifier == "segueAdd", let viewController = segue.destination as? AddItemViewController {
+         viewController.delegate = self
+         }*/
+    }
 }
 
+//==============================================================================
 extension ItemsViewController: AddBeacon {
-  func addBeacon(item: Item) {
+    func addBeacon(index: Int, item: Item) {
+    print("adding Item \(index): \(item.getItemName())")            //DEBUGGING PURPOSES
     items.append(item)
     
     tableView.beginUpdates()
@@ -109,9 +148,11 @@ extension ItemsViewController: AddBeacon {
   }
 }
 
+//==============================================================================
 // MARK: UITableViewDataSource
 extension ItemsViewController : UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    print("num of rows: \(items.count)")            //DEBUGGING PURPOSES
     return items.count
   }
   
@@ -119,6 +160,9 @@ extension ItemsViewController : UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath) as! ItemCell
     cell.item = items[indexPath.row]
     
+    //cell.lblName?.text = items[indexPath.row].getItemName()
+
+    print("cell item?: \(items[indexPath.row])")            //DEBUGGING PURPOSES
     return cell
   }
   
@@ -141,6 +185,7 @@ extension ItemsViewController : UITableViewDataSource {
   }
 }
 
+//==============================================================================
 // MARK: UITableViewDelegate
 extension ItemsViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -154,6 +199,7 @@ extension ItemsViewController: UITableViewDelegate {
   }
 }
 
+//==============================================================================
 // MARK: CLLocationManagerDelegate
 extension ItemsViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {

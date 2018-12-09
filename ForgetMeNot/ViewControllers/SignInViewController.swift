@@ -28,6 +28,13 @@ class SignInViewController : UIViewController{
         self.present(alertController, animated: true, completion: nil)
     }
     
+    //Function used to clean 'Item' data from userDefaults.standard.array(forKey: storedItems)
+    func cleanItems(){
+        print("Cleaning Item Data...Please Wait!")
+        UserDefaults.standard.removeObject(forKey: kStoredItemsKey)
+        UserDefaults.standard.synchronize()
+    }
+    
     // When login button is pressed
     @IBAction func loginAction(_ sender: Any) {
         (sender as! UIButton).pulsate() // Animate button when pressed
@@ -52,13 +59,13 @@ class SignInViewController : UIViewController{
                                 return
                             }
                             
-                            
                             // Take user down specific route
                             if (userType == "Customer"){
                                 self.performSegue(withIdentifier: "LoginToCustomer", sender: self)
                                 print("User: " + userID + " has been signed in to customer side")
                             }
                             else if (userType == "Company"){
+                                self.cleanItems()
                                 self.performSegue(withIdentifier: "LoginToHost", sender: self)
                                 print("User: " + userID + " has been signed in to company side")
                             }
@@ -72,7 +79,6 @@ class SignInViewController : UIViewController{
                     }
                     
                 })
-                
             }
             else{
                 (sender as! UIButton).shake() // Shake button animation
