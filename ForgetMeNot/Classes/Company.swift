@@ -9,12 +9,12 @@ import Firebase
 
 // Created Company model for retrieving data (Host)
 class Company {
-    var companyName : String                        //Host's name
-    var companyID : String                          //Host's ID
-    var companyMajor : Int
-    var companyMinor : Int
-    var reservationList : [MyReservation]           //Host's list of Current Reservations
-    var prevReservationList : [MyReservation]       //Host's list of Past Reservations
+    fileprivate var companyName : String                        //Host's name
+    fileprivate var companyID : String                          //Host's ID
+    fileprivate var companyMajor : Int
+    fileprivate var companyMinor : Int
+    fileprivate var reservationList : [MyReservation]           //Host's list of Current Reservations
+    fileprivate var prevReservationList : [MyReservation]       //Host's list of Past Reservations
     //var partyNames : [String]                       //Host's list of Party names
     
     init(){
