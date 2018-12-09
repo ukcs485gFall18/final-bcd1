@@ -84,14 +84,14 @@ class Users {
      *  Return a list of reservations a user has
      * ===================================================
      */
-    func loadReservations() -> [MyReservation]{
+    /*func loadReservations() -> [MyReservation]{
         
         // Local Variables
-        var counter = 0 // Used to track the number of party names the user has
-        var currReservationList : [MyReservation] = []
+        //var counter = 0 // Used to track the number of party names the user has
+        //var currReservationList : [MyReservation] = []
         
         // Get a list of reservations for every party name of the user
-        for _ in reservationList{
+        for newPartyName in partyNames{
             getPartiesWithReservations(reservationList[counter].getPartyName(), handler: { (foundParties) in
                 
                 // Parse each reservation per the found party name
@@ -100,20 +100,20 @@ class Users {
                     currReservationList.append(reservation)
                     //}
                 }
+                
             })
             counter += 1
         }
         
         return currReservationList
-    }
+    }*/
     
     /* ===================================================
      *           Load Party Names of the user
      *             Return as a simple array
      * ===================================================
      */
-    /*
-    func loadPartyNames() -> [String]{
+    /*func loadPartyNames() -> [String]{
         
         var foundPartyNames : [String] = []
         
@@ -207,49 +207,46 @@ class Users {
     
     /* ===================================================
      *              Get Parties with Reservations
-     *  Method can be used in order to find all reservations in the system
      *
      *  Gets a list of parties from the database and returns all reservations for each party'
      *  Note: ASync method that fetches the database in the background thread
      * ===================================================
      */
-    func getPartiesWithReservations(_ userPartyName : String, handler: @escaping (_ reservationsArray: [MyReservation]) -> ()){
+    func getReservationsForParties(handler: @escaping () -> ()){
         let dataRef = Database.database().reference() // Firebase reference link
-        var reservationsArray = [MyReservation]()
-        var currPartyName = ""
         
         dataRef.child("reservation").observe(.value) { (datasnapshot) in
             guard let partySnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
             
-            for currParty in partySnapshot {
-                if (userPartyName == currParty.key){
-                    // Local Variables
-                    currPartyName = currParty.key
-                    guard let reservations = currParty.value as? [String:Any] else{
-                        return
-                    }
-                    
-                    // Each reservation referenced inside loop
-                    for reservation in reservations{
-                        // Store variables as a dictionary
-                        let partyValues = reservation.value as! [String : Any]   // Dictionary containing each value pair of res
+            for partyName in self.partyNames{
+                for currParty in partySnapshot {
+                    if (partyName == currParty.key){
+                        // Local Variables
+                        guard let currPartyName = currParty.key as? String else {return}
+                        guard let reservations = currParty.value as? [String:Any] else {return}
                         
-                        // Collect variables from database
-                        let currComp = reservation.key
-                        let currDate = partyValues["partyDate"] as! String
-                        let currPartySize = partyValues["partySize"] as! Int
-                        let currUUIDString = partyValues["partyUUID"] as! String
-                        
-                        // Convert UUIDString back to a normal UUID to be placed into reservation
-                        let currUUID = UUID(uuidString: currUUIDString)
-                        
-                        // Compile all info into reservation object and add to array
-                        let resObj = MyReservation(date: currDate, uuid: currUUID ?? UUID(), CompName: currComp, name: currPartyName, size: currPartySize)
-                        reservationsArray.append(resObj)
+                        // Each reservation referenced inside loop
+                        for reservation in reservations{
+                            // Store variables as a dictionary
+                            let partyValues = reservation.value as! [String : Any]   // Dictionary containing each value pair of res
+                            
+                            // Collect variables from database
+                            let currComp = reservation.key
+                            let currDate = partyValues["partyDate"] as! String
+                            let currPartySize = partyValues["partySize"] as! Int
+                            let currUUIDString = partyValues["partyUUID"] as! String
+                            
+                            // Convert UUIDString back to a normal UUID to be placed into reservation
+                            let currUUID = UUID(uuidString: currUUIDString)
+                            
+                            // Compile all info into reservation object and add to array
+                            let resObj = MyReservation(date: currDate, uuid: currUUID ?? UUID(), CompName: currComp, name: currPartyName, size: currPartySize)
+                            self.reservationList.append(resObj)
+                        }
                     }
                 }
             }
-            handler(reservationsArray) // Returns an array of "MyReservation" objects`
+            
         }
     }
 
