@@ -28,11 +28,22 @@ class ItemCell: UITableViewCell {
   @IBOutlet weak var lblName: UILabel!
   @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var checkInLabel: UILabel!
+    /*
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }*/
     
   var item: Item? = nil {
     didSet {
       if let item = item {
-        imgIcon.image = Icons(rawValue: item.icon)?.image()
+        //imgIcon.image = Icons(rawValue: item.icon)?.image()
         lblName.text = item.name
         lblLocation.text = item.locationString()
         checkInLabel.text = "Check in Status: ❌"

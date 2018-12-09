@@ -16,3 +16,12 @@ let kPartySize                      = "partySize"
 let kPartyUUID                      = "partyUUID"
 let kCompanyName                    = "companyName"
 let kCompanyUserID                  = "userID"
+
+//MARK: -iBeacon
+let kStoredItemsKey                 = "storedItems"
+
+//MARK: -Seague
+let kSeagueReservations             = "segueReservations"
+
+//MARK: -Item Cell
+let kItemCell                       = "ItemCell"
