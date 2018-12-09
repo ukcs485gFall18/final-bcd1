@@ -1,0 +1,21 @@
+--Host Information--
+Password: 111111
+
+host@test.com
+    Company name: Chilis
+host1@test.com
+	Company name: Applebees
+host2@test.com
+	Company name: Hooters
+
+--Customer Information--
+Password: 111111
+
+cust1@test.com
+	
+--iBeacon--
+major num: By first letter 1-26
+minor num: By second letter 1-26
+example 
+	Chilis = Major: 3, Minor: 8
+	Applebees = Major: 1, Minor: 16
