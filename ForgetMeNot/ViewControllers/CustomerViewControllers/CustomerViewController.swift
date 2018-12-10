@@ -136,7 +136,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
                 cell.statusLabel?.text = "✅"
             }
             else{
-                cell.statusLabel?.text = "Eror"
+                cell.statusLabel?.text = "Error"
             }
             return cell
         }
