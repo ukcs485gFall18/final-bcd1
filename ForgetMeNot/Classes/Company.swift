@@ -14,7 +14,7 @@ class Company {
     fileprivate var companyMajor : Int
     fileprivate var companyMinor : Int
     fileprivate var reservationList : [MyReservation]           //Host's list of Current Reservations
-    fileprivate var prevReservationList : [MyReservation]       //Host's list of Past Reservations
+    fileprivate var completedReservationList : [MyReservation]       //Host's list of Past Reservations
     //var partyNames : [String]                       //Host's list of Party names
     
     init(){
@@ -23,15 +23,8 @@ class Company {
         self.companyMajor = 0
         self.companyMinor = 0
         self.reservationList = []
-        self.prevReservationList = []
+        self.completedReservationList = []
         //self.partyNames = []
-        /*
-        DispatchQueue.global().async {
-            DispatchQueue.main.sync(execute: {
-                self.findMyName {}
-                completionClosure()
-            })
-        }*/
         //super.init()
     }
     
@@ -55,12 +48,18 @@ class Company {
         return companyMinor
     }
     
-    //Reservation getters
+    //Reservation getters from reservationList
     func getNumOfReservations() -> Int {
         return reservationList.count
     }
     func getRes(pos: Int) -> MyReservation {
-        return reservationList[pos]
+        if(reservationList.count == 0){
+            let blankRes = MyReservation(date: kNANA, uuid: UUID(), CompName: kNA, name: kNA, size: 0)
+            return blankRes
+        }
+        else{
+            return reservationList[pos]
+        }
     }
     func getReservationName(pos: Int) -> String {
         return reservationList[pos].getPartyName()
@@ -77,18 +76,33 @@ class Company {
     func getReservationStatus(customerRes: MyReservation) -> Bool {
         return customerRes.getCheckInStatus()
     }
-    
     func getReservationName(customerRes: MyReservation) -> Int {
         return customerRes.getPartySize()
     }
     func printAll(){
         for res in reservationList{
-            print("pResUUID: \(res.getUUID())")
-            print("pDate: \(res.getDate())")
-            print("pName \(res.getPartyName())")
-            print("pSize: \(res.getPartySize())")
+            print("reservation: \(res)")
+            print("    pResUUID: \(res.getUUID())")
+            print("    pDate: \(res.getDate())")
+            print("    pName \(res.getPartyName())")
+            print("    pSize: \(res.getPartySize())")
         }
     }
+    
+    //Reservation getters from completedReservationList
+    func getNumOfResFromCompletedList() -> Int {
+        return completedReservationList.count
+    }
+    func getCompletedRes(pos: Int) -> MyReservation {
+        if(completedReservationList.count == 0){
+            let blankRes = MyReservation(date: kNANA, uuid: UUID(), CompName: kNA, name: kNA, size: 0)
+            return blankRes
+        }
+        else{
+            return completedReservationList[pos]
+        }
+    }
+    
     
     /* ===================================================
      *              "Set" Functions
@@ -102,7 +116,7 @@ class Company {
     func setCompanyID(id: String) {
         companyID = id
     }
-    func setMajorAndMinor(name: String){
+    func setCompanyMajorAndMinor(name: String){
         //var NAME = name.uppercased()
         //var firstChar = NAME.prefix(1)
         //var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -110,20 +124,31 @@ class Company {
         self.companyMajor = 0 //first letter of name
         self.companyMinor = 0 //second letter of name
     }
-    func appendReservation(customerRes: MyReservation){
+    
+    //Reservation setters from reservationList
+    func appendAndSortCompanyReservationList(customerRes: MyReservation){
         reservationList.append(customerRes)
-        sortReservation()
+        reservationList.sort(){$0.getDate() < $1.getDate()}
     }
-    func removeReservation(customerRes: MyReservation){
+    func removeFromCompanyReservationList(customerRes: MyReservation){
         let pos = searchReservation(date: customerRes.getDate(), name: customerRes.getPartyName())
         reservationList.remove(at: pos)
     }
+    
+    //Reservation setters from completedReservationList
+    func updateCompanyCompletedReservationList(itemUUID: UUID) {
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     func searchReservation(date: String, name: String) -> Int{
         //search for reservation
         return 0
-    }
-    func sortReservation(){
-        //sort reservations by date time
     }
     
     /*====================================================
@@ -156,7 +181,7 @@ class Company {
                     let name = user.childSnapshot(forPath: kCompanyName).value as! String
                     //print("host name: \(name)")                           //DEBUGGING PURPOSES
                     self.companyName = name
-                    self.setMajorAndMinor(name: name)
+                    self.setCompanyMajorAndMinor(name: name)
                 }
             }
             completionClosure()
@@ -210,7 +235,7 @@ class Company {
                             let currRes = MyReservation(date: currResDate, uuid: currResUUID, CompName: self.getName(), name: currResName, size: currResSize)
                             
                             //Add the reservation to the Company's list
-                            self.appendReservation(customerRes: currRes)
+                            self.appendAndSortCompanyReservationList(customerRes: currRes)
                         }
                     }
                 }
@@ -303,7 +328,7 @@ class Company {
                         let currRes = MyReservation(date: currResDate, uuid: currResUUID, CompName: self.getName(), name: currResName, size: currResSize)
                         
                         //Add the reservation to the Company's list
-                        self.appendReservation(customerRes: currRes)
+                        self.appendAndSortCompanyReservationList(customerRes: currRes)
                     }
                 }
             }

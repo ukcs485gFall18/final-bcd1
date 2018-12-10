@@ -6,6 +6,10 @@
 
 import Foundation
 
+//MARK: - Reservation
+let kNA                             = "N/A"
+let kNANA                           = "\(kNA) \(kNA) \(kNA)"
+
 //MARK: - Firebase
 let kCompanyList                    = "companyList"
 let kReservation                    = "reservation"
@@ -25,6 +29,8 @@ let kSeagueReservations             = "segueReservations"
 
 //MARK: -Item Cell
 let kItemCell                       = "ItemCell"
+let kUpCommingItemID                = "UpComming Item"
+let kCompletedItemID                = "Completed Item"
 
 //MARK: -Images
 let kBg1                            = "background1"
