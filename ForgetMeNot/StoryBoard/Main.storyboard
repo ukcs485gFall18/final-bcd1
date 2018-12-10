@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="bKK-Ji-bxC">
+                            <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash-white" translatesAutoresizingMaskIntoConstraints="NO" id="bKK-Ji-bxC">
                                 <rect key="frame" x="87.5" y="40" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="O1p-BX-fjF"/>
@@ -163,7 +163,7 @@
                                     <segue destination="uOB-NJ-UFq" kind="show" identifier="SignUpToLogin" id="KsR-UP-mCH"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="o26-mH-KHS">
+                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Splash-white" translatesAutoresizingMaskIntoConstraints="NO" id="o26-mH-KHS">
                                 <rect key="frame" x="21" y="394" width="333" height="273"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -237,6 +237,6 @@
     <resources>
         <image name="BackgroundBlue" width="320" height="568"/>
         <image name="Go button" width="900" height="600"/>
-        <image name="Splash" width="512" height="512"/>
+        <image name="Splash-white" width="512" height="512"/>
     </resources>
 </document>

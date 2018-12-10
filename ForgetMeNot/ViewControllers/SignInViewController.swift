@@ -29,7 +29,8 @@ class SignInViewController : UIViewController{
         setBackground()
         email.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black.withAlphaComponent(1.0)])
         password.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black.withAlphaComponent(1.0)])
-        
+        email.textColor = UIColor.black
+        password.textColor = UIColor.black
         
         // Remove keyboard when tapping away
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))

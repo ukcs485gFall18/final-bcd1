@@ -24,7 +24,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundBlue" translatesAutoresizingMaskIntoConstraints="NO" id="PZe-9d-9hp">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="fVC-vT-qq8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash-white" translatesAutoresizingMaskIntoConstraints="NO" id="fVC-vT-qq8">
                                 <rect key="frame" x="7.5" y="153.5" width="360" height="360"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fVC-vT-qq8" secondAttribute="height" multiplier="1:1" id="axq-tk-78V"/>
@@ -50,6 +50,6 @@
     </scenes>
     <resources>
         <image name="BackgroundBlue" width="320" height="568"/>
-        <image name="Splash" width="512" height="512"/>
+        <image name="Splash-white" width="512" height="512"/>
     </resources>
 </document>
