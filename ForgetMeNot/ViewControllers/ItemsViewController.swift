@@ -24,8 +24,8 @@ import UIKit
 import CoreLocation
 
 class ItemsViewController: UIViewController {
-   // @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
+    var myCompany = Company()
     
     var items = [Item]()
     let locationManager = CLLocationManager()
@@ -34,16 +34,37 @@ class ItemsViewController: UIViewController {
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        //call function to populate the host
+        myCompany.populateSelf(){
+            //self.myCompany.printAll()
+            
+            //turn reservations into iBeacons
+            for index in 0...(self.myCompany.getNumOfReservations() - 1){
+                let resName = self.myCompany.getReservationName(pos: index)
+                let resUUID = self.myCompany.getReservationUUID(pos: index)
+                let resMajor = self.myCompany.getMajor()
+                let resMinor = self.myCompany.getMinor()
+                
+                let newItem = Item(name: resName, uuid: resUUID, majorValue: resMajor, minorValue: resMinor)
+                self.addBeacon(index: index, item: newItem)
+            }
+            //self.reservationTableView.reloadData()
+            //self.dismiss(animated: true, completion: nil)
+        }
+        
         //cleanItems()
-        loadItems()
+        //loadItems()
     }
-    
+    /*
     override func viewWillAppear(_ animated: Bool) {
         print("now i will reload")
         loadItems()
         //tableView.reloadData()
     }
-    /*
+    
     - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData]; // to reload selected cell
@@ -256,7 +277,7 @@ extension ItemsViewController: CLLocationManagerDelegate {
             cell.checkedIn()
             
             // Each row becomes a reservation : Blake
-            let reservation = MyReservation(date: "", uuid: UUID(), CompName: "", name: "", size: 0)
+            //let reservation = MyReservation(date: "", uuid: UUID(), CompName: "", name: "", size: 0)
         }
     }
     
