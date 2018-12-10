@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class CustomerViewController : UIViewController, UITableViewDelegate, UITableViewDataSource{
+    @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var customerReservationTableView: UITableView!
     
     //Refrence: https://www.youtube.com/watch?v=m_0_XQEfrGQ
@@ -22,7 +23,16 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*  ==================
+            UI Preferences
+            ==================*/
         setBackground()
+        // Clear navigation bar
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
 
         customerReservationTableView.dataSource = self
         customerReservationTableView.delegate = self
@@ -129,15 +139,9 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
             cell.partyLabelName?.text = myCustomer.getUserResName(pos: indexPath.item)
             cell.logoSlot.image = UIImage(named: "Coming_Soon")
             
-            if myCustomer.getUserResStatus(pos: indexPath.item) == false{
-                cell.statusLabel?.text = "❌"
-            }
-            else if myCustomer.getUserResStatus(pos: indexPath.item) == true{
-                cell.statusLabel?.text = "✅"
-            }
-            else{
-                cell.statusLabel?.text = "Error"
-            }
+            /*if myCustomer.getUserResStatus(pos: indexPath.item) == false{cell.statusLabel?.text = "❌"}
+            else if myCustomer.getUserResStatus(pos: indexPath.item) == true{cell.statusLabel?.text = "✅"}
+            else{cell.statusLabel?.text = "Error"}*/
             return cell
         }
     }
