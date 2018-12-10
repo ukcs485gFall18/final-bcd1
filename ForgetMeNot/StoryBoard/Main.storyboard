@@ -37,7 +37,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qii-Z8-Aic" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qii-Z8-Aic" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
                                 <rect key="frame" x="30" y="331" width="315" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="vEk-yI-b5a"/>
@@ -46,19 +46,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPg-Sn-U8A">
-                                <rect key="frame" x="315" y="537" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="RDk-z0-ovZ"/>
-                                    <constraint firstAttribute="height" constant="50" id="nk7-CS-A00"/>
-                                </constraints>
-                                <state key="normal" image="Go button">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginAction:" destination="uOB-NJ-UFq" eventType="touchUpInside" id="v2d-av-Bqb"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dW-jn-G3p" customClass="SAButton" customModule="ForgetMeNot" customModuleProvider="target">
                                 <rect key="frame" x="30" y="607" width="315" height="40"/>
                                 <constraints>
@@ -80,7 +67,7 @@
                                     <action selector="logInAction:" destination="uOB-NJ-UFq" eventType="touchUpInside" id="uMc-WU-sc2"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i2G-np-JOf" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i2G-np-JOf" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
                                 <rect key="frame" x="30" y="391" width="315" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Ein-mg-y9N"/>
@@ -96,7 +83,6 @@
                             <constraint firstItem="6Ld-JZ-TPt" firstAttribute="top" secondItem="bKK-Ji-bxC" secondAttribute="bottom" constant="20" id="2TN-Z1-WQc"/>
                             <constraint firstItem="i2G-np-JOf" firstAttribute="top" secondItem="qii-Z8-Aic" secondAttribute="bottom" constant="20" id="3lf-Dg-HbP"/>
                             <constraint firstItem="Yvm-RZ-taH" firstAttribute="top" secondItem="i2G-np-JOf" secondAttribute="bottom" constant="20" id="7Jp-xl-ogH"/>
-                            <constraint firstAttribute="trailing" secondItem="mPg-Sn-U8A" secondAttribute="trailing" constant="10" id="9BC-Zg-09Z"/>
                             <constraint firstAttribute="trailing" secondItem="i2G-np-JOf" secondAttribute="trailing" constant="30" id="BuI-89-py8"/>
                             <constraint firstItem="Yvm-RZ-taH" firstAttribute="leading" secondItem="2Lv-vs-or2" secondAttribute="leading" constant="30" id="Gix-T9-Tis"/>
                             <constraint firstItem="6Ld-JZ-TPt" firstAttribute="leading" secondItem="2Lv-vs-or2" secondAttribute="leading" constant="20" id="H55-Mt-bwU"/>
@@ -107,7 +93,6 @@
                             <constraint firstItem="gk6-y9-Ri6" firstAttribute="top" secondItem="7dW-jn-G3p" secondAttribute="bottom" constant="20" id="dYQ-sw-GHu"/>
                             <constraint firstItem="qii-Z8-Aic" firstAttribute="top" secondItem="6Ld-JZ-TPt" secondAttribute="bottom" constant="30" id="hsm-Qy-Vja"/>
                             <constraint firstItem="bKK-Ji-bxC" firstAttribute="top" secondItem="Ccs-cZ-Yjo" secondAttribute="bottom" constant="20" id="iAk-uz-j9e"/>
-                            <constraint firstItem="7dW-jn-G3p" firstAttribute="top" secondItem="mPg-Sn-U8A" secondAttribute="bottom" constant="20" id="lxv-N8-oEm"/>
                             <constraint firstItem="7dW-jn-G3p" firstAttribute="leading" secondItem="2Lv-vs-or2" secondAttribute="leading" constant="30" id="thC-aj-fno"/>
                             <constraint firstAttribute="trailing" secondItem="Yvm-RZ-taH" secondAttribute="trailing" constant="30" id="v4t-X0-BK7"/>
                             <constraint firstItem="i2G-np-JOf" firstAttribute="leading" secondItem="2Lv-vs-or2" secondAttribute="leading" constant="30" id="ySz-4s-FtR"/>
@@ -116,7 +101,6 @@
                     <connections>
                         <outlet property="email" destination="qii-Z8-Aic" id="WZQ-7B-9ip"/>
                         <outlet property="loginBtn" destination="Yvm-RZ-taH" id="iNM-2J-UdS"/>
-                        <outlet property="loginButton" destination="mPg-Sn-U8A" id="965-Qf-2q5"/>
                         <outlet property="password" destination="i2G-np-JOf" id="DLl-VK-soB"/>
                         <segue destination="nzp-AX-Fjn" kind="show" identifier="LoginToCustomer" id="xWD-1z-hHa"/>
                         <segue destination="Y0o-4a-aon" kind="show" identifier="LoginToHost" id="7GP-Cg-spA"/>
