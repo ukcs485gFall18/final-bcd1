@@ -180,7 +180,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PTv-6U-bHJ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dibs (Customer)" id="Sha-Bi-jov"/>
+                    <navigationItem key="navigationItem" id="Sha-Bi-jov"/>
                     <connections>
                         <outlet property="customerReservationTableView" destination="5ze-pt-nmn" id="mLA-lM-SUE"/>
                     </connections>
