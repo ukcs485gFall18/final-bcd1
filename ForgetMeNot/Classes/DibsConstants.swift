@@ -25,3 +25,9 @@ let kSeagueReservations             = "segueReservations"
 
 //MARK: -Item Cell
 let kItemCell                       = "ItemCell"
+
+//MARK: -Images
+let kBg1                            = "background1"
+let kBg2                            = "background2"
+let kBg3                            = "background3"
+let kBgWave                         = "background-wave"

@@ -23,11 +23,15 @@
 import UIKit
 
 class ItemCell: UITableViewCell {
-  
-  @IBOutlet weak var imgIcon: UIImageView!
-  @IBOutlet weak var lblName: UILabel!
-  @IBOutlet weak var lblLocation: UILabel!
+    @IBOutlet weak var lblDate: UILabel!
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblSize: UILabel!
+    @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var checkInLabel: UILabel!
+    @IBOutlet weak var lblLocation: UILabel!
+
+    //@IBOutlet weak var imgIcon: UIImageView!
+    
     /*
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,11 +48,14 @@ class ItemCell: UITableViewCell {
     didSet {
       if let item = item {
         //imgIcon.image = Icons(rawValue: item.icon)?.image()
+        lblDate.text = item.getDate()
         lblName.text = item.name
+        lblSize.text = String(item.size)
+        lblTime.text = item.getTime()
+        checkInLabel.text = "Pending ❌"
         lblLocation.text = item.locationString()
-        checkInLabel.text = "Check in Status: ❌"
       } else {
-        imgIcon.image = nil
+        //imgIcon.image = nil
         lblName.text = ""
         lblLocation.text = ""
       }
