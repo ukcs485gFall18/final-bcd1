@@ -24,11 +24,25 @@ import UIKit
 import CoreLocation
 
 class ItemsViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
     var myCompany = Company()
-    
     var items = [Item]()
     let locationManager = CLLocationManager()
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var browserSegment: UISegmentedControl!
+    
+    //Used for the Segment Control
+    @IBAction func browserSegmentChange(_ sender: Any) {
+        switch browserSegment.selectedSegmentIndex {
+        case 1: //This is the 'Completed' browser
+            print("Reloading Completed SegmentedControl")
+            tableView.reloadData()
+        default:
+            //This is the 'UpComming' browser
+            print("Reloading UpComming SegmentedControl")
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,25 +75,7 @@ class ItemsViewController: UIViewController {
         //loadItems()
     }
 
-    @IBAction func segChanger(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0{
-            //dispaly upcoming reservations
-        }
-        else{
-            //display completed reservations
-        }
-    }
-    
-    
     /*
-    @IBAction func segChange(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0{
-            //dispaly upcoming reservations
-        }
-        else{
-            //display completed reservations
-        }
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         print("now i will reload")
@@ -163,70 +159,111 @@ class ItemsViewController: UIViewController {
 }
 
 //==============================================================================
+// MARK: To add an iBeacon to the 'Item'
 extension ItemsViewController: AddBeacon {
     func addBeacon(index: Int, item: Item) {
-    print("adding Item \(index): \(item.getItemName())")            //DEBUGGING PURPOSES
-    items.append(item)
+        print("adding Item \(index): \(item.getItemName())")            //DEBUGGING PURPOSES
+        items.append(item)
     
-    tableView.beginUpdates()
-    let newIndexPath = IndexPath(row: items.count - 1, section: 0)
-    tableView.insertRows(at: [newIndexPath], with: .automatic)
-    tableView.endUpdates()
+        tableView.beginUpdates()
+        let newIndexPath = IndexPath(row: items.count - 1, section: 0)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+        tableView.endUpdates()
     
-    startMonitoringItem(item)
-    persistItems()
-  }
+        startMonitoringItem(item)
+        persistItems()
+    }
 }
 
 //==============================================================================
 // MARK: UITableViewDataSource
 extension ItemsViewController : UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    print("num of rows: \(items.count)")            //DEBUGGING PURPOSES
-    return items.count
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Item", for: indexPath) as! ItemCell
-    cell.item = items[indexPath.row]
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch browserSegment.selectedSegmentIndex {
     
-    //cell.lblName?.text = items[indexPath.row].getItemName()
-
-    print("cell item?: \(items[indexPath.row])")            //DEBUGGING PURPOSES
-    return cell
-  }
-  
-  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    return true
-  }
-  
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    
-    if editingStyle == .delete {
-      stopMonitoringItem(items[indexPath.row])
-      
-      tableView.beginUpdates()
-      items.remove(at: indexPath.row)
-      tableView.deleteRows(at: [indexPath], with: .automatic)
-      tableView.endUpdates()
-      
-      persistItems()
+        //Returns number of reservations from completedReservationList in myCompany
+        case 1:
+            //print("Completed num of rows: \(myCompany.getNumOfResFromCompletedList())")
+            if(myCompany.getNumOfResFromCompletedList() == 0){
+                return 1
+            }
+            else{
+                return myCompany.getNumOfResFromCompletedList()
+            }
+        
+        //Returns number of reservations from items array
+        default:
+            //print("UpComming num of rows: \(items.count)")
+            return items.count
+        }
     }
-  }
+  
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellUpComming:UpCommingItemTableViewCell?       //init for cell shown under 'UpComming'
+        let cellCompleted:CompletedItemTableViewCell?       //init for cell shown under 'Completed'
+    
+        switch browserSegment.selectedSegmentIndex {
+    
+        //Modify cell for 'Completed'
+        case 1:
+            print("Completed Cell mod")
+            cellUpComming = nil
+            cellCompleted = tableView.dequeueReusableCell(withIdentifier: kCompletedItemID, for: indexPath) as? CompletedItemTableViewCell
+
+            cellCompleted?.modCompletedCell(res: myCompany.getCompletedRes(pos: indexPath.row))
+            return cellCompleted!
+    
+        //Modify cell for 'UpComming'
+        default:
+            print("UpComming Cell mod")
+            cellCompleted = nil
+            cellUpComming = tableView.dequeueReusableCell(withIdentifier: kUpCommingItemID, for: indexPath) as? UpCommingItemTableViewCell
+
+            cellUpComming?.item = items[indexPath.row]
+
+            return cellUpComming!
+        }
+        /*
+         let cell = tableView.dequeueReusableCell(withIdentifier: kUpCommingItemID, for: indexPath) as! UpCommingItemTableViewCell
+         cell.item = items[indexPath.row]
+         print("cell item?: \(items[indexPath.row])")            //DEBUGGING PURPOSES
+         return cell*/
+    }
+  
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+  
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    
+        if editingStyle == .delete {
+            stopMonitoringItem(items[indexPath.row])
+      
+            let ItemUUID = items[indexPath.row].getItemUUID()
+            
+            tableView.beginUpdates()
+            items.remove(at: indexPath.row)
+            //move current res from reservationList to prevReservationList in MyCompany
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+      
+            persistItems()
+        }
+    }
 }
 
 //==============================================================================
 // MARK: UITableViewDelegate
 extension ItemsViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     
-    let item = items[indexPath.row]
-    let detailMessage = "UUID: \(item.uuid.uuidString)\nMajor: \(item.majorValue)\nMinor: \(item.minorValue)"
-    let detailAlert = UIAlertController(title: "Details", message: detailMessage, preferredStyle: .alert)
-    detailAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    self.present(detailAlert, animated: true, completion: nil)
-  }
+        let item = items[indexPath.row]
+        let detailMessage = "UUID: \(item.uuid.uuidString)\nMajor: \(item.majorValue)\nMinor: \(item.minorValue)"
+        let detailAlert = UIAlertController(title: "Details", message: detailMessage, preferredStyle: .alert)
+        detailAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(detailAlert, animated: true, completion: nil)
+    }
 }
 
 //==============================================================================
@@ -273,7 +310,7 @@ extension ItemsViewController: CLLocationManagerDelegate {
     if let visibleRows = tableView.indexPathsForVisibleRows {
       let rowsToUpdate = visibleRows.filter { indexPaths.contains($0) }
       for row in rowsToUpdate {
-        let cell = tableView.cellForRow(at: row) as! ItemCell
+        let cell = tableView.cellForRow(at: row) as! UpCommingItemTableViewCell
         cell.refreshLocation()
       }
     }
@@ -282,7 +319,7 @@ extension ItemsViewController: CLLocationManagerDelegate {
     if let visibleRows = tableView.indexPathsForVisibleRows {
         let rowsToUpdate = visibleRows.filter { indexPaths.contains($0) }
         for row in rowsToUpdate {
-            let cell = tableView.cellForRow(at: row) as! ItemCell
+            let cell = tableView.cellForRow(at: row) as! UpCommingItemTableViewCell
             cell.checkedIn()
             
             // Each row becomes a reservation : Blake

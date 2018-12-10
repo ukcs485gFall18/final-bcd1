@@ -26,7 +26,6 @@ class MyReservation : NSObject { // Create the reservation
         resCompName = CompName
         resName = name
         resSize = size
-        
         super.init()
     }
     
@@ -67,7 +66,16 @@ class MyReservation : NSObject { // Create the reservation
     func getDate() -> String {
         return resDate
     }
-    
+    func getMonthDay() -> String {
+        let day = resDate.split(separator: " ")
+        let Day = String(day[0])
+        return Day
+    }
+    func getHourMin() -> String {
+        let time = resDate.split(separator: " ")
+        let Time = String(time[1] + " " + time[2])
+        return Time
+    }
     func getPartyName() -> String {
         return resName
     }

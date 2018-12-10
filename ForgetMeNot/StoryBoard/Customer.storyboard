@@ -64,15 +64,15 @@
                                     <action selector="segChange:" destination="pKP-IK-s7J" eventType="valueChanged" id="WqP-XL-of4"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ze-pt-nmn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ze-pt-nmn">
                                 <rect key="frame" x="0.0" y="168" width="375" height="499"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reservationReusableCell" rowHeight="150" id="7Oe-xb-nhD" customClass="ReservationsCustomerTableViewCell" customModule="ForgetMeNot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reservationReusableCell" rowHeight="135" id="7Oe-xb-nhD" customClass="ReservationsCustomerTableViewCell" customModule="ForgetMeNot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="7Oe-xb-nhD" id="V2L-OC-BQQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uQm-Ga-kEV">
@@ -203,7 +203,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Party's Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Tr-9l-Zuv" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
-                                <rect key="frame" x="30" y="94" width="315" height="40"/>
+                                <rect key="frame" x="30" y="104" width="315" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="cPX-gr-69F"/>
                                 </constraints>
@@ -212,7 +212,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/DD/YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbL-zy-t7R" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
-                                <rect key="frame" x="30" y="274" width="150" height="40"/>
+                                <rect key="frame" x="30" y="284" width="150" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Sb2-9w-7Ww"/>
                                     <constraint firstAttribute="height" constant="40" id="pgf-oy-IP3"/>
@@ -222,7 +222,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HH:MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q9d-fM-0N5" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
-                                <rect key="frame" x="195" y="274" width="150" height="40"/>
+                                <rect key="frame" x="195" y="284" width="150" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="1b1-JG-Q8h"/>
                                     <constraint firstAttribute="height" constant="40" id="hii-no-3Zc"/>
@@ -232,7 +232,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Party's Size" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8au-nw-wwh" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
-                                <rect key="frame" x="30" y="214" width="315" height="40"/>
+                                <rect key="frame" x="30" y="224" width="315" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ynS-kg-hng"/>
                                 </constraints>
@@ -241,7 +241,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resturant's Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRf-u9-KSk" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
-                                <rect key="frame" x="30" y="154" width="315" height="40"/>
+                                <rect key="frame" x="30" y="164" width="315" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dJ4-co-BZa"/>
                                 </constraints>
@@ -277,7 +277,7 @@
                             <constraint firstAttribute="trailing" secondItem="8au-nw-wwh" secondAttribute="trailing" constant="30" id="jfJ-82-vEM"/>
                             <constraint firstItem="tRf-u9-KSk" firstAttribute="top" secondItem="5Tr-9l-Zuv" secondAttribute="bottom" constant="20" id="wZM-7M-Voz"/>
                             <constraint firstItem="cbL-zy-t7R" firstAttribute="leading" secondItem="OVv-pu-AP6" secondAttribute="leading" constant="30" id="www-a6-zjP"/>
-                            <constraint firstItem="5Tr-9l-Zuv" firstAttribute="top" secondItem="Cfm-CQ-Txh" secondAttribute="bottom" constant="30" id="z0f-3x-klQ"/>
+                            <constraint firstItem="5Tr-9l-Zuv" firstAttribute="top" secondItem="Cfm-CQ-Txh" secondAttribute="bottom" constant="40" id="z0f-3x-klQ"/>
                             <constraint firstItem="8au-nw-wwh" firstAttribute="top" secondItem="tRf-u9-KSk" secondAttribute="bottom" constant="20" id="zeo-h8-NHa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ndj-Ql-geq"/>
