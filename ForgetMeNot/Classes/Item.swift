@@ -121,12 +121,15 @@ class Item: NSObject, NSCoding {
     func getItemName() -> String {
         return name
     }
-    func getDate() -> String {
+    func getItemUUID() -> UUID {
+        return uuid
+    }
+    func getItemDate() -> String {
         let day = date.split(separator: " ")
         let Day = String(day[0])
         return Day
     }
-    func getTime() -> String {
+    func getItemTime() -> String {
         let time = date.split(separator: " ")
         let Time = String(time[1] + " " + time[2])
         return Time

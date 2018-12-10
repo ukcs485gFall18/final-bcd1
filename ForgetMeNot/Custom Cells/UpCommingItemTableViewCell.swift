@@ -22,7 +22,7 @@
 
 import UIKit
 
-class ItemCell: UITableViewCell {
+class UpCommingItemTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblSize: UILabel!
@@ -48,10 +48,10 @@ class ItemCell: UITableViewCell {
     didSet {
       if let item = item {
         //imgIcon.image = Icons(rawValue: item.icon)?.image()
-        lblDate.text = item.getDate()
+        lblDate.text = item.getItemDate()
         lblName.text = item.name
         lblSize.text = String(item.size)
-        lblTime.text = item.getTime()
+        lblTime.text = item.getItemTime()
         checkInLabel.text = "Pending ❌"
         lblLocation.text = item.locationString()
       } else {
