@@ -132,11 +132,11 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
             if myCustomer.getUserResStatus(pos: indexPath.item) == false{
                 cell.statusLabel?.text = "❌"
             }
-            if myCustomer.getUserResStatus(pos: indexPath.item) == true{
+            else if myCustomer.getUserResStatus(pos: indexPath.item) == true{
                 cell.statusLabel?.text = "✅"
             }
             else{
-                cell.statusLabel?.text = "Eror"
+                cell.statusLabel?.text = "Error"
             }
             return cell
         }

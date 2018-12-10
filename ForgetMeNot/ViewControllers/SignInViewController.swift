@@ -24,7 +24,16 @@ class SignInViewController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // User Interface Elements
         setBackground()
+        email.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black.withAlphaComponent(1.0)])
+        password.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.black.withAlphaComponent(1.0)])
+        
+        
+        // Remove keyboard when tapping away
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     #warning("Can add this to the Alert.swift")
@@ -41,6 +50,10 @@ class SignInViewController : UIViewController{
         print("Cleaning Item Data...Please Wait!")
         UserDefaults.standard.removeObject(forKey: kStoredItemsKey)
         UserDefaults.standard.synchronize()
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func logInAction(_ sender: Any) {
