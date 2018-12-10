@@ -180,7 +180,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PTv-6U-bHJ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dibs (Customer)" id="Sha-Bi-jov"/>
+                    <navigationItem key="navigationItem" id="Sha-Bi-jov"/>
                     <connections>
                         <outlet property="customerReservationTableView" destination="5ze-pt-nmn" id="mLA-lM-SUE"/>
                     </connections>
@@ -202,59 +202,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Party's Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Tr-9l-Zuv" customClass="txtPartyName" customModule="ForgetMeNot" customModuleProvider="target">
-                                <rect key="frame" x="16" y="107" width="220" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Party's Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Tr-9l-Zuv" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
+                                <rect key="frame" x="30" y="94" width="315" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="cPX-gr-69F"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/DD/YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbL-zy-t7R">
-                                <rect key="frame" x="16" y="291" width="150" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/DD/YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbL-zy-t7R" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
+                                <rect key="frame" x="30" y="274" width="150" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Sb2-9w-7Ww"/>
+                                    <constraint firstAttribute="height" constant="40" id="pgf-oy-IP3"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HH:MM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q9d-fM-0N5">
-                                <rect key="frame" x="209" y="291" width="150" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="HH:MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q9d-fM-0N5" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
+                                <rect key="frame" x="195" y="274" width="150" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="1b1-JG-Q8h"/>
+                                    <constraint firstAttribute="height" constant="40" id="hii-no-3Zc"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCt-lP-jTW">
-                                <rect key="frame" x="16" y="617" width="343" height="30"/>
-                                <color key="backgroundColor" red="0.1084953174" green="0.46072936060000003" blue="0.73895782229999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Party's Size" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8au-nw-wwh" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
+                                <rect key="frame" x="30" y="214" width="315" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ynS-kg-hng"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resturant's Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRf-u9-KSk" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
+                                <rect key="frame" x="30" y="154" width="315" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dJ4-co-BZa"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCt-lP-jTW" customClass="SAButton" customModule="ForgetMeNot" customModuleProvider="target">
+                                <rect key="frame" x="30" y="617" width="315" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Comfirm Reservation">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="comfirmationBtnTapped:" destination="X9e-uv-wcY" eventType="touchUpInside" id="FSS-mP-Zmp"/>
                                     <segue destination="cfN-c9-vgy" kind="showDetail" identifier="HomeSegue" id="qgD-BJ-PEo"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Party's Size" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8au-nw-wwh" customClass="txtPartySize">
-                                <rect key="frame" x="16" y="236" width="220" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Resturant's Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tRf-u9-KSk">
-                                <rect key="frame" x="16" y="170" width="220" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.27075601040000002" green="0.5293968429" blue="0.27921422779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="PiG-EC-plt" firstAttribute="top" secondItem="mCt-lP-jTW" secondAttribute="bottom" constant="20" id="JEp-eZ-cxe"/>
-                            <constraint firstItem="ndj-Ql-geq" firstAttribute="trailing" secondItem="mCt-lP-jTW" secondAttribute="trailing" constant="16" id="aNE-EL-gA1"/>
-                            <constraint firstItem="mCt-lP-jTW" firstAttribute="leading" secondItem="ndj-Ql-geq" secondAttribute="leading" constant="16" id="gxC-5G-qcw"/>
+                            <constraint firstAttribute="trailing" secondItem="Q9d-fM-0N5" secondAttribute="trailing" constant="30" id="0nw-Yl-p2n"/>
+                            <constraint firstItem="tRf-u9-KSk" firstAttribute="leading" secondItem="OVv-pu-AP6" secondAttribute="leading" constant="30" id="48d-7P-Oen"/>
+                            <constraint firstAttribute="trailing" secondItem="tRf-u9-KSk" secondAttribute="trailing" constant="30" id="E8e-Lb-okU"/>
+                            <constraint firstAttribute="trailing" secondItem="mCt-lP-jTW" secondAttribute="trailing" constant="30" id="F8u-iG-jjW"/>
+                            <constraint firstItem="PiG-EC-plt" firstAttribute="top" secondItem="mCt-lP-jTW" secondAttribute="bottom" constant="20" id="FXg-EQ-Z3d"/>
+                            <constraint firstItem="cbL-zy-t7R" firstAttribute="top" secondItem="8au-nw-wwh" secondAttribute="bottom" constant="20" id="KKi-SN-4kP"/>
+                            <constraint firstItem="5Tr-9l-Zuv" firstAttribute="leading" secondItem="OVv-pu-AP6" secondAttribute="leading" constant="30" id="KPU-AM-jzQ"/>
+                            <constraint firstItem="8au-nw-wwh" firstAttribute="leading" secondItem="OVv-pu-AP6" secondAttribute="leading" constant="30" id="ONh-ep-Rzp"/>
+                            <constraint firstItem="Q9d-fM-0N5" firstAttribute="top" secondItem="8au-nw-wwh" secondAttribute="bottom" constant="20" id="UG0-LD-eGx"/>
+                            <constraint firstItem="mCt-lP-jTW" firstAttribute="leading" secondItem="OVv-pu-AP6" secondAttribute="leading" constant="30" id="WrF-u6-Fbh"/>
+                            <constraint firstAttribute="trailing" secondItem="5Tr-9l-Zuv" secondAttribute="trailing" constant="30" id="bzM-Dk-eZz"/>
+                            <constraint firstAttribute="trailing" secondItem="8au-nw-wwh" secondAttribute="trailing" constant="30" id="jfJ-82-vEM"/>
+                            <constraint firstItem="tRf-u9-KSk" firstAttribute="top" secondItem="5Tr-9l-Zuv" secondAttribute="bottom" constant="20" id="wZM-7M-Voz"/>
+                            <constraint firstItem="cbL-zy-t7R" firstAttribute="leading" secondItem="OVv-pu-AP6" secondAttribute="leading" constant="30" id="www-a6-zjP"/>
+                            <constraint firstItem="5Tr-9l-Zuv" firstAttribute="top" secondItem="Cfm-CQ-Txh" secondAttribute="bottom" constant="30" id="z0f-3x-klQ"/>
+                            <constraint firstItem="8au-nw-wwh" firstAttribute="top" secondItem="tRf-u9-KSk" secondAttribute="bottom" constant="20" id="zeo-h8-NHa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ndj-Ql-geq"/>
                     </view>

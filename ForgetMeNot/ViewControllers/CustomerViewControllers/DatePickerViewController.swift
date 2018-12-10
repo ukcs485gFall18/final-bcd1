@@ -8,15 +8,15 @@ import UIKit
 import Firebase
 
 class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    //Text Field Connection
     @IBOutlet weak var txtPartyName: UITextField!
     @IBOutlet weak var txtCompName: UITextField!
     @IBOutlet weak var txtPartySize: UITextField!
     @IBOutlet weak var txtDatePicker: UITextField!
     @IBOutlet weak var txtTime: UITextField!
-
-    //Comfirmation Button
     @IBOutlet weak var comfirmationBtn: UIButton!
+    
+    //Refrence: https://www.youtube.com/watch?v=m_0_XQEfrGQ
+    let backgroundImageView = UIImageView()
     
     //UI Date picker
     let datePicker = UIDatePicker()
@@ -29,6 +29,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     //--------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBackground()
         /*txtPartyName.placeholder = "Party's Name"
         txtPartySize.placeholder = "Party's Size"
         txtCompName.placeholder = "Resturant's Name"
@@ -238,5 +239,18 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         else{
             Alert.showIncompleteFormAlert(on: self)
         }
+    }
+    
+    //--------------------------------------------------------------------------
+    //Refrence: https://www.youtube.com/watch?v=m_0_XQEfrGQ
+    func setBackground() {
+        view.addSubview(backgroundImageView)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        backgroundImageView.image = UIImage(named: kBgWave)
+        view.sendSubviewToBack(backgroundImageView)
     }
 }
