@@ -81,50 +81,77 @@ class Users {
     
     /* ===================================================
      *              Load Reservations
-     *  Return a list of reservations a user has
+     *  Modify the user's reservationlist to contain reservations
+     *  Completion handler added to do an action when complete
      * ===================================================
      */
-    /*func loadReservations() -> [MyReservation]{
+    func loadReservations(completion: @escaping () -> ()){
+        let group = DispatchGroup()
+        let dataRef = Database.database().reference()
         
-        // Local Variables
-        //var counter = 0 // Used to track the number of party names the user has
-        //var currReservationList : [MyReservation] = []
+        // Collect user data for table
+        userID = Auth.auth().currentUser!.uid
         
-        // Get a list of reservations for every party name of the user
-        for newPartyName in partyNames{
-            getPartiesWithReservations(reservationList[counter].getPartyName(), handler: { (foundParties) in
-                
-                // Parse each reservation per the found party name
-                for reservation in foundParties{
-                    //if (reservation.isUnique()){
-                    currReservationList.append(reservation)
-                    //}
-                }
-                
-            })
-            counter += 1
+        // Load all parties to the user
+        group.enter()
+        dataRef.child("userList/\(userID!)/partyNameList").observe(.value) { (datasnapshot) in
+            guard let partynamesnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for eachPartyName in partynamesnapshot {
+                guard let newpartyName : String = eachPartyName.value as? String else{return}
+                self.partyNames.append(newpartyName)
+            }
+            
+            group.leave()
         }
         
-        return currReservationList
-    }*/
-    
-    /* ===================================================
-     *           Load Party Names of the user
-     *             Return as a simple array
-     * ===================================================
-     */
-    /*func loadPartyNames() -> [String]{
+        // Notify main thread of completion
+        group.notify(queue: .main){
+            print ("Finished Loading party names")
+        }
         
-        var foundPartyNames : [String] = []
-        
-        getPartyNamesForUser (handler:{ (newPartyNames) in
-            for newName in newPartyNames{
-                foundPartyNames.append(newName)
+        // Load all reservations on the user
+        group.enter()
+        dataRef.child("reservation").observe(.value) { (datasnapshot) in
+            guard let partySnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for partyName in self.partyNames{
+                for currParty in partySnapshot {
+                    if (partyName == currParty.key){
+                        // Local Variables
+                        guard let currPartyName = currParty.key as? String else {return}
+                        guard let reservations = currParty.value as? [String:Any] else {return}
+                        
+                        // Each reservation referenced inside loop
+                        for reservation in reservations{
+                            // Store variables as a dictionary
+                            let partyValues = reservation.value as! [String : Any]   // Dictionary containing each value pair of res
+                            
+                            // Collect variables from database
+                            let currComp = reservation.key
+                            let currDate = partyValues["partyDate"] as! String
+                            let currPartySize = partyValues["partySize"] as! Int
+                            let currUUIDString = partyValues["partyUUID"] as! String
+                            
+                            // Convert UUIDString back to a normal UUID to be placed into reservation
+                            let currUUID = UUID(uuidString: currUUIDString)
+                            
+                            // Compile all info into reservation object and add to array
+                            let resObj = MyReservation(date: currDate, uuid: currUUID ?? UUID(), CompName: currComp, name: currPartyName, size: currPartySize)
+                            self.reservationList.append(resObj)
+                        }
+                    }
+                }
             }
-        })
+            group.leave()
+        }
         
-        return foundPartyNames
-    }*/
+        // Notify main thread of completion
+        group.notify(queue: .main){
+            print ("Finished Loading reservations")
+            completion()
+        }
+    }
     
     /* ===================================================
      *              Get Party Names
@@ -164,6 +191,12 @@ class Users {
     func getReservations() -> [MyReservation]{
         return reservationList
     }
+    
+    
+    
+    
+    
+    
     
     
     /*  ====================================================
