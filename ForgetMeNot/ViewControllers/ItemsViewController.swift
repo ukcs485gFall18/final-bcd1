@@ -43,12 +43,14 @@ class ItemsViewController: UIViewController {
             
             //turn reservations into iBeacons
             for index in 0...(self.myCompany.getNumOfReservations() - 1){
+                let resDate = self.myCompany.getReservationDate(pos: index)
                 let resName = self.myCompany.getReservationName(pos: index)
+                let resSize = self.myCompany.getReservationSize(pos: index)
                 let resUUID = self.myCompany.getReservationUUID(pos: index)
                 let resMajor = self.myCompany.getMajor()
                 let resMinor = self.myCompany.getMinor()
                 
-                let newItem = Item(name: resName, uuid: resUUID, majorValue: resMajor, minorValue: resMinor)
+                let newItem = Item(date: resDate, name: resName, size: resSize, uuid: resUUID, majorValue: resMajor, minorValue: resMinor)
                 self.addBeacon(index: index, item: newItem)
             }
             //self.reservationTableView.reloadData()
@@ -58,18 +60,18 @@ class ItemsViewController: UIViewController {
         //cleanItems()
         //loadItems()
     }
+
+    @IBAction func segChanger(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0{
+            //dispaly upcoming reservations
+        }
+        else{
+            //display completed reservations
+        }
+    }
+    
+    
     /*
-    override func viewWillAppear(_ animated: Bool) {
-        print("now i will reload")
-        loadItems()
-        //tableView.reloadData()
-    }
-    
-    - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.tableView reloadData]; // to reload selected cell
-    }
-    
     @IBAction func segChange(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
             //dispaly upcoming reservations
@@ -77,7 +79,14 @@ class ItemsViewController: UIViewController {
         else{
             //display completed reservations
         }
-    }*/
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        print("now i will reload")
+        loadItems()
+        //tableView.reloadData()
+    }
+    */
     
     /*
     //David Mercado added this
@@ -142,15 +151,15 @@ class ItemsViewController: UIViewController {
   
     //--------------------------------------------------------------------------
     //This is the Add Item button
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == kSeagueReservations, let viewController = segue.destination as? ReservationsViewController{
                 viewController.delegate = self
             }
         
-        /*if segue.identifier == "segueAdd", let viewController = segue.destination as? AddItemViewController {
-         viewController.delegate = self
-         }*/
-    }
+        //if segue.identifier == "segueAdd", let viewController = segue.destination as? AddItemViewController {
+         //viewController.delegate = self
+         //}
+    }*/
 }
 
 //==============================================================================
@@ -280,7 +289,5 @@ extension ItemsViewController: CLLocationManagerDelegate {
             //let reservation = MyReservation(date: "", uuid: UUID(), CompName: "", name: "", size: 0)
         }
     }
-    
-    
   }
 }

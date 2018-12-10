@@ -19,7 +19,7 @@ class ReservationsViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reservationTableView.delegate = self
+        /*reservationTableView.delegate = self
         reservationTableView.dataSource = self
         
         //call function to populate the host
@@ -38,7 +38,7 @@ class ReservationsViewController: UIViewController, UITableViewDataSource, UITab
             }
             self.reservationTableView.reloadData()
             //self.dismiss(animated: true, completion: nil)
-        }
+        }*/
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

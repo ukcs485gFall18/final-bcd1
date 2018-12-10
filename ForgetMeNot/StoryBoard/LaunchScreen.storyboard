@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,17 +24,22 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundBlue" translatesAutoresizingMaskIntoConstraints="NO" id="PZe-9d-9hp">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="fVC-vT-qq8">
-                                <rect key="frame" x="16" y="169" width="343" height="330"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="fVC-vT-qq8">
+                                <rect key="frame" x="7.5" y="153.5" width="360" height="360"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fVC-vT-qq8" secondAttribute="height" multiplier="1:1" id="axq-tk-78V"/>
+                                    <constraint firstAttribute="width" constant="360" id="mkt-Aa-y9h"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="fVC-vT-qq8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2lz-ry-IfQ"/>
                             <constraint firstItem="PZe-9d-9hp" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="7Ui-Zm-tLi"/>
+                            <constraint firstAttribute="bottom" secondItem="PZe-9d-9hp" secondAttribute="bottom" id="Juq-WU-WvS"/>
+                            <constraint firstItem="fVC-vT-qq8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="MWc-IK-yX4"/>
                             <constraint firstItem="PZe-9d-9hp" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="bUg-Fd-MAV"/>
-                            <constraint firstAttribute="trailing" secondItem="PZe-9d-9hp" secondAttribute="trailing" id="j7y-VK-B2S"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="PZe-9d-9hp" secondAttribute="bottom" id="lbZ-sY-7Fq"/>
+                            <constraint firstAttribute="trailing" secondItem="PZe-9d-9hp" secondAttribute="trailing" id="kgq-Qt-Cml"/>
                         </constraints>
                     </view>
                 </viewController>

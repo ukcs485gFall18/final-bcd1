@@ -16,6 +16,9 @@
 		25D6EC30217FBCE9008A9EA5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D6EC2F217FBCE9008A9EA5 /* SignUpViewController.swift */; };
 		25E3BF3E21A500E6003DECBA /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E3BF3D21A500E6003DECBA /* Helper.swift */; };
 		25E9FDEB21AE7D490073DF78 /* CustomerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E9FDEA21AE7D490073DF78 /* CustomerViewController.swift */; };
+		6303AB2421BDB54E00C5383A /* SAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303AB2321BDB54E00C5383A /* SAButton.swift */; };
+		6303AB2621BDB64F00C5383A /* SATextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303AB2521BDB64F00C5383A /* SATextField.swift */; };
+		6303AB2821BDB74C00C5383A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303AB2721BDB74C00C5383A /* Constants.swift */; };
 		6307586F2184F5CD002E09C5 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6307586E2184F5CD002E09C5 /* Alert.swift */; };
 		6307587221850602002E09C5 /* Customer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6307587121850602002E09C5 /* Customer.storyboard */; };
 		63075874218507BF002E09C5 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63075873218507BF002E09C5 /* Host.storyboard */; };
@@ -50,6 +53,9 @@
 		25D6EC2F217FBCE9008A9EA5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		25E3BF3D21A500E6003DECBA /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		25E9FDEA21AE7D490073DF78 /* CustomerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerViewController.swift; sourceTree = "<group>"; };
+		6303AB2321BDB54E00C5383A /* SAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAButton.swift; sourceTree = "<group>"; };
+		6303AB2521BDB64F00C5383A /* SATextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SATextField.swift; sourceTree = "<group>"; };
+		6303AB2721BDB74C00C5383A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6307586E2184F5CD002E09C5 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		6307587121850602002E09C5 /* Customer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Customer.storyboard; sourceTree = "<group>"; };
 		63075873218507BF002E09C5 /* Host.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Host.storyboard; sourceTree = "<group>"; };
@@ -95,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6303AB2221BDB4F000C5383A /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				6303AB2321BDB54E00C5383A /* SAButton.swift */,
+				6303AB2521BDB64F00C5383A /* SATextField.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		63075870218505D3002E09C5 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,10 +219,12 @@
 		FB9CC9581AD701910038DF33 /* ForgetMeNot */ = {
 			isa = PBXGroup;
 			children = (
+				FB9CC95B1AD701910038DF33 /* AppDelegate.swift */,
+				6303AB2721BDB74C00C5383A /* Constants.swift */,
 				C00360891E3EA86500234FCD /* Classes */,
 				C003608C1E3EA86500234FCD /* Custom Cells */,
+				6303AB2221BDB4F000C5383A /* CustomViews */,
 				C003608E1E3EA86500234FCD /* ViewControllers */,
-				FB9CC95B1AD701910038DF33 /* AppDelegate.swift */,
 				63075870218505D3002E09C5 /* StoryBoard */,
 				FB9CC9621AD701910038DF33 /* Images.xcassets */,
 				252E40BB217D1BFE00AB511E /* Media.xcassets */,
@@ -362,10 +379,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				25D6EC2E217FBCD3008A9EA5 /* SignInViewController.swift in Sources */,
+				6303AB2621BDB64F00C5383A /* SATextField.swift in Sources */,
 				6363140B21BC32BB0097BFD4 /* DibsConstants.swift in Sources */,
 				25E9FDEB21AE7D490073DF78 /* CustomerViewController.swift in Sources */,
 				91A24FB621B2F5E900DA5E8A /* ReservationsCustomerTableViewCell.swift in Sources */,
 				635EA40721611F3D00F51096 /* CalendarViewController.swift in Sources */,
+				6303AB2421BDB54E00C5383A /* SAButton.swift in Sources */,
 				630C1BE921B08F2D00755F71 /* Company.swift in Sources */,
 				C00360941E3EA86500234FCD /* AddItemViewController.swift in Sources */,
 				250E490F217679C300D4F516 /* Reservation.swift in Sources */,
@@ -382,6 +401,7 @@
 				C00360921E3EA86500234FCD /* Item.swift in Sources */,
 				6307586F2184F5CD002E09C5 /* Alert.swift in Sources */,
 				FB9CC95C1AD701910038DF33 /* AppDelegate.swift in Sources */,
+				6303AB2821BDB74C00C5383A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
