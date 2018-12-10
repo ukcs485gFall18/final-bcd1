@@ -49,6 +49,16 @@ struct Alert {
     static func showCompanyErrorAlert(on vc: UIViewController){
         showBasicAlert(on: vc, with: "Error", message: "There is a problem with your Company Account. Please contact Support!")
     }
+    
+    //--------------------------------------------------------------------------
+    //MARK: ItemsViewController
+    /*
+    //Message for Details when pressing a cell
+    static func showCompanyErrorAlert(on vc: UIViewController){
+        showBasicAlert(on: vc, with: "Error", message: "There is a problem with your Company Account. Please contact Support!")
+    }*/
+    
+    
     /*
     let alertController = UIAlertController(title: "Reservation", message: "Reservation Comfirmed for \(Name) on \(Date) at \(Time)", preferredStyle: .alert)
     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)

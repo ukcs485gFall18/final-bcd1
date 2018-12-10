@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4ir-8L-TUy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K5d-s5-LOV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,36 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpF-Pa-Jw5">
-                                <rect key="frame" x="10" y="74" width="153" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="p7u-pg-0n2"/>
-                                    <constraint firstAttribute="width" constant="153" id="sxx-XC-4c9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <inset key="titleEdgeInsets" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Add Item" image="ForgetMeNotLogo">
-                                    <color key="titleColor" red="0.1084953174" green="0.46072936060000003" blue="0.73895782229999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLy-ai-0fX">
-                                <rect key="frame" x="212" y="74" width="153" height="40"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="153" id="7wc-8A-8Yb"/>
-                                    <constraint firstAttribute="height" constant="40" id="hey-Ce-ndE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <inset key="titleEdgeInsets" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Reservations">
-                                    <color key="titleColor" red="0.1084953174" green="0.46072936060000003" blue="0.73895782229999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UAz-0m-Phn" userLabel="Browser Segment">
-                                <rect key="frame" x="10" y="124" width="355" height="29"/>
+                                <rect key="frame" x="10" y="64" width="355" height="29"/>
                                 <segments>
                                     <segment title="UpComming"/>
                                     <segment title="Completed"/>
@@ -61,7 +33,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SOV-Oh-fZF">
-                                <rect key="frame" x="0.0" y="162" width="375" height="505"/>
+                                <rect key="frame" x="0.0" y="102" width="375" height="565"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UpComming Item" rowHeight="100" id="M9q-cS-ZjH" customClass="UpCommingItemTableViewCell" customModule="ForgetMeNot" customModuleProvider="target">
@@ -288,27 +260,32 @@
                                     <outlet property="delegate" destination="K5d-s5-LOV" id="el1-Gu-7Tx"/>
                                 </connections>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pou-wg-DV0">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Welcome (Company name)" id="hFS-ig-0PG"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tpF-Pa-Jw5" firstAttribute="top" secondItem="YXA-S3-Fe3" secondAttribute="bottom" constant="10" id="21H-OH-qSA"/>
-                            <constraint firstItem="kLy-ai-0fX" firstAttribute="top" secondItem="YXA-S3-Fe3" secondAttribute="bottom" constant="10" id="FRD-Cq-L0E"/>
+                            <constraint firstItem="Pou-wg-DV0" firstAttribute="leading" secondItem="Fyz-8T-UoJ" secondAttribute="leading" id="7la-Zh-yiW"/>
                             <constraint firstItem="SOV-Oh-fZF" firstAttribute="top" secondItem="UAz-0m-Phn" secondAttribute="bottom" constant="10" id="H2V-bI-MQt"/>
                             <constraint firstAttribute="trailing" secondItem="SOV-Oh-fZF" secondAttribute="trailing" id="HcW-gk-qyx"/>
-                            <constraint firstItem="tpF-Pa-Jw5" firstAttribute="leading" secondItem="kJx-PB-zYb" secondAttribute="leading" constant="10" id="Jap-b5-CSp"/>
+                            <constraint firstItem="UAz-0m-Phn" firstAttribute="top" secondItem="Pou-wg-DV0" secondAttribute="bottom" id="iw3-bF-Qge"/>
                             <constraint firstItem="UAz-0m-Phn" firstAttribute="leading" secondItem="kJx-PB-zYb" secondAttribute="leading" constant="10" id="lu1-lt-xWS"/>
                             <constraint firstItem="kJx-PB-zYb" firstAttribute="trailing" secondItem="UAz-0m-Phn" secondAttribute="trailing" constant="10" id="nmW-wy-OUf"/>
-                            <constraint firstItem="kJx-PB-zYb" firstAttribute="trailing" secondItem="kLy-ai-0fX" secondAttribute="trailing" constant="10" id="qab-xP-WQz"/>
                             <constraint firstAttribute="bottom" secondItem="SOV-Oh-fZF" secondAttribute="bottom" id="rvc-XL-Eo4"/>
-                            <constraint firstItem="UAz-0m-Phn" firstAttribute="top" secondItem="tpF-Pa-Jw5" secondAttribute="bottom" constant="10" id="tdr-qH-xYb"/>
+                            <constraint firstAttribute="trailing" secondItem="Pou-wg-DV0" secondAttribute="trailing" id="y4L-Xd-0gp"/>
                             <constraint firstItem="SOV-Oh-fZF" firstAttribute="leading" secondItem="Fyz-8T-UoJ" secondAttribute="leading" id="yHn-OR-UD3"/>
+                            <constraint firstItem="Pou-wg-DV0" firstAttribute="top" secondItem="YXA-S3-Fe3" secondAttribute="bottom" id="ziw-Ix-gLj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kJx-PB-zYb"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LtW-QK-pfx"/>
                     <connections>
                         <outlet property="browserSegment" destination="UAz-0m-Phn" id="upe-8G-I5S"/>
                         <outlet property="tableView" destination="SOV-Oh-fZF" id="ozO-KX-jO4"/>
+                        <outlet property="titleBar" destination="hFS-ig-0PG" id="qzx-8d-VGw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12u-eo-cGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -643,30 +620,11 @@
             </objects>
             <point key="canvasLocation" x="2062" y="2463"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="9Tk-Ll-G37">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4ir-8L-TUy" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OzS-GG-Ir9">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="K5d-s5-LOV" kind="relationship" relationship="rootViewController" id="44c-k8-tnV"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Phs-fl-A5D" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1121" y="1747"/>
-        </scene>
     </scenes>
     <resources>
         <image name="BackgroundBlue" width="320" height="568"/>
         <image name="BackgroundBlueBar" width="320" height="31"/>
         <image name="Button_BlueOutline" width="19" height="46"/>
-        <image name="ForgetMeNotLogo" width="30" height="27"/>
         <image name="Icon_Bag" width="132" height="132"/>
         <image name="Icon_Cat" width="132" height="135"/>
         <image name="LineGrey" width="321" height="1"/>
