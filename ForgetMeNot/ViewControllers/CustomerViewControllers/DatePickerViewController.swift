@@ -121,7 +121,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     #warning("FIXME: make sure the dates and times show from current date forward")
     //When 'Done' is pressed in date picker and scrubs user input to prep for storing reservation
     @objc func donedatePicker(){
-        
+        #warning("If it needs to be a date https://stackoverflow.com/questions/36861732/swift-convert-string-to-date")
         //used to format date and time from UIDate picker
         let formatter = DateFormatter()
         let form = DateFormatter()

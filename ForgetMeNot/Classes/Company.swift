@@ -65,6 +65,9 @@ class Company {
     func getReservationName(pos: Int) -> String {
         return reservationList[pos].getPartyName()
     }
+    func getReservationSize(pos: Int) -> Int {
+        return reservationList[pos].getPartySize()
+    }
     func getReservationDate(pos: Int) -> String {
         return reservationList[pos].getDate()
     }

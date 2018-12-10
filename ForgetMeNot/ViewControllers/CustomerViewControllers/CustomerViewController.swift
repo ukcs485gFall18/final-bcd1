@@ -12,6 +12,9 @@ import Firebase
 class CustomerViewController : UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var customerReservationTableView: UITableView!
     
+    //Refrence: https://www.youtube.com/watch?v=m_0_XQEfrGQ
+    let backgroundImageView = UIImageView()
+    
     // Local Variables
     var myCustomer : Users = Users(email: "", userType: "")
     let dataRef = Database.database().reference()
@@ -19,7 +22,8 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setBackground()
+
         customerReservationTableView.dataSource = self
         customerReservationTableView.delegate = self
         
@@ -148,5 +152,18 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         (sender as! UIButton).spin()
         
         // Reload reservations
+    }
+    
+    //--------------------------------------------------------------------------
+    //Refrence: https://www.youtube.com/watch?v=m_0_XQEfrGQ
+    func setBackground() {
+        view.addSubview(backgroundImageView)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        backgroundImageView.image = UIImage(named: kBgWave)
+        view.sendSubviewToBack(backgroundImageView)
     }
 }

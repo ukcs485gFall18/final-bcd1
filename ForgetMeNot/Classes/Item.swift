@@ -24,41 +24,54 @@ import Foundation
 import CoreLocation
 
 struct ItemConstant {
-  static let nameKey = "name"
-  //static let iconKey = "icon"
-  static let uuidKey = "uuid"
-  static let majorKey = "major"
-  static let minorKey = "minor"
+    static let dateKey = "date"
+    static let nameKey = "name"
+    static let sizeKey = "size"
+    //static let iconKey = "icon"
+    static let uuidKey = "uuid"
+    static let majorKey = "major"
+    static let minorKey = "minor"
 }
 
 class Item: NSObject, NSCoding {
-  let name: String
-  //let icon: Int
-  let uuid: UUID
-  let majorValue: CLBeaconMajorValue
-  let minorValue: CLBeaconMinorValue
-  var beacon: CLBeacon?
+    let date: String
+    let name: String
+    let size: Int
+    //let icon: Int
+    let uuid: UUID
+    let majorValue: CLBeaconMajorValue
+    let minorValue: CLBeaconMinorValue
+    var beacon: CLBeacon?
   
-  init(name: String, /*icon: Int,*/ uuid: UUID, majorValue: Int, minorValue: Int) {
-    self.name = name
-    //self.icon = icon
-    self.uuid = uuid
-    self.majorValue = CLBeaconMajorValue(majorValue)
-    self.minorValue = CLBeaconMinorValue(minorValue)
+    init(date: String, name: String, size: Int, uuid: UUID, majorValue: Int, minorValue: Int) {
+        self.date = date
+        self.name = name
+        self.size = size
+        //self.icon = icon
+        self.uuid = uuid
+        self.majorValue = CLBeaconMajorValue(majorValue)
+        self.minorValue = CLBeaconMinorValue(minorValue)
   }
 
-  // MARK: NSCoding
-  required init(coder aDecoder: NSCoder) {
-    let aName = aDecoder.decodeObject(forKey: ItemConstant.nameKey) as? String
-    name = aName ?? ""
-    
-    let aUUID = aDecoder.decodeObject(forKey: ItemConstant.uuidKey) as? UUID
-    uuid = aUUID ?? UUID()
-    
-    //icon = aDecoder.decodeInteger(forKey: ItemConstant.iconKey)
-    majorValue = UInt16(aDecoder.decodeInteger(forKey: ItemConstant.majorKey))
-    minorValue = UInt16(aDecoder.decodeInteger(forKey: ItemConstant.minorKey))
-  }
+    // MARK: NSCoding
+    //Function used to decode data from user defaults
+    required init(coder aDecoder: NSCoder) {
+        let aDate = aDecoder.decodeObject(forKey: ItemConstant.dateKey) as? String
+        date = aDate ?? ""
+
+        let aName = aDecoder.decodeObject(forKey: ItemConstant.nameKey) as? String
+        name = aName ?? ""
+
+        let aSize = aDecoder.decodeObject(forKey: ItemConstant.sizeKey) as? Int
+        size = aSize ?? 0
+
+        let aUUID = aDecoder.decodeObject(forKey: ItemConstant.uuidKey) as? UUID
+        uuid = aUUID ?? UUID()
+
+        //icon = aDecoder.decodeInteger(forKey: ItemConstant.iconKey)
+        majorValue = UInt16(aDecoder.decodeInteger(forKey: ItemConstant.majorKey))
+        minorValue = UInt16(aDecoder.decodeInteger(forKey: ItemConstant.minorKey))
+    }
   
   func encode(with aCoder: NSCoder) {
     aCoder.encode(name, forKey: ItemConstant.nameKey)
@@ -76,7 +89,7 @@ class Item: NSObject, NSCoding {
   }
   
   func locationString() -> String {
-    guard let beacon = beacon else { return "Location: Unknown" }
+    guard let beacon = beacon else { return "Unknown" }
     let proximity = nameForProximity(beacon.proximity)
     let accuracy = String(format: "%.2f", beacon.accuracy)
     
@@ -101,10 +114,23 @@ class Item: NSObject, NSCoding {
     }
   }
     
+    /*======================================
+    *       get functions
+    *
+    *=====================================*/
     func getItemName() -> String {
         return name
     }
-    
+    func getDate() -> String {
+        let day = date.split(separator: " ")
+        let Day = String(day[0])
+        return Day
+    }
+    func getTime() -> String {
+        let time = date.split(separator: " ")
+        let Time = String(time[1] + " " + time[2])
+        return Time
+    }
 }
 
 func ==(item: Item, beacon: CLBeacon) -> Bool {
