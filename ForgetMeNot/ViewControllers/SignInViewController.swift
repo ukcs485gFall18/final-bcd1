@@ -25,6 +25,9 @@ class SignInViewController : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     #warning("Can add this to the Alert.swift")
@@ -41,6 +44,10 @@ class SignInViewController : UIViewController{
         print("Cleaning Item Data...Please Wait!")
         UserDefaults.standard.removeObject(forKey: kStoredItemsKey)
         UserDefaults.standard.synchronize()
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     @IBAction func logInAction(_ sender: Any) {
