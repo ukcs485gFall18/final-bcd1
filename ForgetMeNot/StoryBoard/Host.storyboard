@@ -200,7 +200,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kJx-PB-zYb"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dibs (Host)" id="LtW-QK-pfx"/>
+                    <navigationItem key="navigationItem" id="LtW-QK-pfx"/>
                     <connections>
                         <outlet property="tableView" destination="SOV-Oh-fZF" id="ozO-KX-jO4"/>
                     </connections>
