@@ -22,23 +22,19 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     let datePicker = UIDatePicker()
     let resturantPicker = UIPickerView()
     
-    #warning("MAKE THIS DYNAMIC")
-    let avaiableResturants = ["Chilis", "Applebees", "Hooters"]             //TODO: GET THIS INFO FROM FIREBASE TABLE
+    var resturantList: [String] = []            //TODO: GET THIS INFO FROM FIREBASE TABLE
     var dateOfReservation = ""
     
     //--------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         setBackground()
-        /*txtPartyName.placeholder = "Party's Name"
-        txtPartySize.placeholder = "Party's Size"
-        txtCompName.placeholder = "Resturant's Name"
-        txtDatePicker.placeholder = "MM/DD/YYYY"
-        txtTime.placeholder = "HH:MM"*/
 
-        //display date picker
-        showDatePicker()
-        showResturantPicker()
+        populateResturantList {                 //populate resturantList
+            self.showDatePicker()               //make custome date picker
+            self.showResturantPicker()          //make custome resturant picker
+            #warning("make UI picker for party size")
+        }
     }
     
     //--------------------------------------------------------------------------
@@ -47,6 +43,10 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         //Formate Date
         datePicker.datePickerMode = .dateAndTime
         datePicker.minuteInterval = 15
+        //let dateFormatter = DateFormatter()
+        //dateFormatter.dateFormat =  "MM/dd/yyyy hh:mm a"
+        //let min = dateFormatter.date(from: getTodaysDateAndTime())      //createing min time
+        //datePicker.minimumDate = min  //setting min time to picker
         
         //ToolBar
         let toolbar = UIToolbar();
@@ -71,7 +71,6 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     //--------------------------------------------------------------------------
-    #warning("pull resturants from FIREBASE")
     //Reference: https://codewithchris.com/uipickerview-example/
     //function to display UI picker for resturants when text box is tapped
     func showResturantPicker(){
@@ -105,17 +104,22 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     //number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return avaiableResturants.count
+        return resturantList.count
     }
     
     //data being returned
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return avaiableResturants[row]
+        return resturantList[row]
     }
     
     //sets textfield to resturant name
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        txtCompName.text =  avaiableResturants[row]
+        if(resturantList.count == 0){
+            txtCompName.text = kNoRest
+        }
+        else{
+            txtCompName.text =  resturantList[row]
+        }
     }
     
     //--------------------------------------------------------------------------
@@ -170,6 +174,10 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             ValidReservationFlag = false
             print("Resturant name is empty")                                    //DEBUGGING PURPOSE
         }
+        else if(txtCompName.text == kNoRest){
+            ValidReservationFlag = false
+            print(kNoRest)                                    //DEBUGGING PURPOSE
+        }
         else if(txtPartySize.text?.isEmpty ?? true){
             ValidReservationFlag = false
             print("Party's size is empty")                                      //DEBUGGING PURPOSE
@@ -204,6 +212,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             //init a new reservation
             let userReservation = MyReservation(date: dateOfReservation, uuid: UUID(),  CompName: pCompName, name: pName, size: pSize!)
             
+            #warning("TODO: make into its own function with @escaping")
             //================================================================//
             //                    *Firebase insertions                        //
             //================================================================//
@@ -242,7 +251,36 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     //--------------------------------------------------------------------------
+    //Function that gets the list of resturant names for resturant picker
+    func populateResturantList(completionClosure: @escaping() -> ()) {
+        let dataRef = Database.database().reference()
+        
+        dataRef.child(kCompanyList).observe(.value) { (datasnapshot) in
+            guard let partySnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            //iterate through Company List and append to resturantList
+            for currParty in partySnapshot{
+                print("CurrParty: \(currParty.key)")
+                self.resturantList.append(currParty.key)
+                self.resturantList.sort(){$0 < $1}
+            }
+            completionClosure()
+        }
+    }
+    
+    //--------------------------------------------------------------------------
+    //Function that gets current time and date
+    func getTodaysDateAndTime() -> String{
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        let result = formatter.string(from: date)
+        return result
+    }
+    
+    //--------------------------------------------------------------------------
     //Refrence: https://www.youtube.com/watch?v=m_0_XQEfrGQ
+    //sets the background
     func setBackground() {
         view.addSubview(backgroundImageView)
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false

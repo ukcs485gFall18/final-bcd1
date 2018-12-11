@@ -10,6 +10,9 @@ import Foundation
 let kNA                             = "N/A"
 let kNANA                           = "\(kNA) \(kNA) \(kNA)"
 
+//MARK: - Resturant UIPicker
+let kNoRest                         = "No Restaurants Available"
+
 //MARK: - Firebase
 let kCompanyList                    = "companyList"
 let kReservation                    = "reservation"
