@@ -88,6 +88,20 @@ class Company {
             print("    pSize: \(res.getPartySize())")
         }
     }
+    func checkResDate(dateAndTime:String) -> Bool {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        let result = formatter.string(from: date)
+        print("current time is: \(result)")
+        if(dateAndTime < result){
+            print("res time is: \(dateAndTime) returning false")
+            return false
+        }
+        else{
+            return true
+        }
+    }
     
     //Reservation getters from completedReservationList
     func getNumOfResFromCompletedList() -> Int {
@@ -215,27 +229,33 @@ class Company {
                         if(reservation.key != kCompanyUserID){
                             // Store variables as a dictionary
                             let partyValues = reservation.value as! [String:Any]
-                            
-                            //print("partyValues: \(partyValues)")
-                            // Dictionary containing each value pair of res
-                            
-                            // Collect variables from database
-                            let currResUUID_Str = reservation.key
-                            let currResUUID = UUID(uuidString: currResUUID_Str)!
                             let currResDate = partyValues[kPartyDate] as! String
-                            let currResName = partyValues[kPartyName] as! String
-                            let currResSize = partyValues[kPartySize] as! Int
-                            
-                            //print("UUID_Str: \(currResUUID_Str)")                           //DEBUGGING PURPOSES
-                            //print("currResDate: \(currResDate)")                            //DEBUGGING PURPOSES
-                            //print("currResName: \(currResName)")                            //DEBUGGING PURPOSES
-                            //print("currResSize: \(currResSize)")                            //DEBUGGING PURPOSES
-                            
-                            //Convert data into a MyReservation NSObject
-                            let currRes = MyReservation(date: currResDate, uuid: currResUUID, CompName: self.getName(), name: currResName, size: currResSize)
-                            
-                            //Add the reservation to the Company's list
-                            self.appendAndSortCompanyReservationList(customerRes: currRes)
+
+                            if(self.checkResDate(dateAndTime:currResDate)){
+                                //print("partyValues: \(partyValues)")
+                                // Dictionary containing each value pair of res
+                                
+                                // Collect variables from database
+                                let currResUUID_Str = reservation.key
+                                let currResUUID = UUID(uuidString: currResUUID_Str)!
+                                let currResName = partyValues[kPartyName] as! String
+                                let currResSize = partyValues[kPartySize] as! Int
+                                
+                                //print("UUID_Str: \(currResUUID_Str)")                           //DEBUGGING PURPOSES
+                                //print("currResDate: \(currResDate)")                            //DEBUGGING PURPOSES
+                                //print("currResName: \(currResName)")                            //DEBUGGING PURPOSES
+                                //print("currResSize: \(currResSize)")                            //DEBUGGING PURPOSES
+                                
+                                //Convert data into a MyReservation NSObject
+                                let currRes = MyReservation(date: currResDate, uuid: currResUUID, CompName: self.getName(), name: currResName, size: currResSize)
+                                
+                                //Add the reservation to the Company's list
+                                self.appendAndSortCompanyReservationList(customerRes: currRes)
+                            }
+                            else{
+                                #warning("TODO: remove old reservation from Firebase")
+                                print("Skipping over old reservation")
+                            }
                         }
                     }
                 }

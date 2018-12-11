@@ -57,17 +57,22 @@ class ItemsViewController: UIViewController {
             self.titleBar.title = "Welcome \(self.myCompany.getName())"
             //self.myCompany.printAll()
             
-            //turn reservations into iBeacons
-            for index in 0...(self.myCompany.getNumOfReservations() - 1){
-                let resDate = self.myCompany.getReservationDate(pos: index)
-                let resName = self.myCompany.getReservationName(pos: index)
-                let resSize = self.myCompany.getReservationSize(pos: index)
-                let resUUID = self.myCompany.getReservationUUID(pos: index)
-                let resMajor = self.myCompany.getMajor()
-                let resMinor = self.myCompany.getMinor()
-                
-                let newItem = Item(date: resDate, name: resName, size: resSize, uuid: resUUID, majorValue: resMajor, minorValue: resMinor)
-                self.addBeacon(index: index, item: newItem)
+            if(self.myCompany.getNumOfReservations() != 0){
+                //turn reservations into iBeacons
+                for index in 0...(self.myCompany.getNumOfReservations() - 1){
+                    let resDate = self.myCompany.getReservationDate(pos: index)
+                    let resName = self.myCompany.getReservationName(pos: index)
+                    let resSize = self.myCompany.getReservationSize(pos: index)
+                    let resUUID = self.myCompany.getReservationUUID(pos: index)
+                    let resMajor = self.myCompany.getMajor()
+                    let resMinor = self.myCompany.getMinor()
+                    
+                    let newItem = Item(date: resDate, name: resName, size: resSize, uuid: resUUID, majorValue: resMajor, minorValue: resMinor)
+                    self.addBeacon(index: index, item: newItem)
+                }
+            }
+            else{
+                print("No current reservations")
             }
         }
         
