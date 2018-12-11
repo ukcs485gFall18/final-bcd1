@@ -61,6 +61,7 @@
                                 <connections>
                                     <action selector="CompletedTapped:" destination="pKP-IK-s7J" eventType="valueChanged" id="8LM-y0-p6p"/>
                                     <action selector="UpcomingTapped:" destination="pKP-IK-s7J" eventType="valueChanged" id="aHO-Rc-B85"/>
+                                    <action selector="onSegmentChange:" destination="QHP-O8-dd6" eventType="valueChanged" id="Pd4-iI-16d"/>
                                     <action selector="segChange:" destination="pKP-IK-s7J" eventType="valueChanged" id="WqP-XL-of4"/>
                                 </connections>
                             </segmentedControl>
@@ -176,6 +177,7 @@
                     <connections>
                         <outlet property="customerReservationTableView" destination="5ze-pt-nmn" id="mLA-lM-SUE"/>
                         <outlet property="navBar" destination="Sha-Bi-jov" id="9Y3-gp-Xf3"/>
+                        <outlet property="reservationSeg" destination="YwG-gV-1eP" id="MDZ-DZ-ngm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycq-Fd-HDE" userLabel="First Responder" sceneMemberID="firstResponder"/>

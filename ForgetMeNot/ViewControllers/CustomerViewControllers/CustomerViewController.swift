@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class CustomerViewController : UIViewController, UITableViewDelegate, UITableViewDataSource{
+    @IBOutlet weak var reservationSeg: UISegmentedControl!
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var customerReservationTableView: UITableView!
     
@@ -48,25 +49,58 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
      *      Table Properties
      *  ========================= */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(myCustomer.getNumOfUserReservations() == 0){
-            return 0
+        if (reservationSeg.selectedSegmentIndex == 0){  // Showing CURRENT reservations
+            if(myCustomer.getNumOfUserReservations() == 0){
+                return 0
+            }
+            else{
+                return myCustomer.getNumOfUserReservations()
+            }
+        }
+        else if (reservationSeg.selectedSegmentIndex == 1){ // Showing PREVIOUS reservations
+            if(myCustomer.prevReservationList.count == 0){
+                return 0
+            }
+            else{
+                return myCustomer.prevReservationList.count
+            }
         }
         else{
-            return myCustomer.getNumOfUserReservations()
+            print ("Error: table view displaying 0 by incorrect default")
+            return 0
         }
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = customerReservationTableView.dequeueReusableCell(withIdentifier: "reservationReusableCell") as! ReservationsCustomerTableViewCell
-        
-        if(myCustomer.getNumOfUserReservations() == 0){
-            return cell
+        if (reservationSeg.selectedSegmentIndex == 0){  // Showing CURRENT reservations
+            if(myCustomer.getNumOfUserReservations() == 0){
+                return cell
+            }
+            else{
+                cell.companyLabelName?.text = myCustomer.getUserResCompName(pos: indexPath.item)
+                cell.dateLabel?.text = myCustomer.getUserResDate(pos: indexPath.item)
+                cell.partyLabelName?.text = myCustomer.getUserResName(pos: indexPath.item)
+                cell.logoSlot.image = UIImage(named: "Coming_Soon")
+                
+                return cell
+            }
+        }
+        else if (reservationSeg.selectedSegmentIndex == 1){ // Showing PREVIOUS reservations
+            if(myCustomer.prevReservationList.count == 0){
+                return cell
+            }
+            else{
+                cell.companyLabelName?.text = myCustomer.getUserPrevResCompName(pos: indexPath.item)
+                cell.dateLabel?.text = myCustomer.getUserPrevResDate(pos: indexPath.item)
+                cell.partyLabelName?.text = myCustomer.getUserPrevResName(pos: indexPath.item)
+                cell.logoSlot.image = UIImage(named: "Coming_Soon")
+                
+                return cell
+            }
         }
         else{
-            cell.companyLabelName?.text = myCustomer.getUserResCompName(pos: indexPath.item)
-            cell.dateLabel?.text = myCustomer.getUserResDate(pos: indexPath.item)
-            cell.partyLabelName?.text = myCustomer.getUserResName(pos: indexPath.item)
-            cell.logoSlot.image = UIImage(named: "Coming_Soon")
-            
+            print ("Error: tableview could not select segment index")
             return cell
         }
     }
@@ -81,6 +115,9 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         (sender as! UIButton).spin()
         
         // Reload reservations
+    }
+    @IBAction func onSegmentChange(_ sender: Any) {
+        self.customerReservationTableView.reloadData()
     }
     
     //--------------------------------------------------------------------------

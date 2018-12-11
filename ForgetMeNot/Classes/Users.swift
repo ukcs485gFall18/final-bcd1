@@ -192,6 +192,21 @@ class Users {
     func getUserResStatus(pos: Int) -> Bool{
         return reservationList[pos].getCheckInStatus()
     }
+    func getNumOfUserPrevReservations() -> Int{
+        return prevReservationList.count
+    }
+    func getUserPrevResCompName(pos: Int) -> String {
+        return prevReservationList[pos].getCompName()
+    }
+    func getUserPrevResName(pos: Int) -> String {
+        return prevReservationList[pos].getPartyName()
+    }
+    func getUserPrevResDate(pos: Int) -> String{
+        return prevReservationList[pos].getDate()
+    }
+    func getUserPrevResStatus(pos: Int) -> Bool{
+        return prevReservationList[pos].getCheckInStatus()
+    }
     func getPartyNames() -> [String]{
         return partyNames
     }
