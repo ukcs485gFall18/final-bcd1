@@ -38,6 +38,14 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             self.showResturantPicker()          //make custome resturant picker
             #warning("make UI picker for party size")
         }
+
+        //display date picker
+        showDatePicker()
+        showResturantPicker()
+        
+        // Remove keyboard when tapping away
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DatePickerViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     //--------------------------------------------------------------------------
@@ -75,6 +83,11 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         txtDatePicker.inputView = datePicker
         txtTime.inputAccessoryView = toolbar
         txtTime.inputView = datePicker
+    }
+    
+    // Dismiss keyboard when tapping away
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     //--------------------------------------------------------------------------
