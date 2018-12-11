@@ -35,8 +35,12 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
          Load User Reservations
          ==================*/
         myCustomer.loadReservations(){
+            for currReservation in self.myCustomer.reservationList{
+                self.myCustomer.loadOldReservations(reservation: currReservation)
+            }
             self.customerReservationTableView.reloadData()
         }
+        
     }
     
     

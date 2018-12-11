@@ -154,6 +154,25 @@ class Users {
     }
     
     /* ===================================================
+     *              Load old Reservations
+     *    Transfer all reservations with previous dates to prevReservations
+     * ===================================================
+     */
+    func loadOldReservations(reservation : MyReservation){
+        
+        // Time variables to compare
+        let time = getCurrentTime()!
+        let resTime = reservation.getDate().toDate()
+        
+        // Move old reservations to the old reservation list
+        let result = time.compare(resTime)
+        if (result == .orderedDescending){ // Current time is later than reservation time
+            prevReservationList.append(reservation)
+            removeReservationFromCurr(currListOfReservations: reservationList, reservationToRemove: reservation)
+        }
+    }
+    
+    /* ===================================================
      *              Get Party Names
      *  Get a list of the user's CURRENT party names (already found)
      * ===================================================
@@ -173,26 +192,22 @@ class Users {
     func getUserResStatus(pos: Int) -> Bool{
         return reservationList[pos].getCheckInStatus()
     }
-    
-    /* ===================================================
-     *              Get Party Names
-     *  Get a list of the user's CURRENT party names (already found)
-     * ===================================================
-     */
     func getPartyNames() -> [String]{
         return partyNames
     }
-    
-    /* ===================================================
-     *              Get Reservations
-     *  Get a list of the user's CURRENT reservations (already found)
-     * ===================================================
-     */
     func getReservations() -> [MyReservation]{
         return reservationList
     }
     
-    
+    func getCurrentTime() -> Date?{
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .medium
+        let str = formatter.string(from: Date())
+        let date = formatter.date(from: str)
+        
+        return date
+    }
     
     
     
@@ -304,4 +319,16 @@ class Users {
         }
     }
 
+}
+
+
+extension String {
+    func toDate(withFormat format: String = "MM/dd/yyyy HH:mm a") -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        guard let date = dateFormatter.date(from: self) else {
+            preconditionFailure("Take a look at your format")
+        }
+        return date
+    }
 }
