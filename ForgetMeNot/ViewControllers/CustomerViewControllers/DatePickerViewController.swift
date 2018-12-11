@@ -31,6 +31,9 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         setBackground()
 
         populateResturantList {                 //populate resturantList
+            #warning("make better")
+            let currentDate = Date()
+            self.datePicker.minimumDate = currentDate
             self.showDatePicker()               //make custome date picker
             self.showResturantPicker()          //make custome resturant picker
             #warning("make UI picker for party size")
@@ -51,6 +54,10 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         //Formate Date
         datePicker.datePickerMode = .dateAndTime
         datePicker.minuteInterval = 15
+        //datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -1, to: Date())
+
+        #warning("FIXME: RESTRICT TIME")
+        //https://stackoverflow.com/questions/49520781/restricting-enabled-time-to-a-specific-time-span-in-uidatepicker-swift-4
         //let dateFormatter = DateFormatter()
         //dateFormatter.dateFormat =  "MM/dd/yyyy hh:mm a"
         //let min = dateFormatter.date(from: getTodaysDateAndTime())      //createing min time
@@ -136,7 +143,6 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     //--------------------------------------------------------------------------
-    #warning("FIXME: make sure the dates and times show from current date forward")
     //When 'Done' is pressed in date picker and scrubs user input to prep for storing reservation
     @objc func donedatePicker(){
         #warning("If it needs to be a date https://stackoverflow.com/questions/36861732/swift-convert-string-to-date")
@@ -217,7 +223,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
 
             print(pName)                                                        //DEBUGGING PURPOSE
             print(pCompName)                                                    //DEBUGGING PURPOSE
-            print(pSize!)                                                        //DEBUGGING PURPOSE
+            print(pSize!)                                                       //DEBUGGING PURPOSE
             print(pDate)                                                        //DEBUGGING PURPOSE
             print(pTime)                                                        //DEBUGGING PURPOSE
             print(dateOfReservation)                                            //DEBUGGING PURPOSES
@@ -264,7 +270,21 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     //--------------------------------------------------------------------------
-    //Function that gets the list of resturant names for resturant picker
+    //Function that gets current time and date
+    func getTodaysDateAndTime() -> String{
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        let result = formatter.string(from: date)
+        return result
+    }
+    
+    /*==========================================================================
+    *
+    *                       FIREBASE CALLS
+    *
+    ==========================================================================*/
+    //Function that gets the list of resturant names from firebase
     func populateResturantList(completionClosure: @escaping() -> ()) {
         let dataRef = Database.database().reference()
         
@@ -279,16 +299,6 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             }
             completionClosure()
         }
-    }
-    
-    //--------------------------------------------------------------------------
-    //Function that gets current time and date
-    func getTodaysDateAndTime() -> String{
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy hh:mm a"
-        let result = formatter.string(from: date)
-        return result
     }
     
     //--------------------------------------------------------------------------
