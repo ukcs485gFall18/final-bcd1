@@ -29,6 +29,7 @@ class ItemsViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var browserSegment: UISegmentedControl!
     
     //Used for the Segment Control
@@ -53,22 +54,26 @@ class ItemsViewController: UIViewController {
         
         //call function to populate the host
         myCompany.populateSelf(){
+            self.titleBar.title = "Welcome \(self.myCompany.getName())"
             //self.myCompany.printAll()
             
-            //turn reservations into iBeacons
-            for index in 0...(self.myCompany.getNumOfReservations() - 1){
-                let resDate = self.myCompany.getReservationDate(pos: index)
-                let resName = self.myCompany.getReservationName(pos: index)
-                let resSize = self.myCompany.getReservationSize(pos: index)
-                let resUUID = self.myCompany.getReservationUUID(pos: index)
-                let resMajor = self.myCompany.getMajor()
-                let resMinor = self.myCompany.getMinor()
-                
-                let newItem = Item(date: resDate, name: resName, size: resSize, uuid: resUUID, majorValue: resMajor, minorValue: resMinor)
-                self.addBeacon(index: index, item: newItem)
+            if(self.myCompany.getNumOfReservations() != 0){
+                //turn reservations into iBeacons
+                for index in 0...(self.myCompany.getNumOfReservations() - 1){
+                    let resDate = self.myCompany.getReservationDate(pos: index)
+                    let resName = self.myCompany.getReservationName(pos: index)
+                    let resSize = self.myCompany.getReservationSize(pos: index)
+                    let resUUID = self.myCompany.getReservationUUID(pos: index)
+                    let resMajor = self.myCompany.getMajor()
+                    let resMinor = self.myCompany.getMinor()
+                    
+                    let newItem = Item(date: resDate, name: resName, size: resSize, uuid: resUUID, majorValue: resMajor, minorValue: resMinor)
+                    self.addBeacon(index: index, item: newItem)
+                }
             }
-            //self.reservationTableView.reloadData()
-            //self.dismiss(animated: true, completion: nil)
+            else{
+                print("No current reservations")
+            }
         }
         
         //cleanItems()
@@ -235,19 +240,28 @@ extension ItemsViewController : UITableViewDataSource {
     }
   
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    
-        if editingStyle == .delete {
-            stopMonitoringItem(items[indexPath.row])
+        switch browserSegment.selectedSegmentIndex {
+        case 1:
+            #warning("FIXME: make sure to remove delete option")
+            if editingStyle == .none {
+                print("No deleting here!")
+            }
+        default:
+            if editingStyle == .delete {
+                stopMonitoringItem(items[indexPath.row])
       
-            let ItemUUID = items[indexPath.row].getItemUUID()
+                //storing into Company completed list
+                let ItemUUID = items[indexPath.row].getItemUUID()
+                myCompany.updateCompanyCompletedReservationList(itemUUID: ItemUUID)
             
-            tableView.beginUpdates()
-            items.remove(at: indexPath.row)
-            //move current res from reservationList to prevReservationList in MyCompany
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
+                //removal from 'Upcomming'
+                tableView.beginUpdates()
+                items.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.endUpdates()
       
-            persistItems()
+                persistItems()
+            }
         }
     }
 }
@@ -258,11 +272,17 @@ extension ItemsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     
-        let item = items[indexPath.row]
-        let detailMessage = "UUID: \(item.uuid.uuidString)\nMajor: \(item.majorValue)\nMinor: \(item.minorValue)"
-        let detailAlert = UIAlertController(title: "Details", message: detailMessage, preferredStyle: .alert)
-        detailAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(detailAlert, animated: true, completion: nil)
+        //switch browserSegment.selectedSegmentIndex {
+        //case 1:
+            
+        //default:
+            let item = items[indexPath.row]
+            let detailMessage = "UUID: \(item.uuid.uuidString)\nMajor: \(item.majorValue)\nMinor: \(item.minorValue)"
+            
+            let detailAlert = UIAlertController(title: "Details", message: detailMessage, preferredStyle: .alert)
+            detailAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(detailAlert, animated: true, completion: nil)
+        //}
     }
 }
 
