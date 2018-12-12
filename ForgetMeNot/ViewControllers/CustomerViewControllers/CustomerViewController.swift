@@ -18,6 +18,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     
     // Local Variables
     var myCustomer : Users = Users(email: "", userType: "")
+    var cellNumToSend : Int = 0
     let backgroundImageView = UIImageView()
     
     
@@ -87,6 +88,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
                 cell.dateLabel?.text = myCustomer.getUserResDate(pos: indexPath.item)
                 cell.partyLabelName?.text = myCustomer.getUserResName(pos: indexPath.item)
                 cell.logoSlot.image = UIImage(named: "Coming_Soon")
+                cellNumToSend = indexPath.item  // Remember which cell number to broadcast
                 
                 return cell
             }
@@ -108,6 +110,14 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
             print ("Error: tableview could not select segment index")
             return cell
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let broadcastController = segue.destination as! BroadcasterViewController
+
+        broadcastController.broadcastCustomer = myCustomer
+        broadcastController.broadcastCellNum = cellNumToSend
+        
     }
     
     /*  =========================
