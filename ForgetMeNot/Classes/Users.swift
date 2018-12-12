@@ -189,7 +189,10 @@ class Users {
         
         // Move old reservations to the old reservation list
         let result = time.compare(resTime)
-        if (result == .orderedDescending){ // Current time is later than reservation time
+        if (result == .orderedSame){
+            // Do nothinga
+        }
+        else if (result == .orderedDescending){ // Current date is later than reservation date
             prevReservationList.append(reservation)
             removeReservationFromCurr(currListOfReservations: reservationList, reservationToRemove: reservation)
         }
