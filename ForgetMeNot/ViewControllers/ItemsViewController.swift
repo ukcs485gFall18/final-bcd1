@@ -19,6 +19,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+//
+// Last Modified and altered by: David Mercado 12/12/18
+//
+// Tutorial created by Ray Wenderlich https://www.raywenderlich.com/632-ibeacon-tutorial-with-ios-and-swift
 
 import UIKit
 import CoreLocation
@@ -190,7 +194,7 @@ extension ItemsViewController : UITableViewDataSource {
         case 1:
             //print("Completed num of rows: \(myCompany.getNumOfResFromCompletedList())")
             if(myCompany.getNumOfResFromCompletedList() == 0){
-                return 1
+                return 0
             }
             else{
                 return myCompany.getNumOfResFromCompletedList()
