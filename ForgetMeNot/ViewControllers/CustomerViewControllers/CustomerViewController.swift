@@ -44,7 +44,6 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-    
     /*  =========================
      *      Table Properties
      *  ========================= */

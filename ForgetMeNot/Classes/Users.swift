@@ -91,17 +91,18 @@ class Users {
         
         // Collect user data for table
         userID = Auth.auth().currentUser!.uid
-        
+        print("userId\(userID!)")
         // Load all parties to the user
         group.enter()
         dataRef.child("userList/\(userID!)/partyNameList").observe(.value) { (datasnapshot) in
             guard let partynamesnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
-            
+            print("partynamesnapshot: \(partynamesnapshot)")
             for eachPartyName in partynamesnapshot {
+                print("eachPartyName: \(eachPartyName)")
                 guard let newpartyName : String = eachPartyName.value as? String else{return}
+                print("newpartyName: \(newpartyName)")
                 self.partyNames.append(newpartyName)
             }
-            
             group.leave()
         }
         
