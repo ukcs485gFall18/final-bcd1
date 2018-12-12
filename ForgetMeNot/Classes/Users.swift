@@ -185,8 +185,6 @@ class Users {
         
         // Time variables to compare
         let time = getCurrentTime()!
-        print("time: \(time)")
-        print("res.getDate(): \(reservation.getDate())")
         let resTime = reservation.getDate().toDate()
         
         // Move old reservations to the old reservation list
