@@ -72,13 +72,6 @@ class Users {
     }
     
     
-    /*  ====================================================
-     *  ====================================================
-     *                      Get Functions
-     *  ====================================================
-     *  ====================================================*/
-    
-    
     /* ===================================================
      *              Load Reservations
      *  Modify the user's reservationlist to contain reservations
@@ -86,14 +79,24 @@ class Users {
      * ===================================================
      */
     func loadReservations(completion: @escaping () -> ()){
-        let group = DispatchGroup()
-        let dataRef = Database.database().reference()
-        
         // Collect user data for table
         userID = Auth.auth().currentUser!.uid
         print("userId\(userID!)")
         // Load all parties to the user
-        group.enter()
+        loadParties {
+            print ("Finished loading party names")
+            
+            // Load all reservations to the user
+            self.loadUnsortedReservations {
+                print ("Finished loading reservations")
+                completion()
+            }
+        }
+    }
+    
+    
+    func loadParties(completion: @escaping () -> ()){
+        let dataRef = Database.database().reference()
         dataRef.child("userList/\(userID!)/partyNameList").observe(.value) { (datasnapshot) in
             guard let partynamesnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
             print("partynamesnapshot: \(partynamesnapshot)")
@@ -103,16 +106,12 @@ class Users {
                 print("newpartyName: \(newpartyName)")
                 self.partyNames.append(newpartyName)
             }
-            group.leave()
+            completion()
         }
-        
-        // Notify main thread of completion
-        group.notify(queue: .main){
-            print ("Finished Loading party names")
-        }
-        
-        // Load all reservations on the user
-        group.enter()
+    }
+    
+    func loadUnsortedReservations(completion: @escaping () -> ()){
+        let dataRef = Database.database().reference()
         dataRef.child("reservation").observe(.value) { (datasnapshot) in
             guard let partySnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
             
@@ -144,15 +143,10 @@ class Users {
                     }
                 }
             }
-            group.leave()
-        }
-        
-        // Notify main thread of completion
-        group.notify(queue: .main){
-            print ("Finished Loading reservations")
             completion()
         }
     }
+    
     
     /* ===================================================
      *              Load old Reservations
@@ -173,11 +167,11 @@ class Users {
         }
     }
     
-    /* ===================================================
-     *              Get Party Names
-     *  Get a list of the user's CURRENT party names (already found)
-     * ===================================================
-     */
+    /*  ====================================================
+     *  ====================================================
+     *                      Get Functions
+     *  ====================================================
+     *  ====================================================*/
     func getNumOfUserReservations() -> Int{
         return reservationList.count
     }
