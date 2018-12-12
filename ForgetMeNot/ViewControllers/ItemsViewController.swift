@@ -319,7 +319,6 @@ extension ItemsViewController: CLLocationManagerDelegate {
                     break
                 default:
                     print("iBeacon out of range!")
-                    //self.checkInLabel.text = "❌"
                     break
             }
         }
@@ -341,9 +340,6 @@ extension ItemsViewController: CLLocationManagerDelegate {
         for row in rowsToUpdate {
             let cell = tableView.cellForRow(at: row) as! UpCommingItemTableViewCell
             cell.checkedIn()
-            
-            // Each row becomes a reservation : Blake
-            //let reservation = MyReservation(date: "", uuid: UUID(), CompName: "", name: "", size: 0)
         }
     }
   }

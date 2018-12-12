@@ -303,6 +303,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Reload" width="37.5" height="37.5"/>
+        <image name="Reload" width="50" height="50"/>
     </resources>
 </document>

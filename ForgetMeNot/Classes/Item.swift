@@ -115,8 +115,7 @@ class Item: NSObject, NSCoding {
   }
     
     /*======================================
-    *       get functions
-    *
+    *       Get functions
     *=====================================*/
     func getItemName() -> String {
         return name
