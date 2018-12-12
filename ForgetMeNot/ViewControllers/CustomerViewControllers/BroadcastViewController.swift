@@ -18,6 +18,10 @@ class BroadcasterViewController: UIViewController, CBPeripheralManagerDelegate {
     let myRegionID = "myRegionID"
     let backgroundImageView = UIImageView()
     
+    // Carried from previous view
+    var broadcastCustomer : Users = Users(email: "", userType: "")
+    var broadcastCellNum : Int = 0
+    
     override func viewDidLoad() {
         setBackground()
     }
@@ -26,10 +30,12 @@ class BroadcasterViewController: UIViewController, CBPeripheralManagerDelegate {
         (sender as! UIButton).pulsate() // Animate button when pressed
         
         print ("Broadcasting")
-        // don't do anything if myBeacon already exists
-        guard myBeacon == nil else { return }
+        print ("UUID: \(broadcastCustomer.reservationList[broadcastCellNum].getUUIDString())")
+        print ("Index: \(broadcastCellNum)")
         
-        let beaconUUID = "7FA08BC7-A55F-45FC-85C0-0BF26F899530"
+        guard myBeacon == nil else { return } // don't do anything if myBeacon already exists
+        
+        let beaconUUID = broadcastCustomer.reservationList[broadcastCellNum].getUUIDString()
         let beaconMajor: CLBeaconMajorValue = 123
         let beaconMinor: CLBeaconMinorValue = 456
         
