@@ -281,7 +281,7 @@
 				TargetAttributes = {
 					FB9CC9551AD701910038DF33 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = XNWV359WQ8;
+						DevelopmentTeam = BH9BS3QV7C;
 						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -506,11 +506,11 @@
 			baseConfigurationReference = E3FF9F1DFBDDB136F38F0C3A /* Pods-ForgetMeNot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XNWV359WQ8;
+				DEVELOPMENT_TEAM = BH9BS3QV7C;
 				INFOPLIST_FILE = ForgetMeNot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.ForgetMeNotFinal;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.uky.bcd.final;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
@@ -522,11 +522,11 @@
 			baseConfigurationReference = 9649CB67C8B90A637B4D0175 /* Pods-ForgetMeNot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XNWV359WQ8;
+				DEVELOPMENT_TEAM = BH9BS3QV7C;
 				INFOPLIST_FILE = ForgetMeNot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.ForgetMeNotFinal;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.uky.bcd.final;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
