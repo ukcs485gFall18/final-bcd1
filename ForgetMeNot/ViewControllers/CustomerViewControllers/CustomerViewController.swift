@@ -19,7 +19,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     // Local Variables
     var myCustomer : Users = Users(email: "", userType: "")
     var cellNumToSend : Int = 0
-    var indexUUID : UUID = UUID()
+    //var indexUUID : UUID = UUID()
     let backgroundImageView = UIImageView()
     
     
@@ -49,7 +49,6 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
             }
             self.customerReservationTableView.reloadData()
         }
-        
     }
     
     /*  =========================
@@ -116,9 +115,10 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier ==  "Broadcaster", let broadcastController = segue.destination as? BroadcasterViewController{
             
+            print("Cellnum to send to broadcast: \(cellNumToSend)")
             broadcastController.broadcastCustomer = myCustomer
             broadcastController.broadcastCellNum = cellNumToSend
-            broadcastController.broadcastUUID = indexUUID
+            //broadcastController.broadcastUUID = indexUUID
             
         }
     }
@@ -169,8 +169,10 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
 extension CustomerViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        indexUUID = myCustomer.getUserResUUID(pos: indexPath.row)
-        cellNumToSend = myCustomer.getPositioninResList(uuid: indexUUID)
-        //cellNumToSend = indexPath.row
+        print("didSelectRowAt, row: \(indexPath.row)")
+        print("didSelectRowAt, item: \(indexPath.item)")
+        //let indexUUID = myCustomer.getUserResUUID(pos: indexPath.row)
+        //cellNumToSend = myCustomer.getPositioninResList(uuid: indexUUID)
+        cellNumToSend = indexPath.row
     }
 }
