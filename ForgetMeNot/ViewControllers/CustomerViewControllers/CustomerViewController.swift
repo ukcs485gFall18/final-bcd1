@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import Firebase
+import CoreLocation
+import CoreBluetooth
 
 class CustomerViewController : UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var reservationSeg: UISegmentedControl!
@@ -35,6 +37,10 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
       /*==================
          Load User Reservations
          ==================*/
+        myCustomer.emptyReservationList()       // Make sure list is empty to avoid duplicates
+        myCustomer.emptyPrevReservationList()
+        myCustomer.emptyPartyNames()
+        
         myCustomer.loadReservations(){
             for currReservation in self.myCustomer.reservationList{
                 self.myCustomer.loadOldReservations(reservation: currReservation)
@@ -114,6 +120,12 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         (sender as! UIButton).spin()
         
         // Reload reservations
+        /*myCustomer.loadReservations(){
+            for currReservation in self.myCustomer.reservationList{
+                self.myCustomer.loadOldReservations(reservation: currReservation)
+            }
+            self.customerReservationTableView.reloadData()
+        }*/
     }
     @IBAction func onSegmentChange(_ sender: Any) {
         self.customerReservationTableView.reloadData()
@@ -137,5 +149,12 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
+    }
+}
+
+
+extension CustomerViewController {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
