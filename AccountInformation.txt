@@ -21,3 +21,6 @@ minor num: By second letter 1-26
 example 
 	Chilis = Major: 3, Minor: 8
 	Applebees = Major: 1, Minor: 16
+
+--Bundle ID--
+com.raywenderlich.ForgetMeNotFinal
