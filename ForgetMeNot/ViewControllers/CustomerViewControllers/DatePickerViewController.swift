@@ -36,9 +36,9 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             let currentDate = Date()
             self.datePicker.minimumDate = currentDate
             // For 24 Hrs
-            self.datePicker.locale = Locale(identifier: "en_GB")
+            //self.datePicker.locale = Locale(identifier: "en_GB")
             //For 12 Hrs
-            //self.datePicker.locale = Locale(identifier: "en_US")
+            self.datePicker.locale = Locale(identifier: "en_US")
             self.showDatePicker()               //make custome date picker
             self.showResturantPicker()          //make custome resturant picker
             #warning("make UI picker for party size")
