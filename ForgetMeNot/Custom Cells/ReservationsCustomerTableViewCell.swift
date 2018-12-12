@@ -16,7 +16,6 @@ class ReservationsCustomerTableViewCell : UITableViewCell{
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var logoSlot: UIImageView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

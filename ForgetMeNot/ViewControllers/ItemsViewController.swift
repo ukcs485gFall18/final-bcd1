@@ -207,6 +207,7 @@ extension ItemsViewController : UITableViewDataSource {
         let cellUpComming:UpCommingItemTableViewCell?       //init for cell shown under 'UpComming'
         let cellCompleted:CompletedItemTableViewCell?       //init for cell shown under 'Completed'
     
+        #warning("FIXME: when no reservations this breaks need a defualt cells 'No Reservations'")
         switch browserSegment.selectedSegmentIndex {
     
         //Modify cell for 'Completed'
