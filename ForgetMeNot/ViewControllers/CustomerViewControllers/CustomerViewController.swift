@@ -19,6 +19,7 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     // Local Variables
     var myCustomer : Users = Users(email: "", userType: "")
     var cellNumToSend : Int = 0
+    var indexUUID : UUID = UUID()
     let backgroundImageView = UIImageView()
     
     
@@ -88,8 +89,8 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
                 cell.dateLabel?.text = myCustomer.getUserResDate(pos: indexPath.item)
                 cell.partyLabelName?.text = myCustomer.getUserResName(pos: indexPath.item)
                 cell.logoSlot.image = UIImage(named: "Coming_Soon")
-                cellNumToSend = indexPath.item  // Remember which cell number to broadcast
-                
+                //cellNumToSend = indexPath.item  // Remember which cell number to broadcast
+                //print("indexPath.item: \(indexPath.item)")
                 return cell
             }
         }
@@ -113,11 +114,16 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let broadcastController = segue.destination as! BroadcasterViewController
-
-        broadcastController.broadcastCustomer = myCustomer
-        broadcastController.broadcastCellNum = cellNumToSend
-        
+        if segue.identifier ==  "Broadcaster", let broadcastController = segue.destination as? BroadcasterViewController{
+            print("sender: \(send)")
+            print("customer: \(myCustomer)")
+            print("cell num: \(cellNumToSend)")
+            
+            broadcastController.broadcastCustomer = myCustomer
+            broadcastController.broadcastCellNum = cellNumToSend
+            broadcastController.broadcastUUID = indexUUID
+            
+        }
     }
     
     /*  =========================
@@ -166,5 +172,8 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
 extension CustomerViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        indexUUID = myCustomer.getUserResUUID(pos: indexPath.row)
+        cellNumToSend = myCustomer.getPositioninResList(uuid: indexUUID)
+        //cellNumToSend = indexPath.row
     }
 }

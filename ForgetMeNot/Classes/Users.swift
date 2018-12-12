@@ -215,6 +215,9 @@ class Users {
     func getUserResStatus(pos: Int) -> Bool{
         return reservationList[pos].getCheckInStatus()
     }
+    func getUserResUUID(pos: Int) -> UUID{
+        return reservationList[pos].getUUID()
+    }
     func getNumOfUserPrevReservations() -> Int{
         return prevReservationList.count
     }
@@ -236,7 +239,6 @@ class Users {
     func getReservations() -> [MyReservation]{
         return reservationList
     }
-    
     func getCurrentTime() -> Date?{
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -246,12 +248,17 @@ class Users {
         
         return date
     }
-    
     func getNumPartyNames() -> Int{
         return partyNames.count
     }
-    
-    
+    func getPositioninResList(uuid: UUID) -> Int{
+        for pos in 0...(reservationList.count - 1){
+            if (reservationList[pos].getUUID() == uuid){
+                return pos
+            }
+        }
+        return 0
+    }
     
     
     /*  ====================================================
@@ -358,7 +365,6 @@ class Users {
     }
 
 }
-
 
 extension String {
     func toDate(withFormat format: String = "MM/dd/yyyy HH:mm a") -> Date {

@@ -31,9 +31,14 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         setBackground()
 
         populateResturantList {                 //populate resturantList
-            #warning("make better")
+            #warning("FIXME: when time is restricted am/pm doesnt store")
+            #warning("FIXME: Also check to see if it is 24 format; if so convert to 12 hour format")
             let currentDate = Date()
             self.datePicker.minimumDate = currentDate
+            // For 24 Hrs
+            /*self.datePicker.locale = Locale(identifier: "en_GB")*/
+            //For 12 Hrs
+            self.datePicker.locale = Locale(identifier: "en_US")
             self.showDatePicker()               //make custome date picker
             self.showResturantPicker()          //make custome resturant picker
             #warning("make UI picker for party size")
@@ -152,14 +157,14 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         let dateFormatter = DateFormatter()
         
         formatter.dateFormat = "MM/dd/yyyy"
-        form.dateFormat = "HH:mm"
-        dateFormatter.dateFormat = "MM/dd/yyyy hh:mm a"
+        form.dateFormat = "HH:mm a"
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm a"
 
         txtDatePicker.text = formatter.string(from: datePicker.date)
         txtTime.text = form.string(from: datePicker.date)
         dateOfReservation = dateFormatter.string(from: datePicker.date)
         
-        print(dateOfReservation)                                                //DEBUGGING PURPOSE
+        //print("new res: \(dateOfReservation)")                                                //DEBUGGING PURPOSE
         self.view.endEditing(true)
     }
     
@@ -260,6 +265,8 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             
             // Add party name to the user's party list
             databaseRef?.child("\(kUserList)/\(userID)/\(kPartyNameList)").updateChildValues(["\(kPartyName)"+"-"+"\(Date().hashValue)" : userReservation.getPartyName()])
+            
+            Alert.showConfirmReservationAlert(on: self)
         }
         else{
             Alert.showIncompleteFormAlert(on: self)
