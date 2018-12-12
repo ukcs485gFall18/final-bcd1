@@ -31,9 +31,10 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         setBackground()
 
         populateResturantList {                 //populate resturantList
-            #warning("make better")
-            let currentDate = Date()
-            self.datePicker.minimumDate = currentDate
+            #warning("FIXME: when time is restricted am/pm doesnt store")
+            #warning("FIXME: Also check to see if it is 24 format; if so convert to 12 hour format")
+            //let currentDate = Date()
+            //self.datePicker.minimumDate = currentDate
             self.showDatePicker()               //make custome date picker
             self.showResturantPicker()          //make custome resturant picker
             #warning("make UI picker for party size")
