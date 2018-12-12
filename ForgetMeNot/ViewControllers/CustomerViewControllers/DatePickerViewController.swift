@@ -22,7 +22,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     let datePicker = UIDatePicker()
     let resturantPicker = UIPickerView()
     
-    var resturantList: [String] = []            //TODO: GET THIS INFO FROM FIREBASE TABLE
+    var resturantList: [String] = []
     var dateOfReservation = ""
     
     //--------------------------------------------------------------------------
@@ -31,6 +31,9 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         setBackground()
 
         populateResturantList {                 //populate resturantList
+            #warning("make better")
+            let currentDate = Date()
+            self.datePicker.minimumDate = currentDate
             self.showDatePicker()               //make custome date picker
             self.showResturantPicker()          //make custome resturant picker
             #warning("make UI picker for party size")
@@ -51,6 +54,10 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         //Formate Date
         datePicker.datePickerMode = .dateAndTime
         datePicker.minuteInterval = 15
+        //datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -1, to: Date())
+
+        #warning("FIXME: RESTRICT TIME")
+        //https://stackoverflow.com/questions/49520781/restricting-enabled-time-to-a-specific-time-span-in-uidatepicker-swift-4
         //let dateFormatter = DateFormatter()
         //dateFormatter.dateFormat =  "MM/dd/yyyy hh:mm a"
         //let min = dateFormatter.date(from: getTodaysDateAndTime())      //createing min time
@@ -136,7 +143,6 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     //--------------------------------------------------------------------------
-    #warning("FIXME: make sure the dates and times show from current date forward")
     //When 'Done' is pressed in date picker and scrubs user input to prep for storing reservation
     @objc func donedatePicker(){
         #warning("If it needs to be a date https://stackoverflow.com/questions/36861732/swift-convert-string-to-date")
@@ -217,7 +223,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
 
             print(pName)                                                        //DEBUGGING PURPOSE
             print(pCompName)                                                    //DEBUGGING PURPOSE
-            print(pSize!)                                                        //DEBUGGING PURPOSE
+            print(pSize!)                                                       //DEBUGGING PURPOSE
             print(pDate)                                                        //DEBUGGING PURPOSE
             print(pTime)                                                        //DEBUGGING PURPOSE
             print(dateOfReservation)                                            //DEBUGGING PURPOSES
@@ -253,31 +259,14 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             //================================================================//
 
             //this is a confirmation alert to user, seagues back to previous page
-            Alert.showConfirmReservationAlert(on: self)
+            //Alert.showConfirmReservationAlert(on: self)
             
             //return to previous page
             //self.performSegue(withIdentifier: "HomeSegue", sender: self)
+            self.dismiss(animated: true, completion: nil)
         }
         else{
             Alert.showIncompleteFormAlert(on: self)
-        }
-    }
-    
-    //--------------------------------------------------------------------------
-    //Function that gets the list of resturant names for resturant picker
-    func populateResturantList(completionClosure: @escaping() -> ()) {
-        let dataRef = Database.database().reference()
-        
-        dataRef.child(kCompanyList).observe(.value) { (datasnapshot) in
-            guard let partySnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
-            
-            //iterate through Company List and append to resturantList
-            for currParty in partySnapshot{
-                print("CurrParty: \(currParty.key)")
-                self.resturantList.append(currParty.key)
-                self.resturantList.sort(){$0 < $1}
-            }
-            completionClosure()
         }
     }
     
@@ -289,6 +278,28 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         formatter.dateFormat = "MM/dd/yyyy hh:mm a"
         let result = formatter.string(from: date)
         return result
+    }
+    
+    /*==========================================================================
+    *
+    *                       FIREBASE CALLS
+    *
+    ==========================================================================*/
+    //Function that gets the list of resturant names from firebase
+    func populateResturantList(completionClosure: @escaping() -> ()) {
+        let dataRef = Database.database().reference()
+        
+        dataRef.child(kCompanyList).observe(.value) { (datasnapshot) in
+            guard let partySnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            //iterate through Company List and append to resturantList
+            for currParty in partySnapshot{
+                //print("CurrParty: \(currParty.key)")
+                self.resturantList.append(currParty.key)
+                self.resturantList.sort(){$0 < $1}
+            }
+            completionClosure()
+        }
     }
     
     //--------------------------------------------------------------------------

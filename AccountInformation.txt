@@ -7,6 +7,8 @@ host1@test.com
 	Company name: Applebees
 host2@test.com
 	Company name: Hooters
+host3@test.com
+	Company name: Bella Notte
 
 --Customer Information--
 Password: 111111
