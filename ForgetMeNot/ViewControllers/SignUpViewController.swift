@@ -21,8 +21,19 @@ class SignUpViewController : UIViewController{
     let backgroundImageView = UIImageView()
     
     override func viewDidLoad() {
+        // Hide Company field on load
+        cName.isHidden = true
+        
         super.viewDidLoad()
         setBackground()
+    }
+    @IBAction func IDSelectorTapped(_ sender: Any) {
+        if (IDSelector.selectedSegmentIndex == 0){
+            cName.isHidden = true
+        }
+        else if (IDSelector.selectedSegmentIndex == 1){
+            cName.isHidden = false
+        }
     }
     
     #warning("Can add this to the Alert.swift")
