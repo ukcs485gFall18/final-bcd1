@@ -113,11 +113,11 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let broadcastController = segue.destination as! BroadcasterViewController
+        if segue.identifier ==  "Broadcaster", let broadcastController = segue.destination as? BroadcasterViewController{
 
-        broadcastController.broadcastCustomer = myCustomer
-        broadcastController.broadcastCellNum = cellNumToSend
-        
+            broadcastController.broadcastCustomer = myCustomer
+            broadcastController.broadcastCellNum = cellNumToSend
+        }
     }
     
     /*  =========================

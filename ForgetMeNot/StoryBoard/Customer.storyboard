@@ -139,7 +139,7 @@
                                             <outlet property="dateLabel" destination="dT8-i9-Q0q" id="ukp-4H-QRr"/>
                                             <outlet property="logoSlot" destination="uQm-Ga-kEV" id="fCg-2S-kh6"/>
                                             <outlet property="partyLabelName" destination="tHL-Jj-JeC" id="B84-Ny-CAa"/>
-                                            <segue destination="3jF-Jx-37A" kind="show" id="RcB-oR-7dk"/>
+                                            <segue destination="3jF-Jx-37A" kind="show" identifier="Broadcaster" id="RcB-oR-7dk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -213,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKI-aZ-ixM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4832.8000000000002" y="1769.865067466267"/>
+            <point key="canvasLocation" x="3940" y="1786"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="ahE-Of-Ziu">
@@ -341,6 +341,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Reload" width="50" height="50"/>
+        <image name="Reload" width="37.5" height="37.5"/>
     </resources>
 </document>
