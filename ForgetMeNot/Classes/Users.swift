@@ -36,10 +36,42 @@ class Users {
             if (reservation.getUUID() == reservationToRemove.getUUID()){
                 // If found, remove the reservation from the list
                 reservationList.remove(at: counter)
-                print ("Successfully removed \(reservation.getPartyName())'s reservation at \(reservation.getCompName()) for date \(reservation.getDate())")
             }
             counter += 1
         }
+    }
+    
+    func emptyReservationList(){
+        // Local Variables
+        var counter = 0
+        
+        for _ in reservationList{
+            reservationList.remove(at: counter)
+            counter += 1
+        }
+        print ("Removed \(counter) active reservations")
+    }
+    
+    func emptyPrevReservationList(){
+        // Local Variables
+        var counter = 0
+        
+        for _ in prevReservationList{
+            prevReservationList.remove(at: counter)
+            counter += 1
+        }
+        print ("Removed \(counter) previous reservations")
+    }
+    
+    func emptyPartyNames(){
+        // Local Variables
+        var counter = 0
+
+        for _ in partyNames{
+            partyNames.remove(at: counter)
+            counter += 1
+        }
+        print ("Removed \(counter) party Names")
     }
     
     /*  ==========================
@@ -81,7 +113,6 @@ class Users {
     func loadReservations(completion: @escaping () -> ()){
         // Collect user data for table
         userID = Auth.auth().currentUser!.uid
-        print("userId\(userID!)")
         // Load all parties to the user
         loadParties {
             print ("Finished loading party names")
@@ -99,12 +130,9 @@ class Users {
         let dataRef = Database.database().reference()
         dataRef.child("userList/\(userID!)/partyNameList").observe(.value) { (datasnapshot) in
             guard let partynamesnapshot = datasnapshot.children.allObjects as? [DataSnapshot] else { return }
-            print("partynamesnapshot: \(partynamesnapshot)")
             for eachPartyName in partynamesnapshot {
-                print("eachPartyName: \(eachPartyName)")
                 guard let newpartyName : String = eachPartyName.value as? String else{return}
-                print("newpartyName: \(newpartyName)")
-                self.partyNames.append(newpartyName)
+                self.addPartyNameList(newPartyName: newpartyName)
             }
             completion()
         }
@@ -129,9 +157,9 @@ class Users {
                             
                             // Collect variables from database
                             let currComp = reservation.key
-                            let currDate = partyValues["partyDate"] as! String
-                            let currPartySize = partyValues["partySize"] as! Int
-                            let currUUIDString = partyValues["partyUUID"] as! String
+                            let currDate = partyValues["partyDate"] as? String ?? "Error with Date"
+                            let currPartySize = partyValues["partySize"] as? Int ?? 0
+                            let currUUIDString = partyValues["partyUUID"] as? String ?? "Error UUID"
                             
                             // Convert UUIDString back to a normal UUID to be placed into reservation
                             let currUUID = UUID(uuidString: currUUIDString)
@@ -219,7 +247,9 @@ class Users {
         return date
     }
     
-    
+    func getNumPartyNames() -> Int{
+        return partyNames.count
+    }
     
     
     
@@ -266,7 +296,6 @@ class Users {
         
         if (userID == ""){
             print ("Error: userID empty in getPartyNamesForUser()")
-            //handler(self.partyNames)
         }
         else{
             // Create firebase reference and link to database
@@ -279,7 +308,6 @@ class Users {
                     guard let newpartyName : String = eachPartyName.value as? String else{return}
                     self.partyNames.append(newpartyName)
                 }
-                //handler(self.partyNames)
             }
         }
     }

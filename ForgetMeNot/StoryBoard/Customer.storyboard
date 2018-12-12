@@ -139,6 +139,7 @@
                                             <outlet property="dateLabel" destination="dT8-i9-Q0q" id="ukp-4H-QRr"/>
                                             <outlet property="logoSlot" destination="uQm-Ga-kEV" id="fCg-2S-kh6"/>
                                             <outlet property="partyLabelName" destination="tHL-Jj-JeC" id="B84-Ny-CAa"/>
+                                            <segue destination="3jF-Jx-37A" kind="show" id="RcB-oR-7dk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -176,6 +177,43 @@
                 <exit id="pKP-IK-s7J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3940" y="1055.6221889055473"/>
+        </scene>
+        <!--Broadcaster View Controller-->
+        <scene sceneID="NyA-Na-avX">
+            <objects>
+                <viewController id="3jF-Jx-37A" customClass="BroadcasterViewController" customModule="ForgetMeNot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dk6-QF-NaT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YD-9f-cLw">
+                                <rect key="frame" x="77" y="199" width="229" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="  Check in  ">
+                                    <color key="titleColor" red="0.70304036846231477" green="0.94104273413038497" blue="0.36247344582526836" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startBeacon:" destination="3jF-Jx-37A" eventType="touchUpInside" id="925-ip-nU5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vf4-4k-31K">
+                                <rect key="frame" x="133" y="587" width="109" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="stopBeacon:" destination="3jF-Jx-37A" eventType="touchUpInside" id="kGE-0Z-a0D"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="p20-Pu-RPQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MKI-aZ-ixM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4832.8000000000002" y="1769.865067466267"/>
         </scene>
         <!--Date Picker View Controller-->
         <scene sceneID="ahE-Of-Ziu">
@@ -303,6 +341,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Reload" width="37.5" height="37.5"/>
+        <image name="Reload" width="50" height="50"/>
     </resources>
 </document>

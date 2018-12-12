@@ -235,13 +235,13 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             //================================================================//
             //                    *Firebase insertions                        //
             //================================================================//
-            var databaseRef : DatabaseReference?            // Create firebase database reference variable
-            databaseRef = Database.database().reference()   // Link the firebase database
+            let databaseRef : DatabaseReference? = Database.database().reference()         // Create firebase database link
+            let userID = Auth.auth().currentUser!.uid
             
             //------------------------------------------------------------------
             //Call firebase and insert user's reservation into user's Party name
             #warning("FIXME: so when a resturant already exisit in the party's name, it doesnt get overwritten")
-        databaseRef?.child(kReservation).child(userReservation.getPartyName()).child(userReservation.getCompName()).setValue([kPartyDate : userReservation.getDate()])
+            databaseRef?.child(kReservation).child(userReservation.getPartyName()).child(userReservation.getCompName()).setValue([kPartyDate : userReservation.getDate()])
             
             //Call firebase and insert Party's size into firebase under same Party name as above
             databaseRef?.child("\(kReservation)/\(userReservation.getPartyName())/\(userReservation.getCompName())/\(kPartySize)").setValue(userReservation.getPartySize())
@@ -257,13 +257,9 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             databaseRef?.child("\(kCompanyList)/\(userReservation.getCompName())/\(userReservation.getUUIDString())/\(kPartyName)").setValue(userReservation.getPartyName())
             databaseRef?.child("\(kCompanyList)/\(userReservation.getCompName())/\(userReservation.getUUIDString())/\(kPartySize)").setValue(userReservation.getPartySize())
             //================================================================//
-
-            //this is a confirmation alert to user, seagues back to previous page
-            //Alert.showConfirmReservationAlert(on: self)
             
-            //return to previous page
-            //self.performSegue(withIdentifier: "HomeSegue", sender: self)
-            self.dismiss(animated: true, completion: nil)
+            // Add party name to the user's party list
+            databaseRef?.child("\(kUserList)/\(userID)/\(kPartyNameList)").updateChildValues(["\(kPartyName)"+"-"+"\(Date().hashValue)" : userReservation.getPartyName()])
         }
         else{
             Alert.showIncompleteFormAlert(on: self)
