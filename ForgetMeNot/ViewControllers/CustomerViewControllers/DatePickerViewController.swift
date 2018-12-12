@@ -22,7 +22,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     let datePicker = UIDatePicker()
     let resturantPicker = UIPickerView()
     
-    var resturantList: [String] = []            //TODO: GET THIS INFO FROM FIREBASE TABLE
+    var resturantList: [String] = []
     var dateOfReservation = ""
     
     //--------------------------------------------------------------------------
@@ -259,10 +259,11 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             //================================================================//
 
             //this is a confirmation alert to user, seagues back to previous page
-            Alert.showConfirmReservationAlert(on: self)
+            //Alert.showConfirmReservationAlert(on: self)
             
             //return to previous page
             //self.performSegue(withIdentifier: "HomeSegue", sender: self)
+            self.dismiss(animated: true, completion: nil)
         }
         else{
             Alert.showIncompleteFormAlert(on: self)
@@ -293,7 +294,7 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             
             //iterate through Company List and append to resturantList
             for currParty in partySnapshot{
-                print("CurrParty: \(currParty.key)")
+                //print("CurrParty: \(currParty.key)")
                 self.resturantList.append(currParty.key)
                 self.resturantList.sort(){$0 < $1}
             }
