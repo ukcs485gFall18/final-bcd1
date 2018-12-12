@@ -147,7 +147,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="email" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qW2-7r-2ZE" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="email" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qW2-7r-2ZE" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
                                 <rect key="frame" x="30" y="187" width="315" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="du6-Sf-9nN"/>
@@ -156,7 +156,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="password" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHc-8T-upd" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="password" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SHc-8T-upd" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
                                 <rect key="frame" x="30" y="232" width="315" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="gPx-JK-kXw"/>
@@ -165,7 +165,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="passwordConfirm" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Verify Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0iP-Ro-u8B" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="passwordConfirm" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Verify Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0iP-Ro-u8B" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
                                 <rect key="frame" x="30" y="277" width="315" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="aMJ-HB-Ime"/>
@@ -174,7 +174,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="cName" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iI1-hF-GKz" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="cName" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iI1-hF-GKz" customClass="SATextField" customModule="ForgetMeNot" customModuleProvider="target">
                                 <rect key="frame" x="30" y="322" width="315" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Pax-Ge-Ewa"/>
@@ -190,6 +190,9 @@
                                     <segment title="Company"/>
                                 </segments>
                                 <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <connections>
+                                    <action selector="IDSelectorTapped:" destination="kn5-YK-lvC" eventType="valueChanged" id="7Aw-Ie-VO9"/>
+                                </connections>
                             </segmentedControl>
                             <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash-white" translatesAutoresizingMaskIntoConstraints="NO" id="o26-mH-KHS">
                                 <rect key="frame" x="77.5" y="465" width="220" height="180"/>
