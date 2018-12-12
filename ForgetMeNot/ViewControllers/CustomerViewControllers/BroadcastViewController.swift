@@ -4,6 +4,7 @@
 //
 //  Created by Blake Sweet on 12/12/18.
 //
+// Citation: https://stackoverflow.com/questions/49303785/how-to-advertise-an-ibeacon-using-an-ipad-5-in-swift-4
 
 import UIKit
 import CoreLocation
