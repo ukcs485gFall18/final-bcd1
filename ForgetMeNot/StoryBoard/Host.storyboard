@@ -26,7 +26,7 @@
                                 <rect key="frame" x="10" y="64" width="355" height="29"/>
                                 <segments>
                                     <segment title="UpComming"/>
-                                    <segment title="Completed"/>
+                                    <segment title="Mark as completed"/>
                                 </segments>
                                 <connections>
                                     <action selector="browserSegmentChange:" destination="K5d-s5-LOV" eventType="valueChanged" id="uOR-dt-vz0"/>

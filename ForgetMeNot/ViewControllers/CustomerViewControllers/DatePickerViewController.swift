@@ -265,6 +265,8 @@ class DatePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
             
             // Add party name to the user's party list
             databaseRef?.child("\(kUserList)/\(userID)/\(kPartyNameList)").updateChildValues(["\(kPartyName)"+"-"+"\(Date().hashValue)" : userReservation.getPartyName()])
+            
+            Alert.showConfirmReservationAlert(on: self)
         }
         else{
             Alert.showIncompleteFormAlert(on: self)

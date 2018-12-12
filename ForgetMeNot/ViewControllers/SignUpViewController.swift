@@ -17,6 +17,13 @@ class SignUpViewController : UIViewController{
     @IBOutlet weak var cName: UITextField!
     @IBOutlet weak var IDSelector: UISegmentedControl!
 
+    //Refrence: https://www.youtube.com/watch?v=m_0_XQEfrGQ
+    let backgroundImageView = UIImageView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setBackground()
+    }
     
     #warning("Can add this to the Alert.swift")
     func showMessage (alertTitle : String, alertMessage : String, actionTitle : String){
@@ -44,8 +51,6 @@ class SignUpViewController : UIViewController{
         var databaseRef : DatabaseReference? // Create firebase database reference variable
         databaseRef = Database.database().reference()  // Link the firebase database
         
-        #warning("Need to check that email is not empty")
-        #warning("Need to check that password is not empty")
         let userEmailTxt = self.userEmail.text!
        
         
@@ -102,5 +107,19 @@ class SignUpViewController : UIViewController{
             #warning("Can add this to the Alert.swift")
             showMessage(alertTitle: "Passwords do not match", alertMessage: "Please enter identical passwords", actionTitle: "Dismiss")
         }
+    }
+    
+    //--------------------------------------------------------------------------
+    //Refrence: https://www.youtube.com/watch?v=m_0_XQEfrGQ
+    //sets the background
+    func setBackground() {
+        view.addSubview(backgroundImageView)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        backgroundImageView.image = UIImage(named: kBgWave)
+        view.sendSubviewToBack(backgroundImageView)
     }
 }

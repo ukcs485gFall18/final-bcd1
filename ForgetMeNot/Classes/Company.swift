@@ -20,8 +20,8 @@ class Company {
     init(){
         self.companyName = ""
         self.companyID = Auth.auth().currentUser!.uid
-        self.companyMajor = 0
-        self.companyMinor = 0
+        self.companyMajor = 123
+        self.companyMinor = 456
         self.reservationList = []
         self.completedReservationList = []
         //self.partyNames = []
@@ -135,8 +135,8 @@ class Company {
         //var firstChar = NAME.prefix(1)
         //var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         //var pos = alphabet.firstIndex(of: firstChar)
-        self.companyMajor = 0 //first letter of name
-        self.companyMinor = 0 //second letter of name
+        self.companyMajor = 123 //first letter of name
+        self.companyMinor = 456 //second letter of name
     }
     
     //Reservation setters for reservationList
