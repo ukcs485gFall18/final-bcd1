@@ -1,26 +1,22 @@
 --Host Information--
 Password: 111111
 
-host@test.com
+chilis@test.com
     Company name: Chilis
-host1@test.com
+applebees@test.com
 	Company name: Applebees
-host2@test.com
+hooters@test.com
 	Company name: Hooters
-host3@test.com
+bella@test.com
 	Company name: Bella Notte
 
 --Customer Information--
 Password: 111111
 
-cust1@test.com
+cust@test.com
 	
 --iBeacon--
-major num: By first letter 1-26
-minor num: By second letter 1-26
-example 
-	Chilis = Major: 3, Minor: 8
-	Applebees = Major: 1, Minor: 16
+David sux
 
 --Bundle ID--
 com.raywenderlich.ForgetMeNotFinal
