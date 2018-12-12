@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import Firebase
+import CoreLocation
+import CoreBluetooth
 
 class CustomerViewController : UIViewController, UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var reservationSeg: UISegmentedControl!
@@ -154,14 +156,5 @@ class CustomerViewController : UIViewController, UITableViewDelegate, UITableVie
 extension CustomerViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if (reservationSeg.selectedSegmentIndex == 0){
-            print("Attempting to broadcast beacon for \(myCustomer.reservationList)")
-        }
-        //let item = Item(date: "Current Date", name: "Blake", size: 1, uuid: UUID(), majorValue: 1, minorValue: 2)
-        
-        /*let detailMessage = "UUID: \(item.uuid.uuidString)\nMajor: \(item.majorValue)\nMinor: \(item.minorValue)"
-        let detailAlert = UIAlertController(title: "Details", message: detailMessage, preferredStyle: .alert)
-        detailAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(detailAlert, animated: true, completion: nil)*/
     }
 }
